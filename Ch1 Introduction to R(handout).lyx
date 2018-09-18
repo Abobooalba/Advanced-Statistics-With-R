@@ -1,0 +1,4069 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article-beamer
+\begin_preamble
+\usetheme{Boadilla}
+\usecolortheme{seahorse}
+\usefonttheme{professionalfonts}
+\setbeamertemplate{navigation symbols}{} 
+%\usepackage{xeCJK}
+%\usepackage{multirow} %Excel2Latex table needed
+%\usepackage{booktabs} %Excel2Latex table needed
+%\setCJKmainfont{宋体}  %设置中文的默认字体 
+%\setCJKfamilyfont{yh}{Microsoft YaHei}  %微软雅黑 yh 
+%\setCJKmainfont[ItalicFont={楷体}, BoldFont={黑体}]{宋体}
+%\setCJKmainfont[BoldFont={Adobe Heiti Std},ItalicFont={Adobe Kaiti Std}]{Adobe Song Std} 
+%\usepackage[backend=biber,natbib=true,style=caspervector,citestyle=authoryear,maxnames = 99,utf8]{biblatex}
+%\usepackage[backend=biber,natbib=true,bibstyle=caspervector,citestyle=authoryear,utf8]{biblatex}
+%\addbibresource{F:/BaiduYun/Teaching/ref/Bayesian.bib}
+%\DeclareBibliographyCategory{cited} \AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}} 
+%\newcommand{\myemph}[1]{\emph{\textcolor{red}{#1}}}
+
+% Beamer show contents,upto subsection
+\AtBeginSection[]
+{
+    \begin{frame}
+        \tableofcontents[currentsection,hideallsubsections]
+    \end{frame}
+}
+\AtBeginSubsection[]
+{
+    \begin{frame}[shrink]
+        \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]
+    \end{frame}
+}
+\end_preamble
+\options UTF8
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype true
+\use_dash_ligatures false
+\graphics default
+\default_output_format pdf4
+\output_sync 1
+\bibtex_command bibtex
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style apalike
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 1
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Chapter 1: Introduction to R
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Advanced Statistics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Shujia Wong
+\end_layout
+
+\begin_layout Institute
+Department of Statistics, College of Economics
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Shenzhen University
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ Shenzhen University
+\end_layout
+
+\begin_layout TitleGraphic
+\begin_inset Graphics
+	filename figure/szulogo.bmp
+	lyxscale 30
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<setup,include=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(
+\end_layout
+
+\begin_layout Plain Layout
+
+#dev = 'pdf',
+\end_layout
+
+\begin_layout Plain Layout
+
+fig.align='center', 
+\end_layout
+
+\begin_layout Plain Layout
+
+size='footnotesize', 
+\end_layout
+
+\begin_layout Plain Layout
+
+#results='asis',
+\end_layout
+
+\begin_layout Plain Layout
+
+out.width='.8
+\backslash
+
+\backslash
+linewidth',
+\end_layout
+
+\begin_layout Plain Layout
+
+fig.path='figure/', 	
+\end_layout
+
+\begin_layout Plain Layout
+
+fig.keep='high', 	
+\end_layout
+
+\begin_layout Plain Layout
+
+fig.show='asis', 
+\end_layout
+
+\begin_layout Plain Layout
+
+#cache=TRUE,	
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#warning=FALSE,
+\end_layout
+
+\begin_layout Plain Layout
+
+prompt=TRUE
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<margin,include=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+knit_hooks$set(
+\end_layout
+
+\begin_layout Plain Layout
+
+ margin=function(before,options,envir){ 
+\end_layout
+
+\begin_layout Plain Layout
+
+  if(before) 
+\end_layout
+
+\begin_layout Plain Layout
+
+    par(mar=c(4,4,0.1,0.1)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+  else NULL 
+\end_layout
+
+\begin_layout Plain Layout
+
+} 
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Purpose of the course
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Introduction to basic statistical concepts 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Descriptive data analysis
+\end_layout
+
+\begin_layout Itemize
+Random variables and probability distributions 
+\end_layout
+
+\begin_layout Itemize
+Statistical inference
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Build and analyze basic statistical models
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Regression models
+\end_layout
+
+\begin_layout Itemize
+Model diagnostics
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Introduction in using R
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Understanding and programming correct code
+\end_layout
+
+\begin_layout Itemize
+Make correct interpretation from output
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+An overview of R
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+What is R?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+R is a language and environment for statistical computing and graphics
+\end_layout
+
+\begin_layout Itemize
+was created in the early 1990s by Ross Ihaka and Robert Gentleman, at the
+ University of Auckland
+\end_layout
+
+\begin_layout Itemize
+is based upon the S language that was developed at Bell Laboratories
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figure/Ch1 Ihaka-Gentleman.jpg
+	width 50col%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Why use R?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Widely used in statistics and applied sciences
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+data scientists,The New York Times, Google,Facebook,Twitter ...
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Reliable free open source and cross platforms 
+\end_layout
+
+\begin_layout Itemize
+Versatile: Python, Matlab, MySQL, Perl, JAVA, C++, Fortran
+\end_layout
+
+\begin_layout Itemize
+Extensible: new methods become available on a weekly basis (7000+ packages)
+\end_layout
+
+\begin_layout Itemize
+Flexible: unlike other programs (e.g., SAS and SPSS)
+\end_layout
+
+\begin_layout Itemize
+High quality visualization and graphics tools
+\end_layout
+
+\begin_layout Itemize
+High level language with many built-in-functions (allows quick programming)
+ 
+\end_layout
+
+\begin_layout Standard
+Disadvantages: 
+\end_layout
+
+\begin_layout Itemize
+Steep learning curve (frequent use helps at lot)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Pros and Cons
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Graphics
+	filename figure/pros-cons.JPG
+	width 60text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+R or Python?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Graphics
+	filename figure/TIOBE Index for August 2018(fig).JPG
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+How to get R and RStudio
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Download and install R: You must do this first.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+http://CRAN.R-project.org/ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Download and install RStudio: Powerful integrated development environment
+ (IDE) for R
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+https://www.rstudio.com/
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+R Environments
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Prompt: > 
+\end_layout
+
+\begin_layout Itemize
+Current working direction: 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+getwd()
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Change working direction:
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+ setwd(
+\begin_inset Quotes eld
+\end_inset
+
+F:/AdvStat
+\begin_inset Quotes erd
+\end_inset
+
+) 
+\end_layout
+
+\end_inset
+
+ (or 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+ setwd(
+\begin_inset Quotes eld
+\end_inset
+
+F:
+\backslash
+
+\backslash
+AdvStat
+\begin_inset Quotes erd
+\end_inset
+
+) 
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+R is 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+case sensitive
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+help(lm) 
+\end_layout
+
+\end_inset
+
+and 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+Help(lm)
+\end_layout
+
+\end_inset
+
+ are different !
+\end_layout
+
+\begin_layout Itemize
+Word processors are not recommended
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Help on examples
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+from commandline 
+\end_layout
+
+\begin_layout Itemize
+help.start(),library()
+\end_layout
+
+\begin_layout Itemize
+ls(package:stats), library(help="stats")
+\end_layout
+
+\begin_layout Itemize
+?t.test,?sum, ?solve
+\end_layout
+
+\begin_layout Itemize
+methods(plot) # plotting functions
+\end_layout
+
+\begin_layout Itemize
+example(boxplot) #examples
+\end_layout
+
+\begin_layout Itemize
+demo(lm.glm) #demonstrations of generalized linear model
+\end_layout
+
+\begin_layout Itemize
+mean.default #study code of function
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Package libraries
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+What is a package? 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A collections of R 
+\begin_inset Flex Emphasize
+status open
+
+\begin_layout Plain Layout
+functions
+\end_layout
+
+\end_inset
+
+, 
+\emph on
+data
+\emph default
+, and 
+\emph on
+compiled code
+\emph default
+ in a well-defined format 
+\end_layout
+
+\begin_layout Itemize
+Packages extend the functionality of R: most of the value to R comes from
+ the 7000+ packages out there 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Where do the packages come from?
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Most packages are distributed “centrally” via CRAN (
+\series bold
+C
+\series default
+omprehensive 
+\series bold
+R A
+\series default
+rchive 
+\series bold
+N
+\series default
+etwork) 
+\end_layout
+
+\begin_layout Itemize
+There are lots of mirrors of CRAN.
+ 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+CTEX.ORG : http://ftp.ctex.org/mirrors/CRAN/ 
+\end_layout
+
+\begin_layout Itemize
+Beijing Jiaotong University: http://mirror.bjtu.edu.cn/cran 
+\end_layout
+
+\begin_layout Itemize
+University of Science and Technology of China: http://mirrors.ustc.edu.cn/CRAN/
+ 
+\end_layout
+
+\begin_layout Itemize
+Xiamen University: http://mirrors.xmu.edu.cn/CRAN/ 
+\end_layout
+
+\begin_layout Itemize
+etc
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Installing Packages
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+R: 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+install.packages("PASWR2")
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+RStudio:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figure/ch1installpackage.bmp
+	width 80col%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Loading Packages
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+R: Loading package “datasets”: 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+library("datasets") 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+RStudio: package “datasets” is loaded 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figure/ch1loadpackage.bmp
+	width 70col%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Installing and Loading Packages
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+Installed
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+install.packages("...")
+\end_layout
+
+\end_inset
+
+ means...
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+That the package files are stored on your computer
+\end_layout
+
+\begin_layout Itemize
+Your version of R is able to load the package 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+Loaded
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+library("...")
+\end_layout
+
+\end_inset
+
+ means...
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+That R has opened the package files, and “knows” what they contain
+\end_layout
+
+\begin_layout Itemize
+You can use the functions/data stored in the package 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The upshot of this 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A package must be 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+installed
+\end_layout
+
+\end_inset
+
+ before you can 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+load
+\end_layout
+
+\end_inset
+
+ it 
+\end_layout
+
+\begin_layout Itemize
+A package must be 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+loaded 
+\end_layout
+
+\end_inset
+
+before you can
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+ use
+\end_layout
+
+\end_inset
+
+ it 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Separating install from load avoids inconsistency 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+Install
+\end_layout
+
+\end_inset
+
+ everything you might want to use sometime 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+Load
+\end_layout
+
+\end_inset
+
+ only those things you need to use now! 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Finally, What packages should you install?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+After you installed the latest version of R and RStudio, you should install
+ the following packages:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+tidyverse
+\end_layout
+
+\end_inset
+
+: a set of core packages.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+# Install from CRAN 
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+install.packages("tidyverse")
+\end_layout
+
+\begin_layout Standard
+# Or the development version from GitHub 
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+install.packages("devtools") 
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+devtools::install_github("hadley/tidyverse")
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+PASWR2
+\end_layout
+
+\end_inset
+
+: codes, datatsets and functions from the text book.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\emph on
+install.packages("PASWR2")
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+bookdown
+\end_layout
+
+\end_inset
+
+: a package to facilitate writing books and long-form articles/reports with
+ R Markdown.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+knitr - Easy dynamic report generation in R.
+\end_layout
+
+\begin_layout Itemize
+rmarkdown - Dynamic documents for R.
+\end_layout
+
+\begin_layout Itemize
+xfun
+\end_layout
+
+\begin_layout Itemize
+tinytex - A lightweight and easy-to-maintain LaTeX distribution
+\end_layout
+
+\begin_layout Itemize
+yaml
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Core tidyverse packages
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+library(tidyverse)
+\end_layout
+
+\end_inset
+
+ will load the core tidyverse packages:
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+ggplot2 for data visualisation.
+ 
+\end_layout
+
+\begin_layout Description
+dplyr for data manipulation.
+ 
+\end_layout
+
+\begin_layout Description
+tidyr for data tidying.
+ 
+\end_layout
+
+\begin_layout Description
+readr for data import.
+ 
+\end_layout
+
+\begin_layout Description
+purrr for functional programming.
+ 
+\end_layout
+
+\begin_layout Description
+tibble for tibbles, a modern re-imagining of data frames.
+ 
+\end_layout
+
+\begin_layout Description
+stringr for strings.
+ 
+\end_layout
+
+\begin_layout Description
+forcats for factors.
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Section
+Using R 
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Frequently used operators
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="11" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Operator
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+<-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Assign
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sum
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Difference
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+*
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Multiplication
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+/
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Division
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+^
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Exponent
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+%%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mod
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+%*%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Dot product
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+%/%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Integer division
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+%in%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Subset
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="11" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Operator
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+|
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Or
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+&
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+And
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+<
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Less
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+>
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Greater
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+<=
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Less or =
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+>=
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Greater or =
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+!
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Not
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+!=
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Not equal
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+==
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Is equal
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Subsection
+Scientific calculating
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+R as a calculator
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+3^2+sqrt(4);factorial(5);log(10)
+\end_layout
+
+\begin_layout Plain Layout
+
+exp(2); pi; sin(pi/3)
+\end_layout
+
+\begin_layout Plain Layout
+
+print("Hello world")
+\end_layout
+
+\begin_layout Plain Layout
+
+date()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+R as a number generator
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Sequence: 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+seq(from, to, by= ) 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x<-(1:12)
+\end_layout
+
+\begin_layout Plain Layout
+
+x
+\end_layout
+
+\begin_layout Plain Layout
+
+seq(12)
+\end_layout
+
+\begin_layout Plain Layout
+
+seq(4, 6, 0.25)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+R as a number generator
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Repetition: 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+rep(x, times, …)
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+rep(10, 3) 
+\end_layout
+
+\begin_layout Plain Layout
+
+rep(c(1:3), 3) 
+\end_layout
+
+\begin_layout Plain Layout
+
+rep(c(3.14, 2.71), 3) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+R as a probability calculator
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Binomial probability 
+\begin_inset Formula $P(X=k)=C_{n}^{k}p^{k}(1-p)^{n-k}$
+\end_inset
+
+: 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+dbinom(k, n, p) 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+dbinom(2, 5, 0.60)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probability of 
+\begin_inset Formula $P(|Z|<1.96)$
+\end_inset
+
+ with 
+\begin_inset Formula $Z\sim N(0,1)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+pnorm(1.96,0,1)-pnorm(-1.96,0,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Poisson probability
+\begin_inset Formula $P(X=k|\lambda)=\frac{\lambda^{k}}{k!}e^{-\lambda}$
+\end_inset
+
+ : 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+dpois(k, l)
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+dpois(2,1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+R as a sampler
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Darw 5 people from a 50 group 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+sample(1:50,5);sample(1:50,5);sample(1:50,5,replace=T) 
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(1234);sample(1:50,5)
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(1234);sample(1:50,5)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+R as a simulator
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Average height of female students in a class is 156 cm, with standard deviation
+ being 4.6 cm.
+ If we randomly take 1000 female students from this population, what is
+ the distribution of height? 
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<fig.height=3.5>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+height<-rnorm(1000,mean=156,sd=4.6)
+\end_layout
+
+\begin_layout Plain Layout
+
+hist(height,main=
+\begin_inset Quotes xrd
+\end_inset
+
+
+\begin_inset Quotes xrd
+\end_inset
+
+) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Vectors
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- 1:5 
+\end_layout
+
+\begin_layout Plain Layout
+
+length(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+sum(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+x1 <- seq(1, 5, by = 1)
+\end_layout
+
+\begin_layout Plain Layout
+
+x2 <- seq(1, 5, length = 5) 
+\end_layout
+
+\begin_layout Plain Layout
+
+x1==x2
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- letters[1:5] 
+\end_layout
+
+\begin_layout Plain Layout
+
+x == c("b")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Matrix Operations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Let 
+\begin_inset Formula $a$
+\end_inset
+
+ be a scalar, 
+\begin_inset Formula $\bm{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $\bm{B}$
+\end_inset
+
+ be two real matrices
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+a<-2
+\end_layout
+
+\begin_layout Plain Layout
+
+A<-matrix(c(1,2,3,4),nrow=2,ncol=2) # Real matrix
+\end_layout
+
+\begin_layout Plain Layout
+
+A 
+\end_layout
+
+\begin_layout Plain Layout
+
+B<-matrix(c(1,2,2,7),nrow=2,ncol=2) # Symmetric real matrix.
+\end_layout
+
+\begin_layout Plain Layout
+
+B
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Matrix Multiplication
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Dot product: 
+\begin_inset Formula $\bm{AB}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+A%*%B
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cross product: 
+\begin_inset Formula $\bm{A}^{T}\bm{B}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+crossprod(A,B) # t(A)%*%B
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Matrix Multiplication
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Entry-wise multiplication:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+A*B
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Entry-wise division:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+A/B
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Soving a linear system
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Matrix inversion: 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+solve(A)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Matrix division: 
+\begin_inset Formula $\bm{A}^{-1}\bm{B}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+solve(A,B) #Identical to: solve(A)%*%B
+\end_layout
+
+\begin_layout Plain Layout
+
+solve(A)%*%B
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Logical operators
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+5>4;5>=4;5==4;5!=4
+\end_layout
+
+\begin_layout Plain Layout
+
+5 >= 4 & 4 <= 5 # AND 
+\end_layout
+
+\begin_layout Plain Layout
+
+5 >= 4 | 4 == 5 # OR 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Functions: standard normal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Formula 
+\[
+f(x)=1/\sqrt{2\pi}\exp(-x^{2}/2)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+f <- function(x){exp(-x^2/2)/sqrt(2*pi)} 
+\end_layout
+
+\begin_layout Plain Layout
+
+f(1)
+\end_layout
+
+\begin_layout Plain Layout
+
+f(1) == dnorm(1) # built-in-function 
+\end_layout
+
+\begin_layout Plain Layout
+
+class(f)
+\end_layout
+
+\begin_layout Plain Layout
+
+integrate(f,-2,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Normal density curve
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+f<-function(x){exp(-x^2/2)/sqrt(2*pi)}   
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(f,xlim=c(-3,3),col="blue",lwd = 2)
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(h=0)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Data Analysis
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Descriptive Statistics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x<-0:9
+\end_layout
+
+\begin_layout Plain Layout
+
+x
+\end_layout
+
+\begin_layout Plain Layout
+
+mean(x);median(x);mode(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+var(x);sd(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Simply: summary()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x<-rnorm(20,1,2);x
+\end_layout
+
+\begin_layout Plain Layout
+
+summary(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Statistical Modeling 
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Linear model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<results='markup'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x<-0:19; y<-x+rnorm(20,0,1);out<-lm(y~x)
+\end_layout
+
+\begin_layout Plain Layout
+
+summary(out)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Linear model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<results='asis'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(xtable)
+\end_layout
+
+\begin_layout Plain Layout
+
+xtable(out)
+\end_layout
+
+\begin_layout Plain Layout
+
+xtable(anova(out))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Data Visualization
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Data Plot
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<fig.width=5,fig.height=3.5,margin=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y) 
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(lm(y~x),col='blue')
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Density Curve of Standard Normal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<fig.width=5,fig.height=3.1,margin=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x<-seq(-3,3,length=101) 
+\end_layout
+
+\begin_layout Plain Layout
+
+y<-dnorm(x) # assign standard normal values to y 
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y,type='l')  # 'l' stands for line
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+3D surface curve
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<fig.width=6.1,fig.height=3.8,margin=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x<-seq(-10,10,length=30)
+\end_layout
+
+\begin_layout Plain Layout
+
+y<-x
+\end_layout
+
+\begin_layout Plain Layout
+
+f<-function(x,y){
+\end_layout
+
+\begin_layout Plain Layout
+
+  r<-sqrt(x^2 + y^2)
+\end_layout
+
+\begin_layout Plain Layout
+
+  10*sin(r)/r }
+\end_layout
+
+\begin_layout Plain Layout
+
+z<-outer(x,y,f)
+\end_layout
+
+\begin_layout Plain Layout
+
+z[is.na(z)]<-1
+\end_layout
+
+\begin_layout Plain Layout
+
+persp(x,y,z,theta=30,phi=30,expand=0.5,col="lightblue")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+ggplot2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<message=FALSE,fig.width=5.2,fig.height=3.1,margin=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+qplot(wt, mpg, data=mtcars, color=factor(cyl), geom=c("point", "smooth"))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Web resources for R
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Textbook Supports
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+http://alanarnholt.github.io/PASWR2E-Book/
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Overview of the Book
+\end_layout
+
+\begin_layout Itemize
+Supplementary Materials
+\end_layout
+
+\begin_layout Itemize
+R-Scripts 
+\end_layout
+
+\begin_layout Itemize
+Errata
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+R Homepage
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+https://www.r-project.org/
+\end_layout
+
+\begin_layout Itemize
+List of CRAN mirror sites 
+\end_layout
+
+\begin_layout Itemize
+Manuals 
+\end_layout
+
+\begin_layout Itemize
+FAQs 
+\end_layout
+
+\begin_layout Itemize
+Site seach 
+\end_layout
+
+\begin_layout Itemize
+Mailing lists
+\end_layout
+
+\begin_layout Itemize
+Links
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+CRAN - Comprehensive R Archive Network
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+http://cran.fhcrc.org/
+\end_layout
+
+\begin_layout Itemize
+CRAN Mirrors 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+About 90 sites worldwide 
+\end_layout
+
+\begin_layout Itemize
+About 20 sites in US 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+R Binaries
+\end_layout
+
+\begin_layout Itemize
+R Packages 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+7000+ packages 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+R Sources 
+\end_layout
+
+\begin_layout Itemize
+Task Views
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+CRAN Task Views
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Organizes the 7000+ R packages by application
+\end_layout
+
+\begin_layout Itemize
+Bayesian
+\end_layout
+
+\begin_layout Itemize
+Econometrics
+\end_layout
+
+\begin_layout Itemize
+Finance
+\end_layout
+
+\begin_layout Itemize
+Time Series 
+\end_layout
+
+\begin_layout Itemize
+Meta Analysis
+\end_layout
+
+\begin_layout Itemize
+Optimization 
+\end_layout
+
+\begin_layout Itemize
+Machine Learning
+\end_layout
+
+\begin_layout Itemize
+Spatial
+\end_layout
+
+\begin_layout Itemize
+etc
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+An Excellent Forum (in Chinese)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figure/Ch1pinggubbs.JPG
+	width 85col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+http://bbs.pinggu.org/
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Quick R
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+http://www.statmethods.net
+\end_layout
+
+\begin_layout Frame
+Site maintained by Robert Kabacoff, author of 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+R in Action
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Introductory R Lessons 
+\end_layout
+
+\begin_layout Itemize
+R Interface 
+\end_layout
+
+\begin_layout Itemize
+Data Input 
+\end_layout
+
+\begin_layout Itemize
+Data Management 
+\end_layout
+
+\begin_layout Itemize
+Basic Statistics 
+\end_layout
+
+\begin_layout Itemize
+Advanced Statistics 
+\end_layout
+
+\begin_layout Itemize
+Basic Graphs 
+\end_layout
+
+\begin_layout Itemize
+Advanced Graphs
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Other useful R sites
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Stackoverflow
+\series default
+: the primary resource for help with R
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+http://stackoverflow.com/
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+R Bloggers
+\series default
+: Aggregation of about 450 R blogs 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+http://www.r-bloggers.com
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+R Graph
+\series default
+: Gallery Examples of many possible R graphs
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+http://addictedtor.free.fr/graphiques
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Google
+\series default
+: everything!
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Course Materials
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Course Materials: Go to 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+https://github.com/Andrewsky123/Advanced-Statistics-With-R
+\end_layout
+
+\begin_layout Itemize
+then click 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+clone or download
+\end_layout
+
+\end_inset
+
+ and then 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+Download.zip
+\end_layout
+
+\end_inset
+
+ to your computer.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Tutorial for writing scientific documents with R Markdown
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+https://github.com/Andrewsky123/R-Markdown-Notes
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintAll"
+bibfiles "bib/advstat2017"
+options "bibtotoc,apalike"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
