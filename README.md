@@ -3,7 +3,9 @@
 
 用法：
 1. 如果只需要课件，下载 pdf 文件即可；
-2. 如果要源文件并运用LyX：请点击右上角绿色的 `clone or download` 按钮，然后 `Download.zip`，下载到自己的电脑。
+2. 如果要源文件并运用LyX：
+  - 如果已经有自己的github账号，可直接 `folk`。
+  - 如果没有，请点击右上角绿色的 `clone or download` 按钮，然后 `Download.zip`，下载到自己的电脑。
 
 包含：
 - 课件：在pdf目录；
