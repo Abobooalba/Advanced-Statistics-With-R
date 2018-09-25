@@ -1,0 +1,5585 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+\usetheme{Boadilla}
+\usecolortheme{seahorse}
+\usefonttheme{professionalfonts}
+\setbeamertemplate{navigation symbols}{} 
+\usepackage{xeCJK}
+%\usepackage{multirow} %Excel2Latex table needed
+%\usepackage{booktabs} %Excel2Latex table needed
+%\setCJKmainfont{宋体}  %设置中文的默认字体 
+%\setCJKfamilyfont{yh}{Microsoft YaHei}  %微软雅黑 yh 
+%\setCJKmainfont[ItalicFont={楷体}, BoldFont={黑体}]{宋体}
+%\setCJKmainfont[BoldFont={Adobe Heiti Std},ItalicFont={Adobe Kaiti Std}]{Adobe Song Std} 
+%\usepackage[backend=biber,natbib=true,style=caspervector,citestyle=authoryear,maxnames = 99,utf8]{biblatex}
+%\usepackage[backend=biber,natbib=true,bibstyle=caspervector,citestyle=authoryear,utf8]{biblatex}
+%\addbibresource{F:/BaiduYun/Teaching/ref/Bayesian.bib}
+%\DeclareBibliographyCategory{cited} \AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}} 
+%\newcommand{\myemph}[1]{\emph{\textcolor{red}{#1}}}
+
+% Beamer show contents,upto subsection
+\AtBeginSection[]
+{
+    \begin{frame}
+        \tableofcontents[currentsection,hideallsubsections]
+    \end{frame}
+}
+\AtBeginSubsection[]
+{
+    \begin{frame}[shrink]
+        \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]
+    \end{frame}
+}
+\end_preamble
+\options UTF8
+\use_default_options false
+\begin_modules
+knitr
+logicalmkup
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package auto
+\inputencoding utf8-plain
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format pdf4
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bullet 0 0 17 -1
+\bullet 1 0 8 -1
+\bullet 2 0 0 -1
+\bullet 3 0 6 -1
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Chapter 2: Exploring Data
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Advanced Statistics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Shujia Wong
+\end_layout
+
+\begin_layout Institute
+Department of Statistics, College of Economics
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Shenzhen University
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ Shenzhen University
+\end_layout
+
+\begin_layout TitleGraphic
+\begin_inset Graphics
+	filename figure/szulogo.bmp
+	lyxscale 30
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<setup,include=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(knitr)
+\end_layout
+
+\begin_layout Plain Layout
+
+options(formatR.arrow=TRUE)
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(
+\end_layout
+
+\begin_layout Plain Layout
+
+#dev = 'pdf',
+\end_layout
+
+\begin_layout Plain Layout
+
+#dev='tikz',
+\end_layout
+
+\begin_layout Plain Layout
+
+fig.align='center', 
+\end_layout
+
+\begin_layout Plain Layout
+
+size='footnotesize', 
+\end_layout
+
+\begin_layout Plain Layout
+
+#results='asis',
+\end_layout
+
+\begin_layout Plain Layout
+
+out.width='.65
+\backslash
+
+\backslash
+linewidth',
+\end_layout
+
+\begin_layout Plain Layout
+
+fig.path='figure/', 	
+\end_layout
+
+\begin_layout Plain Layout
+
+fig.keep='high', 	
+\end_layout
+
+\begin_layout Plain Layout
+
+fig.show='asis', 
+\end_layout
+
+\begin_layout Plain Layout
+
+error=F,  
+\end_layout
+
+\begin_layout Plain Layout
+
+fig.align='center', 
+\end_layout
+
+\begin_layout Plain Layout
+
+fig.asp=.65, 
+\end_layout
+
+\begin_layout Plain Layout
+
+#cache=TRUE,	
+\end_layout
+
+\begin_layout Plain Layout
+
+warning=FALSE,
+\end_layout
+
+\begin_layout Plain Layout
+
+message=FALSE,
+\end_layout
+
+\begin_layout Plain Layout
+
+comment=NA,
+\end_layout
+
+\begin_layout Plain Layout
+
+error=F,  
+\end_layout
+
+\begin_layout Plain Layout
+
+#margin=TRUE,
+\end_layout
+
+\begin_layout Plain Layout
+
+prompt=TRUE
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+knit_hooks$set(margin=function(before,options,envir){ 
+\end_layout
+
+\begin_layout Plain Layout
+
+  if(before) 
+\end_layout
+
+\begin_layout Plain Layout
+
+    par(mar=c(4,4,0.01,0.01)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+  else NULL 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Introduction
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Visualisation
+\emph default
+ is a great place to start with R programming.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Data transformation
+\emph default
+ allows you to select important variables, filter out key observations,
+ create new variables, and compute summaries.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Exploratory data analysis
+\emph default
+ combine visualisation and transformation with your curiosity and scepticism
+ to ask and answer interesting questions about data.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Reference
+\series default
+: 
+\end_layout
+
+\begin_layout Standard
+Garrett Grolemund, Hadley Wickham (2018): 
+\emph on
+R for Data Science
+\emph default
+, http://r4ds.had.co.nz/.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Data Structure
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Objects for holding data
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figure/ch2 datastructure.JPG
+	width 80col%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Vectors
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Vectors
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Vectors
+\series default
+ are one-dimensional arrays that can hold numeric data, character data,
+ or logical data
+\end_layout
+
+\begin_layout Itemize
+The combine function 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+c()
+\end_layout
+
+\end_inset
+
+ is used to form the vector
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+a<-c(1, 2, 5, 3, 4) # numeric vector
+\end_layout
+
+\begin_layout Plain Layout
+
+b<-c("one","two","three") # character vector
+\end_layout
+
+\begin_layout Plain Layout
+
+c<-c(TRUE,TRUE,FALSE) # logical vector
+\end_layout
+
+\begin_layout Plain Layout
+
+a
+\end_layout
+
+\begin_layout Plain Layout
+
+b[2]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Matrices
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Matrices
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+A 
+\series bold
+matrix
+\series default
+ is a two-dimensional array in which each element has the 
+\emph on
+same mode
+\emph default
+ (numeric, character, or logical).
+\end_layout
+
+\begin_layout LyX-Code
+mymatrix <- matrix(vector, nrow=m, ncol=n, 
+\end_layout
+
+\begin_layout LyX-Code
+                   byrow=logical_value, dimnames=list(
+\end_layout
+
+\begin_layout LyX-Code
+                   char_vector_rownames, char_vector_colnames))
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+y<-matrix(0:9, nrow=2, ncol=5);y
+\end_layout
+
+\begin_layout Plain Layout
+
+y[,1]; y[2,]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Matrices
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+cells<-c(1,26,24,68) 
+\end_layout
+
+\begin_layout Plain Layout
+
+rnames<-c("R1","R2") 
+\end_layout
+
+\begin_layout Plain Layout
+
+cnames<-c("C1","C2")
+\end_layout
+
+\begin_layout Plain Layout
+
+mymatrix<-matrix(cells,nrow=2,ncol=2,byrow=TRUE,
+\end_layout
+
+\begin_layout Plain Layout
+
+          dimnames=list(rnames, cnames))
+\end_layout
+
+\begin_layout Plain Layout
+
+mymatrix
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Arrays
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Arrays
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Arrays
+\series default
+ are similar to matrices but can have more than two dimensions
+\end_layout
+
+\begin_layout LyX-Code
+myarray <- array(vector, dimensions, dimnames)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+dim1<-c("A1","A2")
+\end_layout
+
+\begin_layout Plain Layout
+
+dim2<-c("B1","B2","B3") 
+\end_layout
+
+\begin_layout Plain Layout
+
+dim3<-c("C1","C2","C3","C4")
+\end_layout
+
+\begin_layout Plain Layout
+
+z<-array(1:24,c(2,3,4),dimnames=list(dim1,dim2,dim3))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Arrays
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+z
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Data Frame
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Data Frame: Most used structure in Statistics
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+A 
+\series bold
+data frame
+\series default
+ is more general than a matrix in that different columns can contain 
+\emph on
+different modes
+\emph default
+ of data (numeric, character, and so on)
+\end_layout
+
+\begin_layout LyX-Code
+mydata <- data.frame(col1, col2, col3,...)
+\end_layout
+
+\begin_layout Standard
+where col1, col2, col3, and so on are column vectors of any type .
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Example
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+patientID<-c(1, 2, 3, 4) 
+\end_layout
+
+\begin_layout Plain Layout
+
+age<-c(25,34,28,52)
+\end_layout
+
+\begin_layout Plain Layout
+
+diabetes<-c("Type1","Type2","Type1","Type1")
+\end_layout
+
+\begin_layout Plain Layout
+
+status<-c("Poor","Improved","Excellent","Poor") 
+\end_layout
+
+\begin_layout Plain Layout
+
+patientdata<-data.frame(patientID,age,diabetes,status) 
+\end_layout
+
+\begin_layout Plain Layout
+
+patientdata
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Frequently used: str() and summary()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+str(object)
+\end_layout
+
+\end_inset
+
+ gives the structure of an object
+\end_layout
+
+\begin_layout FragileFrame
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+str(patientdata)      
+\end_layout
+
+\begin_layout Plain Layout
+
+summary(patientdata)       
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Frequently used: head() and tail()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+head(object)
+\end_layout
+
+\end_inset
+
+ lists the first part of an object.
+ 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+tail(object) 
+\end_layout
+
+\end_inset
+
+lists the last part of an object.
+ They are useful for quickly scanning large datasets.
+\end_layout
+
+\begin_layout FragileFrame
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+head(patientdata) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Specifying elements of a data frame
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+patientdata$age #variable age from patientdata
+\end_layout
+
+\begin_layout Plain Layout
+
+patientdata[1:2] 
+\end_layout
+
+\begin_layout Plain Layout
+
+patientdata[c("diabetes", "status")] 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Factors
+\end_layout
+
+\begin_layout PlainFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Types of variables
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Nominal variables 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+are categorical, without an implied order.
+ e.g.
+ Diabetes (Type1, Type2) 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ordinal variables 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+categorical, imply order but not amount.
+ e.g.
+ Status (poor, improved, excellent) 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Continuous variables 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+can take on any value within some range, and both order and amount are implied
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+Categorical (nominal) and ordered categorical (ordinal) variables in R are
+ called 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+factors
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+The use of factor()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+diabetes<-c("Type1","Type2","Type1","Type1") 
+\end_layout
+
+\begin_layout Plain Layout
+
+diabetes
+\end_layout
+
+\begin_layout Plain Layout
+
+diabetes<-factor(diabetes)
+\end_layout
+
+\begin_layout Plain Layout
+
+diabetes
+\end_layout
+
+\begin_layout Plain Layout
+
+levels(diabetes) 
+\end_layout
+
+\begin_layout Plain Layout
+
+class(diabetes)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Ordered factor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+status<-c("Poor","Improved","Excellent","Poor") 
+\end_layout
+
+\begin_layout Plain Layout
+
+status1<-factor(status,order=TRUE) 
+\end_layout
+
+\begin_layout Plain Layout
+
+status1
+\end_layout
+
+\begin_layout Plain Layout
+
+status2<-factor(status,order=TRUE,levels=c("Poor","Improved","Excellent"))
+\end_layout
+
+\begin_layout Plain Layout
+
+status2
+\end_layout
+
+\begin_layout Plain Layout
+
+status3<-ordered(status)
+\end_layout
+
+\begin_layout Plain Layout
+
+status3
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Lists
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+List: the most flexible and richest structure in R
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Basically, a 
+\series bold
+list 
+\series default
+is an ordered collection of objects (components).
+ 
+\end_layout
+
+\begin_layout Frame
+A 
+\series bold
+list
+\series default
+\emph on
+ 
+\emph default
+allows you to gather a variety of (possibly unrelated) objects under one
+ name.
+ 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+list()
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout LyX-Code
+mylist<-list(object1,object2,...)
+\end_layout
+
+\begin_layout Standard
+or 
+\end_layout
+
+\begin_layout LyX-Code
+mylist<-list(name1=object1,name2=object2,...)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Example of a list
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+g<-"My First List" 
+\end_layout
+
+\begin_layout Plain Layout
+
+h<-c(25, 26, 18, 39) 
+\end_layout
+
+\begin_layout Plain Layout
+
+j<-matrix(1:10,nrow=2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+k<-c("one", "two", "three")
+\end_layout
+
+\begin_layout Plain Layout
+
+mylist<-list(title=g,ages=h,j,k)
+\end_layout
+
+\begin_layout Plain Layout
+
+mylist
+\end_layout
+
+\begin_layout Plain Layout
+
+mylist[[2]] 
+\end_layout
+
+\begin_layout Plain Layout
+
+mylist[["ages"]]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Data types summary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{table}[ht] 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+scriptsize 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{|c|c|p{4cm}|} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Data structure} & 
+\backslash
+textbf{Instruction in 
+\backslash
+textbf{R}} & 
+\backslash
+hspace*{1.5cm} 
+\backslash
+textbf{Description}
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline 
+\end_layout
+
+\begin_layout Plain Layout
+
+vector & 
+\backslash
+texttt{c()} & Sequence of elements of the 
+\backslash
+textbf{same nature}.
+ 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline 
+\end_layout
+
+\begin_layout Plain Layout
+
+matrix & 
+\backslash
+texttt{matrix()} &   Two-dimensional table of elements of the 
+\backslash
+textbf{same nature}.
+ 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline 
+\end_layout
+
+\begin_layout Plain Layout
+
+multidimensional table & 
+\backslash
+texttt{array()} &  More general than a matrix; table with several dimensions.
+ 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline 
+\end_layout
+
+\begin_layout Plain Layout
+
+list & 
+\backslash
+texttt{list()} &  Sequence of R structures of any (and possibly different)
+ nature.
+ 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline 
+\end_layout
+
+\begin_layout Plain Layout
+
+individual$
+\backslash
+times$variable table & 
+\backslash
+texttt{data.frame()} &  Two-dimensional table.
+ The columns can be of different natures, but must have the same length.
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline 
+\end_layout
+
+\begin_layout Plain Layout
+
+factor & 
+\backslash
+texttt{factor(), ordered()} & Vector of character strings associated with
+ a modality table.
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline 
+\end_layout
+
+\begin_layout Plain Layout
+
+dates & 
+\backslash
+texttt{as.Date()} & Vector of dates.
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline 
+\end_layout
+
+\begin_layout Plain Layout
+
+time series & 
+\backslash
+texttt{ts()} & Values of a variable observed at several time points.
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{table} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+What type is your data?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="11" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset space \hspace{}
+\length 0.8cm
+\end_inset
+
+Type
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset space \hspace{}
+\length 2cm
+\end_inset
+
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="left" valignment="middle" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+class()
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Class from which object inherits
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+ (vector, matrix, function, logical, list, … )
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+mode()
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Numeric, character, logical, …
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+storage.mode()
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Mode used by R to store object
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+ (double, integer, character, logical, …)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+is.function()
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Logical (TRUE if function)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+is.na()
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Logical (TRUE if missing)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+names()
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Names associated with object
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+dimnames()
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Names for each dim of array
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+attributes()
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Names, class, etc.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Data visualisation with ggplot2
+\end_layout
+
+\begin_layout Subsection
+Data and Aesthetics mapping
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Introduction to ggplot2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+ggplot2
+\end_layout
+
+\end_inset
+
+ is a powerful and a flexible R package, implemented by 
+\emph on
+Hadley Wickham
+\emph default
+, for producing elegant graphics.
+ 
+\end_layout
+
+\begin_layout Frame
+The 
+\emph on
+gg
+\emph default
+ means 
+\emph on
+Grammar of Graphics
+\emph default
+.
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Plot = data + Aesthetics + Geometry
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+data is a data frame 
+\end_layout
+
+\begin_layout Description
+Aesthetics is used to indicate x and y variables.
+ It can be also used to control the color, the size or the shape of points,
+ the height of bars, etc.....
+ 
+\end_layout
+
+\begin_layout Description
+Geometry corresponds to the
+\emph on
+ type of graphics
+\emph default
+ (histogram, box plot, line plot, density plot, dot plot, ....)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Data: mpg
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+contains observations collected by the US Environment Protection Agency
+ on 38 models of cars
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(tidyverse)
+\end_layout
+
+\begin_layout Plain Layout
+
+head(mpg)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Data: mpg 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Variables:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+hwy Fuel efficiency on the highway, in miles per gallon 
+\end_layout
+
+\begin_layout Description
+year year of manufacture
+\end_layout
+
+\begin_layout Description
+
+\emph on
+displ
+\emph default
+ Engine size, in liters
+\end_layout
+
+\begin_layout Description
+model model name
+\end_layout
+
+\begin_layout Description
+drv f = front-wheel drive, r = rear wheel drive, 4 = 4wd
+\end_layout
+
+\begin_layout Description
+trans type of transmission
+\end_layout
+
+\begin_layout Description
+cyl number of cylinders
+\end_layout
+
+\begin_layout Description
+cty city miles per gallon
+\end_layout
+
+\begin_layout Description
+class "type" of car
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Creating a ggplot
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = mpg) + 
+\end_layout
+
+\begin_layout Plain Layout
+
+       geom_point(mapping = aes(x = displ, y = hwy))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Save ggplots
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+# Print the plot to a 
+\emph on
+pdf
+\emph default
+ file 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+pdf("myplot.pdf") 
+\end_layout
+
+\begin_layout LyX-Code
+myplot <- ggplot(...)
+\end_layout
+
+\begin_layout LyX-Code
+print(myplot) 
+\end_layout
+
+\begin_layout LyX-Code
+dev.off()
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+# Print the plot to a 
+\emph on
+png
+\emph default
+ file
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+png("myplot.png") 
+\end_layout
+
+\begin_layout LyX-Code
+print(myplot) 
+\end_layout
+
+\begin_layout LyX-Code
+dev.off()
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+# Save the plot to a pdf 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+ggsave("myplot.pdf")
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+# OR save it to png file 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+ggsave("myplot.png")
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+with colors
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = mpg) + 
+\end_layout
+
+\begin_layout Plain Layout
+
+ geom_point(mapping = aes(x = displ, y = hwy, color = class))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+shape of the points
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = mpg) + 
+\end_layout
+
+\begin_layout Plain Layout
+
+ geom_point(mapping = aes(x = displ, y = hwy, shape = factor(cyl)))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Variable size of points
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = mpg) + 
+\end_layout
+
+\begin_layout Plain Layout
+
+ geom_point(mapping = aes(x = displ, y = hwy, size = cyl)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Variable points: size and transparency
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = mpg) +      
+\end_layout
+
+\begin_layout Plain Layout
+
+   geom_point(mapping = aes(x = displ, y = hwy, 
+\end_layout
+
+\begin_layout Plain Layout
+
+           size = cyl, alpha = 0.5))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Variable points: size, colors and transparency
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = mpg) + 
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_point(mapping = aes(x = displ, y = hwy, 
+\end_layout
+
+\begin_layout Plain Layout
+
+    size = cyl, color = cyl, alpha = 0.5))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Facets
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = mpg) + 
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_point(mapping = aes(x = displ, y = hwy)) + 
+\end_layout
+
+\begin_layout Plain Layout
+
+  facet_wrap(~ cyl, nrow = 2)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Geometric Objects
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Plot One Variable
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For one continuous variable:
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+geom_area() for area plot
+\end_layout
+
+\begin_layout Description
+geom_density() for density plot
+\end_layout
+
+\begin_layout Description
+geom_dotplot() for dot plot
+\end_layout
+
+\begin_layout Description
+geom_freqpoly() for frequency polygon
+\end_layout
+
+\begin_layout Description
+geom_histogram() for histogram plot
+\end_layout
+
+\begin_layout Description
+stat_ecdf() for empirical cumulative density function
+\end_layout
+
+\begin_layout Description
+stat_qq() for quantile - quantile plotting
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+For one discrete variable:
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+geom_bar() for bar plot
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Plot Two Variables
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+geom_point() for scatter plot
+\end_layout
+
+\begin_layout Description
+geom_smooth() for adding smoothed line such as regression line
+\end_layout
+
+\begin_layout Description
+geom_quantile() for adding quantile lines
+\end_layout
+
+\begin_layout Description
+geom_rug() for adding a marginal rug
+\end_layout
+
+\begin_layout Description
+geom_jitter() for avoiding overplotting
+\end_layout
+
+\begin_layout Description
+geom_text() for adding textual annotations
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Plot of hwy: histogram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = mpg) +       
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_histogram(aes(x = hwy))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Plot of hwy: density
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = mpg) +       
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_density(aes(x = hwy))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Plot of hwy: Box plot for comparison
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = mpg) +       
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_boxplot(aes(x = class, y = hwy))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Plot of class: bar chart
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = mpg) +      
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_bar(aes(x = class))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Plot of class: bar chart with colors
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = mpg) +    
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_bar(aes(x = class, color = class))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Plot of class: fill in colors into bars
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = mpg) +   
+\end_layout
+
+\begin_layout Plain Layout
+
+   geom_bar(aes(x = class, fill = class))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Plot Two Variables: 
+\lang english
+Scatter Plot
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Scatter Plots:
+\end_layout
+
+\begin_layout Itemize
+Key function: 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+geom_point()
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Key arguments to customize the plot: alpha, color, fill, shape and size
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Add regression line or smoothed conditional mean:
+\end_layout
+
+\begin_layout Itemize
+Key functions: 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+geom_smooth()
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+geom_abline()
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Key arguments to customize the plot: alpha, color, fill, shape, linetype
+ and size
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+S
+\lang english
+catter Plot
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+b <- ggplot(mpg, aes(x = displ, y = hwy))
+\end_layout
+
+\begin_layout Plain Layout
+
+b + geom_point() 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+S
+\lang english
+catter Plot with Regression Line
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+b + geom_point() + geom_smooth(method = lm)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Loess method: local regression fitting
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+b + geom_point() + geom_smooth()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Local mappings for a layer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+b + geom_point(mapping = aes(color = class)) + geom_smooth()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Displays just a subset of the dataset
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ b + geom_point(mapping = aes(color = class)) + 
+\end_layout
+
+\begin_layout Plain Layout
+
+ geom_smooth(data = filter(mpg, class == "subcompact"), 
+\end_layout
+
+\begin_layout Plain Layout
+
+ se = FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Statistical Transformations
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+stat
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The algorithm used to calculate new values for a graph is called a 
+\emph on
+stat
+\end_layout
+
+\begin_layout Itemize
+Some plots visualize a transformation of the original data set.
+ In this case, an alternative way to build a layer is to use 
+\emph on
+stat_*()
+\emph default
+ functions.
+\end_layout
+
+\begin_layout Itemize
+geom_bar() = stat_count(): 
+\emph on
+?geom_bar
+\emph default
+ shows the default value for 
+\emph on
+stat
+\emph default
+ is “
+\emph on
+count
+\emph default
+”
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Statistical transformation in your code
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = mpg) + 
+\end_layout
+
+\begin_layout Plain Layout
+
+stat_summary( mapping = aes(x = displ, y = hwy), 
+\end_layout
+
+\begin_layout Plain Layout
+
+    fun.ymin = min, fun.ymax = max, fun.y = median )
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Data Management with dplyr
+\end_layout
+
+\begin_layout Subsection
+Introduction
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Aims
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+In this section, you will learn
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+how to transform your data using the 
+\emph on
+dplyr
+\emph default
+ package 
+\end_layout
+
+\begin_layout Itemize
+and a new dataset on flights departing New York City in 2013.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+nycights13
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+This data frame contains all 336,776 flights that departed from New York
+ City in 2013.
+ 
+\end_layout
+
+\begin_layout FragileFrame
+The data comes from the 
+\emph on
+US Bureau of Transportation Statistics
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(nycflights13)
+\end_layout
+
+\begin_layout Plain Layout
+
+flights
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+tibble is a data frame
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tibbles are a modern take on data frames.
+ 
+\end_layout
+
+\begin_layout Itemize
+They keep the features that have stood the test of time, and drop the features
+ that used to be convenient but are now frustrating (i.e.
+ converting character vectors to factors).
+\end_layout
+
+\begin_layout Description
+int stands for integers.
+ 
+\end_layout
+
+\begin_layout Description
+dbl stands for doubles, or real numbers.
+ 
+\end_layout
+
+\begin_layout Description
+chr stands for character vectors, or strings.
+ 
+\end_layout
+
+\begin_layout Description
+dttm stands for date-times (a date + a time)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+dplyr Basics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+filter() Pick observations by their values.
+\end_layout
+
+\begin_layout Description
+arrange() Reorder the rows.
+ 
+\end_layout
+
+\begin_layout Description
+select() Pick variables by their names.
+\end_layout
+
+\begin_layout Description
+mutate() Create new variables with functions of existing variables.
+ 
+\end_layout
+
+\begin_layout Description
+summarize() Collapse many values down to a single summary.
+\end_layout
+
+\end_deeper
+\begin_layout FragileFrame
+
+\end_layout
+
+\begin_layout Subsection
+Filter Rows with filter()
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+filter()
+\emph default
+ allows you to subset observations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+All dplyr work similarly: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The first argument is a data frame.
+ 
+\end_layout
+
+\begin_layout Enumerate
+The subsequent arguments describe what to do with the data frame, using
+ the variable names (without quotes).
+\end_layout
+
+\begin_layout Enumerate
+The result is a new data frame.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Display filtered results
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+filter(flights, month == 1, day == 1)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Display and save results
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+(dec25 <- filter(flights, month == 12, day == 25))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Logical Operators
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Boolean operators:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+&
+\begin_inset Quotes erd
+\end_inset
+
+ is “and,” 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+|
+\begin_inset Quotes erd
+\end_inset
+
+ is “or,” 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+!
+\begin_inset Quotes erd
+\end_inset
+
+ is “not,” 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+!=
+\begin_inset Quotes erd
+\end_inset
+
+ is 
+\begin_inset Quotes eld
+\end_inset
+
+not equal,
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+ ==
+\begin_inset Quotes erd
+\end_inset
+
+ is 
+\begin_inset Quotes eld
+\end_inset
+
+equal,
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+x %in% y
+\begin_inset Quotes erd
+\end_inset
+
+ select every row where x is one of the values in y.
+\end_layout
+
+\begin_layout LyX-Code
+filter(flights, month == 11 | month == 12)
+\end_layout
+
+\begin_layout LyX-Code
+nov_dec <- filter(flights, month %in% c(11, 12))
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Missing Values
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+One important feature of R that can make comparison tricky is missing values,
+ or NAs (“not availables”).
+ 
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+df <- tibble(x = c(1, NA, 3)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+filter(df, x > 1)
+\end_layout
+
+\begin_layout Plain Layout
+
+filter(df, is.na(x) | x > 1)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Arrange Rows with arrange()
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+arrange()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+arrange()
+\emph default
+ works similarly to
+\emph on
+ filter()
+\emph default
+ except that instead of selecting rows, it 
+\emph on
+changes their order
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+It takes a data frame and a set of column names (or more complicated expressions
+) to order by.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Arrange by a set of column names 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+arrange(flights, year, month, day)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Use desc() to reorder by a column in descending order
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+arrange(flights, desc(dep_delay))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Select Columns with select()
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+select()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+
+\emph on
+select() 
+\emph default
+allows you to rapidly zoom in on a useful subset using operations based
+ on the names of the variables.
+\end_layout
+
+\begin_layout FragileFrame
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Select columns by name 
+\end_layout
+
+\begin_layout Plain Layout
+
+select(flights, year, month, day)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Select all columns between year and day
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+select(flights, year:day)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Select all columns except those from year to day
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+select(flights, -(year:day))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Add New Variables with mutate()
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+mutate() always adds new columns at the end of your dataset
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+#adds variables gain and speed
+\end_layout
+
+\begin_layout LyX-Code
+flights_sml <- select(flights, year:day, 
+\end_layout
+
+\begin_layout LyX-Code
+               ends_with("delay"), distance, air_time ) 
+\end_layout
+
+\begin_layout LyX-Code
+mutate(flights_sml, 
+\end_layout
+
+\begin_layout LyX-Code
+       gain = arr_delay - dep_delay, 
+\end_layout
+
+\begin_layout LyX-Code
+       speed = distance / air_time * 60)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+mutate() adds gain and speed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+flights_sml <- select(flights, year:day, ends_with("delay"), distance, air_time
+ )
+\end_layout
+
+\begin_layout Plain Layout
+
+mutate(flights_sml, 
+\end_layout
+
+\begin_layout Plain Layout
+
+   gain = arr_delay - dep_delay, 
+\end_layout
+
+\begin_layout Plain Layout
+
+   speed = distance / air_time * 60)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+new added variable can be used
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+mutate(flights_sml, 
+\end_layout
+
+\begin_layout Plain Layout
+
+gain = arr_delay - dep_delay, 
+\end_layout
+
+\begin_layout Plain Layout
+
+hours = air_time / 60, 
+\end_layout
+
+\begin_layout Plain Layout
+
+gain_per_hour = gain / hours )
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Grouped Summaries with summarize()
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+summarize() collapses a data frame to a single row
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+summarize(flights, delay = mean(dep_delay, na.rm = TRUE))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+summarize() togethar with group_by()
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+by_day <- group_by(flights, year, month, day) 
+\end_layout
+
+\begin_layout Plain Layout
+
+summarize(by_day, delay = mean(dep_delay, na.rm = TRUE))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Combining Multiple Operations with the Pipe
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Motivation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Imagine that we want to explore the relationship between the 
+\emph on
+distance
+\emph default
+ and
+\emph on
+ average delay
+\emph default
+ for each location.
+ 
+\end_layout
+
+\begin_layout Frame
+Using what you know about 
+\emph on
+dplyr
+\emph default
+, you might write code like this:
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+by_dest <- group_by(flights, dest)
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+delay <- summarize(by_dest, 
+\end_layout
+
+\begin_layout LyX-Code
+count = n(),
+\end_layout
+
+\begin_layout LyX-Code
+dist = mean(distance, na.rm = TRUE), 
+\end_layout
+
+\begin_layout LyX-Code
+delay = mean(arr_delay, na.rm = TRUE) ) 
+\end_layout
+
+\begin_layout LyX-Code
+delay <- filter(delay, count > 20, dest != "HNL")
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+There are three steps to prepare this data: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Group flights by destination.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Summarize to compute distance, average delay, and number of flights.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Filter to remove noisy points and Honolulu airport, which is almost twice
+ as far away as the next closest airport.
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+This code is a little frustrating to write because we have to give each
+ intermediate data frame a name, even though we don’t care about it.
+ Naming things is hard, so this slows down our analysis.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Useful pipe operator：%>%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+delays <- flights %>% 
+\end_layout
+
+\begin_layout LyX-Code
+   group_by(dest) %>% 
+\end_layout
+
+\begin_layout LyX-Code
+   summarize( 
+\end_layout
+
+\begin_layout LyX-Code
+     count = n(),
+\end_layout
+
+\begin_layout LyX-Code
+     dist = mean(distance, na.rm = TRUE),
+\end_layout
+
+\begin_layout LyX-Code
+     delay = mean(arr_delay, na.rm = TRUE) 
+\end_layout
+
+\begin_layout LyX-Code
+  ) %>% 
+\end_layout
+
+\begin_layout LyX-Code
+filter(count > 20, dest != "HNL")
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+This focuses on the transformations, not what’s being transformed.
+\end_layout
+
+\begin_layout Frame
+A good way to pronounce %>% when reading code is “then.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Missing Values via %>%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+You may have wondered about the na.rm argument we used earlier.
+ 
+\end_layout
+
+\begin_layout FragileFrame
+What happens if we don
+\begin_inset Quotes ers
+\end_inset
+
+t set it?
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+flights %>% 
+\end_layout
+
+\begin_layout Plain Layout
+
+group_by(year, month, day) %>%
+\end_layout
+
+\begin_layout Plain Layout
+
+summarize(mean = mean(dep_delay))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Missing Values via %>%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+flights %>% 
+\end_layout
+
+\begin_layout Plain Layout
+
+group_by(year, month, day) %>% 
+\end_layout
+
+\begin_layout Plain Layout
+
+summarize(mean = mean(dep_delay, na.rm = TRUE))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Descriptive Statistics
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Descriptive Statistics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Numerical summaries of the 
+\emph on
+population
+\emph default
+ are called
+\series bold
+ parameters
+\series default
+, while numerical summaries of the 
+\emph on
+sample
+\emph default
+ are called 
+\series bold
+statistics
+\series default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Summary Measures of Location
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mean, median, mode, quantiles, 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Summary Measures of Spread
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+range, interquartile-range(IQR), variance, standard-deviation(sd),The Median
+ Absolute Deviation (MAD)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Summary Measures of Shape
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+skewness, kurtosis
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Summary Measures of Location
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+R functions for location
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Population mean: 
+\begin_inset Formula $\mu$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sample mean: 
+\begin_inset Formula $\bar{x}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+R functions: mean(x), median(x), mode(x)
+\end_layout
+
+\begin_layout Itemize
+Quantiles: the 
+\begin_inset Formula $x_{p}$
+\end_inset
+
+ is called a
+\series bold
+ 
+\begin_inset Formula $p$
+\end_inset
+
+-quantile
+\series default
+ of a distribution, if 
+\begin_inset Formula ${\rm P}(X\le x_{p})\ge p$
+\end_inset
+
+ and 
+\begin_inset Formula ${\rm P}(X\ge x_{p})\le1-p$
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+for continuous r.v., 
+\begin_inset Formula ${\rm P}(X\le x_{p})=p$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+quantile(x, probs=c(0.25, 0.5, 0.75)): 
+\begin_inset Formula $Q_{1},Q_{2},Q_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Mtcar data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<message=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+attach(mtcars)
+\end_layout
+
+\begin_layout Plain Layout
+
+mean(mpg)
+\end_layout
+
+\begin_layout Plain Layout
+
+median(mpg)
+\end_layout
+
+\begin_layout Plain Layout
+
+quantile(mpg,probs=c(0.25,0.5,0.75))
+\end_layout
+
+\begin_layout Plain Layout
+
+detach(mtcars)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Summary Measures of Spread
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+functions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+range(x): returns the smallest and largest values in x
+\end_layout
+
+\begin_layout Itemize
+IQR(x): Interquartile Range, IQR= Q3 - Q1 
+\end_layout
+
+\begin_layout Itemize
+var(x): 
+\begin_inset Formula $s^{2}=\frac{1}{n-1}\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+sd(x): 
+\begin_inset Formula $s=\sqrt{s^{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sample Coeffcient of Variation: 
+\begin_inset Formula $CV=S/\bar{X}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Relative Standard Deviation: 
+\begin_inset Formula $RSD=|S/\bar{X}|\times100$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+The Median Absolute Deviation (MAD): is a robust measure of spread, often
+ used when the median is reported to describe the center of a 
+\emph on
+skewed data set
+\emph default
+.
+ 
+\begin_inset Formula 
+\[
+MAD={\rm median}\{|x_{i}-m|\}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $m$
+\end_inset
+
+ is the median of 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Summary Measures of Shape
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Skewness and Kurtosis
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+The base installation of R doesn
+\begin_inset Quotes ers
+\end_inset
+
+t provide functions for 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+skew
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+kurtosis
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Skewness
+\series default
+ is a measure of the asymmetry of the probability distribution of a real-valued
+ random variable about its mean.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Kurtosis
+\series default
+ is a measure of the "tailedness" of the probability distribution of a real-valu
+ed random variable.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Formula 
+\begin{align*}
+{\rm Skew} & =\frac{1}{n}\sum_{i=1}^{n}\big(\frac{x_{i}-\bar{x}}{s}\big)^{3}\\
+{\rm Kurt} & =\frac{1}{n}\sum_{i=1}^{n}\big(\frac{x_{i}-\bar{x}}{s}\big)^{4}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Negative skew: The left tail is longer; the mass of the distribution is
+ concentrated on the right of the figure.The distribution is said to be 
+\emph on
+left-skewed, left-tailed
+\emph default
+, or 
+\emph on
+skewed to the left
+\end_layout
+
+\begin_layout Itemize
+Positive skew: 
+\emph on
+right-skewed, right-tailed
+\emph default
+, or 
+\emph on
+skewed to the right
+\end_layout
+
+\begin_layout Itemize
+The 
+\series bold
+\emph on
+excess kurtosis
+\series default
+\emph default
+ =
+\emph on
+ Kurt - 3 
+\emph default
+(Kurt=3 for Normal)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Own-written function for descriptive statistics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+mystats<-function(x,na.omit=FALSE){ 
+\end_layout
+
+\begin_layout Plain Layout
+
+  if(na.omit) 
+\end_layout
+
+\begin_layout Plain Layout
+
+     x<-x[!is.na(x)] 
+\end_layout
+
+\begin_layout Plain Layout
+
+  m<-mean(x) 
+\end_layout
+
+\begin_layout Plain Layout
+
+  n<-length(x) 
+\end_layout
+
+\begin_layout Plain Layout
+
+  s<-sd(x) 
+\end_layout
+
+\begin_layout Plain Layout
+
+  skew<-sum((x-m)^3/s^3)/n 
+\end_layout
+
+\begin_layout Plain Layout
+
+  kurt<-sum((x-m)^4/s^4)/n - 3 
+\end_layout
+
+\begin_layout Plain Layout
+
+return(c(n=n,mean=m,stdev=s,skew=skew,kurtosis=kurt)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+round(mystats(mtcars$mpg),3)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
