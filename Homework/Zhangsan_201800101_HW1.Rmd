@@ -1,0 +1,49 @@
+---
+title: "Advanced Statistics HW1"
+author: "Zhansan(201800101)"
+date:  "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,           # show code
+  warning = FALSE,       # don't show warnings
+  message = FALSE,       # don't show messages (less serious warnings)
+  cache = FALSE,         # set to TRUE to save results from last compilation
+  fig.align = 'center',  # center figures
+  out.width = '70%',     # Set figure size to 70% of textline
+  fig.asp = .70          # width-height ratio 
+)
+  library(tidyverse)     # Load libraries you always use here
+  set.seed(2018)         # make random results reproducible
+```
+
+## Exercises 1
+
+1. Write out a linear model with dependent variable $y$ and predictor $x$.
+
+2. Display the dataset `mpg` with `kable`.
+
+### Answer:
+
+1. The linear model is
+$$y=\alpha+\beta x +\varepsilon.$$
+2. The table of dataset `mpg` with `kable` is shown below
+
+```{r}
+knitr::kable(head(mpg),
+   caption = 'Table of the first several data', booktabs = TRUE)
+```
+
+## Exercises 2
+Plot the `hwy` against `displ`.
+
+### Answer:
+The code and figure are given below
+```{r plotmpg, fig.cap="ggplot of hwy vs displ"}
+ggplot(data = mpg) + 
+    geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+
