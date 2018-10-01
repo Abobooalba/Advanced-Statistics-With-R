@@ -4,7 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass beamer
+\textclass article-beamer
 \begin_preamble
 \usetheme{Boadilla}
 \usecolortheme{seahorse}
@@ -354,21 +354,40 @@ knit_hooks$set(margin=function(before,options,envir){
 
 \end_layout
 
-\begin_layout Section
-Introduction
-\end_layout
-
 \begin_layout Frame
-\begin_inset Argument 2
+\begin_inset Argument 4
 status open
 
 \begin_layout Plain Layout
-+-
+
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Frame
 \begin_inset Argument 4
 status open
 
@@ -480,6 +499,10 @@ literal "false"
 
 \end_deeper
 \begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \begin_inset Separator plain
 \end_inset
 
@@ -2179,6 +2202,10 @@ Names, class, etc.
 
 \end_deeper
 \begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \begin_inset Separator plain
 \end_inset
 
@@ -3947,6 +3974,10 @@ geom_point(mapping = aes(x = displ, y = hwy), position = "jitter")
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \begin_inset Separator plain
 \end_inset
 
@@ -5898,6 +5929,10 @@ popular_dests %>%
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \begin_inset Separator parbreak
 \end_inset
 
@@ -8233,6 +8268,10 @@ fill(person)
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \begin_inset Separator plain
 \end_inset
 
@@ -9263,6 +9302,10 @@ Location, Spread,Shape
 \end_deeper
 \end_deeper
 \begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \begin_inset Separator plain
 \end_inset
 
