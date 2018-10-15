@@ -1,0 +1,3640 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+\usetheme{Warsaw}
+%\usetheme{Boadilla}
+\usecolortheme{seahorse}
+%\usefonttheme{professionalfonts}
+\setbeamertemplate{navigation symbols}{} 
+%gets rid of bottom navigation bars
+\setbeamertemplate{footline}[page number]{}
+%\usepackage{xeCJK}
+%\setCJKmainfont{SimSun}
+%\usepackage{multirow} %Excel2Latex table needed
+%\usepackage{booktabs} %Excel2Latex table needed
+
+%\usepackage[backend=biber,natbib=true,style=caspervector,citestyle=authoryear,maxnames = 99,utf8]{biblatex}
+%\usepackage[backend=biber,natbib=true,bibstyle=caspervector,citestyle=authoryear,utf8]{biblatex}
+%\addbibresource{F:/BaiduYun/Teaching/ref/Bayesian.bib}
+%\DeclareBibliographyCategory{cited} \AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}} 
+%\newcommand{\myemph}[1]{\emph{\textcolor{red}{#1}}}
+%\tableofcontents[hideallsubsections]
+%\usepackage{multicol}
+%\usepackage[natbib=true,bibstyle=caspervector,citestyle=authoryear,utf8,maxnames = 2]{biblatex}
+%\addbibresource{F:/BaiduYun/AdvStat/advstat.bib}
+% Beamer show contents,upto subsection
+\AtBeginSection[]
+{
+   \begin{frame}
+       \frametitle{Outline}
+       \tableofcontents[sectionstyle=show/shaded,hideallsubsections]
+   \end{frame}
+}
+\AtBeginSubsection[]
+{
+   \begin{frame}
+       \frametitle{Outline}
+       \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded/hide]
+   \end{frame}
+}
+\usepackage{multicol} % Make documents with multiple columns.
+%\usepackage{enumitem}
+\usepackage{amsmath,fancyhdr,listings}
+%\usepackage{tikz}
+\usepackage{simpsons}
+
+% To enter the multicol environment, use ERT (Ctrl+l) and type \begin{multicols}{2} % for two columns, or ...{3} for three columns, etc. Once finished. re-enter ERT
+% and type \end{multicols}. To add divider lines between cols, add another ERT box
+% with \setlength{\columnseprule}{0.4pt} immediately after \begin{multicols}{...}
+%\usepackage{bm} % Allows use of bold Greek characters
+
+%\renewcommand{\vec}[1]{\bm{#1}} % Redefines vector command to bold the vectorized character.
+%\newcommand{\eps}{\varepsilon}
+% iid sample series: \sample x n
+\newcommand{\sam}[2]{#1_1,#1_2,\dots,#1_{#2}}
+% special symbols
+\newcommand{\me}{\mathrm{e}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\diff}{\mathrm{d}}
+\newcommand{\ybar}{\overline{y}}
+\newcommand{\xbar}{\overline{x}}
+\newcommand{\Xbar}{\overline{X}}
+\newcommand{\Ybar}{\overline{Y}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\by}{\boldsymbol{y}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\bY}{\boldsymbol{Y}}
+% GREEK CHARACTERS
+\newcommand{\al}{\alpha}
+\newcommand{\bal}{{\boldsymbol{\al}}}
+\newcommand{\balh}{{\hat{\boldsymbol{\al}}}}
+\newcommand{\alh}{{\hat{\al}}}
+
+\newcommand{\bt}{\beta}
+\newcommand{\btt}{{\tilde{\bt}}}
+\newcommand{\btht}{{\hat{\bt}}}
+
+\newcommand{\ga}{\gamma}
+\newcommand{\Ga}{\Gamma}
+\newcommand{\bGa}{{\boldsymbol{\Gamma}}}
+\newcommand{\gah}{{\hat{\g}}}
+
+\newcommand{\de}{\delta}
+\newcommand{\De}{\Delta}
+\newcommand{\Deh}{{\hat{\Delta}}}
+\newcommand{\bde}{{\boldsymbol{\de}}}
+\newcommand{\bDe}{{\boldsymbol{\De}}}
+
+\newcommand{\e}{\epsilon}
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\etah}{{\hat{\eta}}}
+\newcommand{\bpi}{{\boldsymbol{\pi}}}
+
+\newcommand{\pht}{{\tilde{\phi}}}
+\newcommand{\Pht}{{\tilde{\Phi}}}
+
+\newcommand{\pst}{{\tilde{\psi}}}
+\newcommand{\Pst}{{\tilde{\Psi}}}
+
+\newcommand{\s}{\sigma}
+\newcommand{\sih}{\hat{\sigma}}
+
+\newcommand{\z}{\zeta}
+\newcommand{\ztt}{{\tilde{\z}}}
+\newcommand{\ztb}{{\bar{\z}}}
+
+%\newcommand{\the}{\theta} % symbol name used by other latex package
+\newcommand{\thh}{{\hat{\theta}}}
+\newcommand{\Thh}{{\hat{\Theta}}}
+\newcommand{\Th}{\Theta}
+\newcommand{\bth}{{\boldsymbol{\theta}}}
+\newcommand{\bTh}{{\boldsymbol{\Theta}}}
+\newcommand{\bThh}{{\hat{\bTh}}}
+\newcommand{\Tht}{{\tilde{\Theta}}}
+\newcommand{\tht}{{\tilde{\theta}}}
+
+\newcommand{\la}{\lambda}
+\newcommand{\La}{\Lambda}
+\newcommand{\lam}{\lambda}  % backward compatibility
+\newcommand{\Lam}{\Lambda}  % backward compatibility
+\newcommand{\bLa}{{\boldsymbol{\La}}}
+\newcommand{\lah}{{\hat{\lam}}}
+
+\newcommand{\bmu}{{\boldsymbol{\mu}}}
+
+\newcommand{\bXi}{{\boldsymbol{\Xi}}}
+
+\newcommand{\bPi}{{\boldsymbol{\Pi}}}
+
+\newcommand{\rht}{{\tilde{\rho}}}
+\newcommand{\rhc}{{\check{\rho}}}
+
+\newcommand{\bSi}{{\boldsymbol{\Sigma}}}
+
+\newcommand{\ups}{\upsilon}
+\newcommand{\Ups}{\Upsilon}
+\newcommand{\bUp}{{\boldsymbol{\Ups}}}
+
+\newcommand{\bPs}{{\boldsymbol{\Psi}}}
+
+\newcommand{\w}{\omega}
+\newcommand{\wh}{{\hat{\omega}}}
+\newcommand{\W}{\Omega}
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+logicalmkup
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language swedish
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\listings_params "language=R,backgroundcolor={\color{yellow!10}},showstringspaces=false,basicstyle={\footnotesize\ttfamily},keywordstyle={\bfseries\color{green!40!black}},commentstyle={\itshape\color{purple!40!black}},identifierstyle={\color{blue}},stringstyle={\color{orange}}"
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Chapter 8: Confidence Intervals 
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Advanced Statistics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Wong Shujia 
+\end_layout
+
+\begin_layout Institute
+Department of Statistics, College of Economics
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Shenzhen University
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ Shenzhen University
+\end_layout
+
+\begin_layout TitleGraphic
+\begin_inset Graphics
+	filename figure/szulogo.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<setup,include=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+#options(formatR.arrow=TRUE,tikzDefaultEngine="xetex")
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(
+\end_layout
+
+\begin_layout Plain Layout
+
+dev = 'pdf',
+\end_layout
+
+\begin_layout Plain Layout
+
+#dev='tikz',
+\end_layout
+
+\begin_layout Plain Layout
+
+fig.align='center', 
+\end_layout
+
+\begin_layout Plain Layout
+
+size='footnotesize', 
+\end_layout
+
+\begin_layout Plain Layout
+
+#results='asis',
+\end_layout
+
+\begin_layout Plain Layout
+
+out.width='.85
+\backslash
+
+\backslash
+linewidth',
+\end_layout
+
+\begin_layout Plain Layout
+
+fig.path='figure/', 	
+\end_layout
+
+\begin_layout Plain Layout
+
+fig.keep='high', 	
+\end_layout
+
+\begin_layout Plain Layout
+
+#fig.show='asis', 
+\end_layout
+
+\begin_layout Plain Layout
+
+cache=TRUE,	
+\end_layout
+
+\begin_layout Plain Layout
+
+warning=FALSE,
+\end_layout
+
+\begin_layout Plain Layout
+
+message=FALSE,
+\end_layout
+
+\begin_layout Plain Layout
+
+par=TRUE,
+\end_layout
+
+\begin_layout Plain Layout
+
+prompt=TRUE
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+knit_hooks$set(par=function(before, options, envir){
+\end_layout
+
+\begin_layout Plain Layout
+
+if (before && options$fig.show!='none')
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mar=c(4,4,.8,.1),cex.lab=.95,cex.axis=.9,mgp=c(2,.7,0),tcl=-.3)
+\end_layout
+
+\begin_layout Plain Layout
+
+})
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Overview
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Confidence Intervals for Population Means
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Introduction
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A plausible range of values for the population parameter is called a 
+\emph on
+confidence interval
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+Using only a point estimate to estimate a parameter is like fishing in a
+ murky lake with a spear, and using a confidence interval is like fishing
+ with a net.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure/Ch6 spear-fishing.jpg
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+Point Estimate
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure/Ch6 net fishing.jpg
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+Interval Estimate
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Definition
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Confidence Interval
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $\boldsymbol{X}=(\sam Xn)^{T}$
+\end_inset
+
+ be a random sample from a population 
+\begin_inset Formula $X\sim f(x|\theta)$
+\end_inset
+
+, 
+\begin_inset Formula $\bx=(\sam xn)^{T}$
+\end_inset
+
+ be the observed values, and 
+\begin_inset Formula $\theta$
+\end_inset
+
+ be an unknown parameter.
+\end_layout
+
+\begin_layout Definition
+Suppose that we can find 
+\begin_inset Formula $L(\boldsymbol{X})$
+\end_inset
+
+ and 
+\begin_inset Formula $U(\boldsymbol{X})$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+P(L(\boldsymbol{X})\le\theta\le U(\boldsymbol{X}))=1−α
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Then 
+\begin_inset Formula $[L(\bx),U(\bx)]$
+\end_inset
+
+ is called a 
+\series bold
+\emph on
+confidence interval
+\series default
+\emph default
+ for 
+\begin_inset Formula $\theta$
+\end_inset
+
+, 
+\begin_inset Formula $(1−α)\%$
+\end_inset
+
+ is called the
+\series bold
+ 
+\emph on
+confidence level
+\series default
+\emph default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $α=0.05$
+\end_inset
+
+ is a standard 95% confidence interval.
+ 
+\end_layout
+
+\begin_layout Itemize
+Interpret: the 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+random interval
+\end_layout
+
+\end_inset
+
+ will overlap the parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+ 95% of the time.
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $P(L(\bX)\le\theta)=1-\alpha$
+\end_inset
+
+ or 
+\begin_inset Formula $P(\theta\ge U(\bX))=1-\alpha$
+\end_inset
+
+, they are called 
+\series bold
+one-sided 
+\series default
+confidence intervals.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
++-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Common misconceptions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The probability that a confidence interval 
+\begin_inset Formula $[L(\bx),U(\bx)]$
+\end_inset
+
+ contains the true population parameter is 
+\begin_inset Formula $1-\alpha$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This is incorrect, CIs are part of the frequentist paradigm and as such
+ the population parameter is fixed but unknown.
+ Consequently, the probability any given CI contains the true value must
+ be 0 or 1 (it does or does not).
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+A narrower confidence interval is always better.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This is incorrect since the width is a function of both the confidence level
+ and the standard error.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+A wider interval means less confidence.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This is incorrect since it is possible to make very precise statements with
+ very little confidence.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Normal Distribution with Known Population Variance
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Constructing CIs for 
+\begin_inset Formula $\mu$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+Let 
+\begin_inset Formula $\sam Xn\sim N(\mu,\sigma^{2})$
+\end_inset
+
+ (
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ is known), find the CI for 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+To obtain a confidence interval for 
+\begin_inset Formula $\mu$
+\end_inset
+
+, note that
+\begin_inset Formula 
+\[
+Q(\bX,\mu)=\frac{\Xbar-\mu}{{\rm SE}(\Xbar)}\sim N(0,1)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula ${\rm SE}(\Xbar)=\sigma/\sqrt{n}$
+\end_inset
+
+ is the 
+\emph on
+standard error
+\emph default
+ of 
+\begin_inset Formula $\Xbar$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+P\big(-z_{1-\alpha/2}\le Q(\bX,\mu)\le z_{1-\alpha/2}\big)=1-\alpha
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P\big(\Xbar-z_{1-\alpha/2}{\rm SE}(\Xbar)\le\mu\le\Xbar+z_{1-\alpha/2}{\rm SE}(\Xbar)\big)=1-\alpha
+\]
+
+\end_inset
+
+Hence, the 
+\begin_inset Formula $(1-\alpha)$
+\end_inset
+
+ CI for 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+CI_{1-\alpha}(\mu)=\big[\xbar-z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}},\xbar+z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}\big]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Pivotal Quantity 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+A random variable 
+\begin_inset Formula $Q(\bX,\theta)$
+\end_inset
+
+ is a 
+\series bold
+\emph on
+pivotal quantity
+\series default
+\emph default
+ or 
+\series bold
+\emph on
+pivot
+\series default
+\emph default
+ if the distribution of 
+\begin_inset Formula $Q$
+\end_inset
+
+ is independent of the parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+Q=(\Xbar-\mu)/(\sigma/\sqrt{n})\sim N(0,1)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<stnorm,echo=FALSE,fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+curve(dnorm(x, 0, 1), -3.5, 3.5, axes = FALSE, ann = FALSE, n = 500) 
+\end_layout
+
+\begin_layout Plain Layout
+
+alpha <- 0.05 
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- seq(-3.5, qnorm(alpha/2), length = 100) 
+\end_layout
+
+\begin_layout Plain Layout
+
+y <- dnorm(x, 0, 1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+xs <- c(-3.5, x, qnorm(alpha/2)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+ys <- c(0, y, 0) 
+\end_layout
+
+\begin_layout Plain Layout
+
+polygon(xs, ys, col = "skyblue3") 
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- seq(qnorm(1 - alpha/2), 3.5, length = 100)
+\end_layout
+
+\begin_layout Plain Layout
+
+y <- dnorm(x, 0, 1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+xs <- c(qnorm(1 - alpha/2), x, 3.5) 
+\end_layout
+
+\begin_layout Plain Layout
+
+ys <- c(0, y, 0) 
+\end_layout
+
+\begin_layout Plain Layout
+
+polygon(xs, ys, col = "skyblue3")
+\end_layout
+
+\begin_layout Plain Layout
+
+segments(-3.5, 0, 3.5, 0, lwd = 3) 
+\end_layout
+
+\begin_layout Plain Layout
+
+curve(dnorm(x, 0, 1), -3.5, 3.5, axes = FALSE, ann = FALSE, add = TRUE, lwd
+ = 2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+segments(qnorm(alpha/2), 0, qnorm(alpha/2), dnorm(qnorm(alpha/2)), lwd =
+ 2)
+\end_layout
+
+\begin_layout Plain Layout
+
+segments(qnorm(1 - alpha/2), 0, qnorm(1 - alpha/2), dnorm(qnorm(1 - alpha/2)),
+ lwd = 2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+arrows(-3, 0.08, -2.5, 0.02, length = .06) 
+\end_layout
+
+\begin_layout Plain Layout
+
+arrows(3, 0.08, 2.5, 0.02, length = .06) 
+\end_layout
+
+\begin_layout Plain Layout
+
+text(-3, 0.1, expression(alpha/2)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+text(3, 0.1, expression(alpha/2)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+text(0, 0.17, expression(1 - alpha)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+mtext(expression(-z[1 - alpha/2] == z[alpha/2]), side = 1, line = 0, at
+ = qnorm(alpha/2)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+mtext(expression(z[1 - alpha/2]), side = 1, line = 0, at = qnorm(1 - alpha/2))
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
++-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Confidence Interval for 
+\begin_inset Formula $\mu$
+\end_inset
+
+: Grocery Spending
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+The consumer expenditure survey, created by the U.S.
+ Department of Labor, was administered to 30 households in Watauga County,
+ North Carolina.
+ The amount of money each household spent per week on groceries is stored
+ in the data frame GROCERY.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Construct a 97% confidence interval for the true mean weekly grocery expenditure
+ for Watauga County households.
+ Historical records indicate that the variance for grocery expenditure per
+ household in Watauga County is 900 dollars.
+\end_layout
+
+\begin_layout Enumerate
+A grocery chain is considering building a new grocery store in Watauga County.
+ However, it will only do so if it is 99% confident the average amount spent
+ on groceries each week is at least $105.
+ Does a 
+\begin_inset Formula $UCI_{0.99}(\mu)$
+\end_inset
+
+ include $105? If so, what does that imply?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Verify the assumption of normality 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Checking normality assumption: QQ-plot, 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+qqnorm()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<QQ_GROCERY, fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library("PASWR2")
+\end_layout
+
+\begin_layout Plain Layout
+
+with(data = GROCERY, qqnorm(amount))  
+\end_layout
+
+\begin_layout Plain Layout
+
+with(data = GROCERY, qqline(amount))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Construct a 97% confidence interval for the true mean
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Compute directly or by use of R function: 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+z.test()
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Formula 
+\[
+CI_{1-\alpha}(\mu)=\big[\xbar-z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}},\xbar+z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}\big]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+xbar <- mean(GROCERY$amount); z <- qnorm(0.985) 
+\end_layout
+
+\begin_layout Plain Layout
+
+CI1 <- xbar + c(-1, 1) * z * sqrt(900)/sqrt(30); CI1 
+\end_layout
+
+\begin_layout Plain Layout
+
+CI2 <-  z.test(GROCERY$amount, sigma.x = sqrt(900), n.x = 30,
+\end_layout
+
+\begin_layout Plain Layout
+
+              conf.level = .97)$conf
+\end_layout
+
+\begin_layout Plain Layout
+
+CI2  
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Q2: one-sided 99% CI
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+z.test(GROCERY$amount, sigma.x = sqrt(900), n.x = 30, 
+\end_layout
+
+\begin_layout Plain Layout
+
+              conf.level = .99, alternative = "greater")$conf 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Determining Required Sample Size
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+How to determine the minimum required sample size to be within a given distance
+ of 
+\begin_inset Formula $\mu$
+\end_inset
+
+ when estimating the population mean with known variance 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+P\big(|\Xbar-\mu|\le z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}\big)=1-\alpha
+\]
+
+\end_inset
+
+ Denote 
+\begin_inset Formula $B$
+\end_inset
+
+ as the 
+\emph on
+margin of error
+\emph default
+ (or 
+\emph on
+the bound on the error
+\emph default
+) such that 
+\begin_inset Formula 
+\[
+P\big(|\Xbar-\mu|\le B\big)=1-\alpha
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+B=z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}
+\]
+
+\end_inset
+
+ hence 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+n=\left(\frac{z_{1-\alpha/2}\sigma}{B}\right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: Determine the required sample size 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Determine the required sample size to estimate the true value of 
+\begin_inset Formula $\mu$
+\end_inset
+
+ within 
+\begin_inset Formula $±0.02$
+\end_inset
+
+ with a confidence level of 95% when sampling from a normal distribution
+ with ( 
+\begin_inset Formula $\sigma=0.1$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout FragileFrame
+
+\series bold
+\begin_inset VSpace defskip
+\end_inset
+
+Solution
+\series default
+: 
+\begin_inset Formula $B=0.02$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+n=\left(\frac{z_{1-\alpha/2}\sigma}{B}\right)^{2}=\left(\frac{1.96\times0.1}{0.02}\right)^{2}=96.04
+\]
+
+\end_inset
+
+The margin of error is no more than 0.02 is 
+\begin_inset Formula $n=97$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Normal Distribution with Unknown Population Variance
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Constructing CIs for 
+\begin_inset Formula $\mu$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+Let 
+\begin_inset Formula $\sam Xn\sim N(\mu,\sigma^{2})$
+\end_inset
+
+ (
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ is unknown), find the CI for 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+To obtain a confidence interval for 
+\begin_inset Formula $\mu$
+\end_inset
+
+, note that
+\begin_inset Formula 
+\[
+Q(\bX,\mu)=\frac{\Xbar-\mu}{\hat{{\rm SE}}(\Xbar)}\sim t(n-1)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\hat{{\rm SE}}(\Xbar)=S/\sqrt{n}$
+\end_inset
+
+ is an estimator of 
+\begin_inset Formula ${\rm SE}(\Xbar)=\sigma/\sqrt{n}$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+P\big(\Xbar-t_{1-\alpha/2}(n-1)\hat{{\rm SE}}(\Xbar)\le\mu\le\Xbar+t_{1-\alpha/2}(n-1)\hat{{\rm SE}}(\Xbar)\big)=1-\alpha
+\]
+
+\end_inset
+
+Hence, the 
+\begin_inset Formula $(1-\alpha)$
+\end_inset
+
+ CI for 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+CI_{1-\alpha}(\mu)=\big[\xbar-t_{1-\alpha/2}(n-1)\frac{s}{\sqrt{n}},\xbar+t_{1-\alpha/2}(n-1)\frac{s}{\sqrt{n}}\big]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+R function:
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+t.test()$conf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Prediction Intervals
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+A 
+\emph on
+confidence interval
+\emph default
+ estimates the mean: 
+\begin_inset Formula $CI_{1-\alpha}(\mu)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+A 
+\begin_inset Flex Emphasize
+status open
+
+\begin_layout Plain Layout
+prediction interval
+\end_layout
+
+\end_inset
+
+ answers the question:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+What range of values are plausible for a single future observation?
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $100(1−\alpha)\%$
+\end_inset
+
+ of the data lie in the interval
+\begin_inset Formula 
+\[
+\bar{x}±t_{1-α/2}(n-1)s\sqrt{1+\frac{1}{n}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+CIs for CEO Compensation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+USA Today 
+\end_layout
+
+\end_inset
+
+publishes annual data on S&P 500 companies CEO compensation.
+ 2010 dataset:
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+ ceo.txt.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout FragileFrame
+Total compensation:"Total"= "Salary"+ "Bonus" + "Stock".
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Find the 95% confidence interval for the CEO average compensation.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ceo<-read.csv("R/ceo.txt") 
+\end_layout
+
+\begin_layout Plain Layout
+
+mean(ceo$Total)
+\end_layout
+
+\begin_layout Plain Layout
+
+t.test(ceo$Total)$conf
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+CIs for Salary proportion 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Calculate the 95% CI for proportion of total compensation due to salary,
+ bonus and stock .
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+attach(ceo)
+\end_layout
+
+\begin_layout Plain Layout
+
+Salary_ratio<-Salary/Total; t.test(Salary_ratio)$conf.int
+\end_layout
+
+\begin_layout Plain Layout
+
+Bonus_ratio<-Bonus/Total; t.test(Bonus_ratio)$conf.int
+\end_layout
+
+\begin_layout Plain Layout
+
+Stock_ratio<-Stock/Total; t.test(Stock_ratio)$conf.int
+\end_layout
+
+\begin_layout Plain Layout
+
+detach(ceo)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Confidence Interval for the Difference in Population Means 
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Goals in this section
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Consider 
+\begin_inset Formula $X_{1},X_{2},\dots,X_{n_{X}}\sim N(\mu_{X},\sigma_{X}^{2})$
+\end_inset
+
+ and 
+\begin_inset Formula $Y_{1},Y_{2},\dots,Y_{n_{Y}}\sim N(\mu_{Y},\sigma_{Y}^{2})$
+\end_inset
+
+, We want to construct a 
+\emph on
+confidence interval
+\emph default
+ for 
+\begin_inset Formula $\mu_{X}-\mu_{Y}$
+\end_inset
+
+ when
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\sigma_{X}^{2},\sigma_{Y}^{2}$
+\end_inset
+
+ known (equal or not equal)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma_{X}^{2},\sigma_{Y}^{2}$
+\end_inset
+
+ unknown but assumed equal
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma_{X}^{2},\sigma_{Y}^{2}$
+\end_inset
+
+ unknown and not equal 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+CIs for mean difference 
+\begin_inset Formula $D=\mu_{X}-\mu_{Y}$
+\end_inset
+
+ with paired data: 
+\begin_inset Formula $(X_{1},Y_{1}),(X_{2},Y_{2}),\dots$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+CIs for (
+\begin_inset Formula $\mu_{X}-\mu_{Y}$
+\end_inset
+
+) with Known Variances
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+A confidence interval for 
+\begin_inset Formula $\mu_{X}-\mu_{Y}$
+\end_inset
+
+ is easily derived using a pivotal quantity
+\begin_inset Formula 
+\[
+Q=\frac{(\Xbar-\Ybar)-(\mu_{X}-\mu_{Y})}{{\rm SE}(\Xbar-\Ybar)}\sim N(0,1)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+{\rm SE}(\Xbar-\Ybar)=\sqrt{\frac{\sigma_{X}^{2}}{n_{X}}+\frac{\sigma_{Y}^{2}}{n_{Y}}}
+\]
+
+\end_inset
+
+The (
+\begin_inset Formula $1-\alpha$
+\end_inset
+
+) CI for 
+\begin_inset Formula $\mu_{X}-\mu_{Y}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\[
+CI_{1-\alpha}(\mu_{X}-\mu_{Y}|\sigma_{X},\sigma_{Y}\ {\rm is\ known})=\big[(\bar{x}-\bar{y})\pm z_{1-\alpha/2}{\rm SE}(\Xbar-\Ybar)\big]
+\]
+
+\end_inset
+
+R function:
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+z.test(x=,y=,sigma.x=,sigma.y=)$conf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
++-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: CI for Calculus Difference: Variance Known 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Data frame CALCULUS provide the mathematical assessment scores for 36 students
+ enrolled in a biostatistics course according to whether or not the students
+ had successfully completed a calculus course prior to enrolling in the
+ biostatistics course.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Construct a 95% confidence interval for the difference in the means of the
+ mathematical assessment scores for students who had successfully completed
+ a calculus course (
+\begin_inset Formula $X$
+\end_inset
+
+) and of those who had not (
+\begin_inset Formula $Y$
+\end_inset
+
+ ).
+ Assume the distributions for 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ have variances of 25 and 144, respectively.
+ 
+\end_layout
+
+\begin_layout Itemize
+Determine if it is advantageous to take calculus prior to taking the biostatisti
+cs course.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+R code: Using CI formula
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+str(CALCULUS)
+\end_layout
+
+\begin_layout Plain Layout
+
+MEANS <- tapply(CALCULUS$score, CALCULUS$calculus, mean) 
+\end_layout
+
+\begin_layout Plain Layout
+
+MEANS 
+\end_layout
+
+\begin_layout Plain Layout
+
+pe <- MEANS[2] - MEANS[1] 
+\end_layout
+
+\begin_layout Plain Layout
+
+z <- qnorm(0.975) 
+\end_layout
+
+\begin_layout Plain Layout
+
+pe + c(-1, 1)*z*sqrt(25/18 + 144/18) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+R code: Using z.test()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ScoreYesCalc <- subset(CALCULUS, select = score, 
+\end_layout
+
+\begin_layout Plain Layout
+
+                subset = calculus == "Yes", drop = TRUE) 
+\end_layout
+
+\begin_layout Plain Layout
+
+ScoreNoCalc <- subset(CALCULUS, select = score, 
+\end_layout
+
+\begin_layout Plain Layout
+
+                subset = calculus == "No", drop = TRUE) 
+\end_layout
+
+\begin_layout Plain Layout
+
+CI <- z.test(x = ScoreYesCalc, y = ScoreNoCalc, sigma.x = sqrt(25), 
+\end_layout
+
+\begin_layout Plain Layout
+
+                sigma.y = sqrt(144), conf.level = 0.95)$conf
+\end_layout
+
+\begin_layout Plain Layout
+
+CI
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+CIs for (
+\begin_inset Formula $\mu_{X}-\mu_{Y}$
+\end_inset
+
+) with Variances Unknown but Assumed Equal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+The pivotal quantity
+\begin_inset Formula 
+\[
+Q=\frac{(\Xbar-\Ybar)-(\mu_{X}-\mu_{Y})}{\hat{{\rm SE}}(\Xbar-\Ybar)}\sim t_{1-\alpha/2}(n_{X}+n_{Y}-2)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{{\rm SE}}(\Xbar-\Ybar)=S_{p}\sqrt{\frac{1}{n_{X}}+\frac{1}{n_{Y}}}{\rm \ and\ }S_{p}^{2}=\frac{(n_{X}-1)S_{X}^{2}+(n_{Y}-1)S_{Y}^{2}}{n_{X}+n_{Y}-2}
+\]
+
+\end_inset
+
+The (
+\begin_inset Formula $1-\alpha$
+\end_inset
+
+) CI for 
+\begin_inset Formula $\mu_{X}-\mu_{Y}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{align*}
+CI_{1-\alpha}(\mu_{X}-\mu_{Y}|\sigma_{X} & =\sigma_{Y}\ {\rm but\ unknown})\\
+ & =\big[(\bar{x}-\bar{y})\pm t_{1-\alpha/2}(n_{X}+n_{Y}-2)\hat{{\rm SE}}(\bar{x}-\bar{y})\big]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Culculus Difference: Variance Equal But Unknown 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+t.test(x=,y=,var.equal=T)$conf
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+t.test(z~w,data,var.equal=T)
+\end_layout
+
+\end_inset
+
+, where 
+\begin_inset Formula $z$
+\end_inset
+
+ is numeric and 
+\begin_inset Formula $w$
+\end_inset
+
+ is dichotomous.
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+t.test(score ~ calculus,data=CALCULUS,var.equal=TRUE)$conf 
+\end_layout
+
+\begin_layout Plain Layout
+
+ScoreYesCalc <- subset(CALCULUS, select = score, 
+\end_layout
+
+\begin_layout Plain Layout
+
+                       subset = calculus == "Yes", drop = TRUE)  
+\end_layout
+
+\begin_layout Plain Layout
+
+ScoreNoCalc <- subset(CALCULUS, select = score, 
+\end_layout
+
+\begin_layout Plain Layout
+
+                       subset = calculus == "No", drop = TRUE) 
+\end_layout
+
+\begin_layout Plain Layout
+
+t.test(x = ScoreYesCalc, y = ScoreNoCalc, var.equal=TRUE)$conf
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+CIs for (
+\begin_inset Formula $\mu_{X}-\mu_{Y}$
+\end_inset
+
+) with Variances Unknown and Unequal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Welch’s approximation
+\begin_inset Formula 
+\[
+Q=\frac{(\Xbar-\Ybar)-(\mu_{X}-\mu_{Y})}{\hat{{\rm SE}}(\Xbar-\Ybar)}\sim t(\nu)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{{\rm SE}}(\Xbar-\Ybar)=\sqrt{\frac{S_{X}^{2}}{n_{X}}+\frac{S_{Y}^{2}}{n_{Y}}}{\rm \ and\ }\nu=\frac{\big(\frac{S_{X}^{2}}{n_{X}}+\frac{S_{Y}^{2}}{n_{Y}}\big)^{2}}{\frac{(S_{X}^{2}/n_{X})^{2}}{n_{X}-1}+\frac{(S_{Y}^{2}/n_{Y})^{2}}{n_{Y}-1}}
+\]
+
+\end_inset
+
+The (
+\begin_inset Formula $1-\alpha$
+\end_inset
+
+) CI for 
+\begin_inset Formula $\mu_{X}-\mu_{Y}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{align*}
+CI_{1-\alpha}(\mu_{X}-\mu_{Y}|\sigma_{X} & ,\sigma_{Y}\ {\rm unknown\ and\ unequal})\\
+ & =\big[(\bar{x}-\bar{y})\pm t_{1-\alpha/2}(\nu)\hat{{\rm SE}}(\bar{x}-\bar{y})\big]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Calculus Difference: Variances Unknown and Unequal 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+t.test(x=,y=)$conf
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+t.test(z~w,data)
+\end_layout
+
+\end_inset
+
+, where 
+\begin_inset Formula $z$
+\end_inset
+
+ is numeric and 
+\begin_inset Formula $w$
+\end_inset
+
+ is dichotomous.
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+CALCULUS$calculus<-factor(CALCULUS$calculus,levels=c("Yes","No"))
+\end_layout
+
+\begin_layout Plain Layout
+
+t.test(score ~ calculus,data=CALCULUS)$conf 
+\end_layout
+
+\begin_layout Plain Layout
+
+t.test(score ~ calculus,data=CALCULUS) # Two sample t-test
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+CIs for (
+\begin_inset Formula $\mu_{X}-\mu_{Y}$
+\end_inset
+
+) with Paired Samples
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+CIs for mean difference 
+\begin_inset Formula $\mu_{D}=\mu_{X}-\mu_{Y}$
+\end_inset
+
+ with paired data: 
+\begin_inset Formula $(X_{1},Y_{1}),(X_{2},Y_{2}),\dots(X_{n},Y_{n})$
+\end_inset
+
+.
+ Assume 
+\begin_inset Formula $D_{i}=X_{i}-Y_{i}\sim N(\mu_{D},\sigma_{D}^{2})$
+\end_inset
+
+(
+\begin_inset Formula $i=1,2,\dots,n$
+\end_inset
+
+), 
+\end_layout
+
+\begin_layout Frame
+The 
+\begin_inset Formula $(1-\alpha)$
+\end_inset
+
+ CI for the mean difference 
+\begin_inset Formula $\mu_{D}=\mu_{X}-\mu_{Y}$
+\end_inset
+
+ is 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If 
+\begin_inset Formula $\sigma_{D}$
+\end_inset
+
+ is known,
+\begin_inset Formula 
+\[
+CI_{1-\alpha}(\mu_{D})=\big[\bar{d}-z_{1-\alpha/2}\frac{\sigma_{D}}{\sqrt{n}},\bar{d}+z_{1-\alpha/2}\frac{\sigma_{D}}{\sqrt{n}}\big]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\sigma_{D}$
+\end_inset
+
+ is unknown
+\begin_inset Formula 
+\[
+CI_{1-\alpha}(\mu_{D})=\big[\bar{d}-t_{1-\alpha/2}(n-1)\frac{s_{D}}{\sqrt{n}},\bar{d}+t_{1-\alpha/2}(n-1)\frac{s_{D}}{\sqrt{n}}\big]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+R function: 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+t.test(x, y, paired = TRUE)$conf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Confidence Intervals for Population Variances
+\end_layout
+
+\begin_layout Subsection
+Confidence Intervals for Variance
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Constructing CIs for 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+Let 
+\begin_inset Formula $\sam Xn\sim N(\mu,\sigma^{2})$
+\end_inset
+
+ (
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ are unknown), find the CI for 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+The pivotal quantity 
+\begin_inset Formula 
+\[
+Q=\frac{(n-1)S^{2}}{\sigma^{2}}\sim\chi^{2}(n-1)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P(\chi_{\alpha/2}^{2}(n-1)\le Q\le\chi_{1-\alpha/2}^{2}(n-1))=1-\alpha
+\]
+
+\end_inset
+
+The 
+\begin_inset Formula $(1-\alpha)$
+\end_inset
+
+ CI for 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ is 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+CI_{1-\alpha}(\sigma^{2})=\big[\frac{(n-1)s^{2}}{\chi_{1-\alpha/2}^{2}(n-1)},\frac{(n-1)s^{2}}{\chi_{\alpha/2}^{2}(n-1)}\big]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: CI for variance: Calculus data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ScoreYesCalc <- subset(CALCULUS, select = score, 
+\end_layout
+
+\begin_layout Plain Layout
+
+                      subset = calculus == "Yes", drop = TRUE)  
+\end_layout
+
+\begin_layout Plain Layout
+
+n1 <- length(ScoreYesCalc); var1 <- var(ScoreYesCalc) 
+\end_layout
+
+\begin_layout Plain Layout
+
+L1 <- round((n1-1)*var1/qchisq(0.975, n1),2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+U1 <- round((n1-1)*var1/qchisq(0.025, n1),2)
+\end_layout
+
+\begin_layout Plain Layout
+
+paste("CI for variance of YesCalc: (",L1,",",U1,")")
+\end_layout
+
+\begin_layout Plain Layout
+
+ScoreNoCalc <- subset(CALCULUS, select = score, 
+\end_layout
+
+\begin_layout Plain Layout
+
+                     subset = calculus == "No", drop = TRUE) 
+\end_layout
+
+\begin_layout Plain Layout
+
+n2 <- length(ScoreNoCalc); var2 <- var(ScoreNoCalc) 
+\end_layout
+
+\begin_layout Plain Layout
+
+L2 <- round((n2-1)*var2/qchisq(0.975, n2),2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+U2 <- round((n2-1)*var2/qchisq(0.025, n2),2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+paste("CI for variance of NoCalc: (",L2,",",U2,")")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Confidence Intervals for the Ratio of Population Variances 
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Constructing CIs for the Ratio of Variances 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Consider 
+\begin_inset Formula $X_{1},X_{2},\dots,X_{n_{X}}\sim N(\mu_{X},\sigma_{X}^{2})$
+\end_inset
+
+ and 
+\begin_inset Formula $Y_{1},Y_{2},\dots,Y_{n_{Y}}\sim N(\mu_{Y},\sigma_{Y}^{2})$
+\end_inset
+
+, We want to construct a 
+\emph on
+confidence interval
+\emph default
+ for 
+\begin_inset Formula $V=\sigma_{X}^{2}/\sigma_{Y}^{2}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+The pivotal quantity
+\begin_inset Formula 
+\[
+Q=\frac{S_{Y}^{2}/\sigma_{Y}^{2}}{S_{X}^{2}/\sigma_{X}^{2}}\sim F(n_{Y-1},n_{X}-1)
+\]
+
+\end_inset
+
+The 
+\begin_inset Formula $(1-\alpha)$
+\end_inset
+
+ CI for 
+\begin_inset Formula $V=\sigma_{X}^{2}/\sigma_{Y}^{2}$
+\end_inset
+
+ is 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+CI_{1-\alpha}(V)=\big[F_{\alpha/2}(n_{Y}-1,n_{X}-1)\frac{S_{X}^{2}}{S_{Y}^{2}},F_{1-\alpha/2}(n_{Y}-1,n_{X}-1)\frac{S_{X}^{2}}{S_{Y}^{2}}\big]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: CI for variance Ratio: Calculus data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Formula 
+\[
+\big[F_{\alpha/2}(n_{Y}-1,n_{X}-1)\frac{S_{X}^{2}}{S_{Y}^{2}},F_{1-\alpha/2}(n_{Y}-1,n_{X}-1)\frac{S_{X}^{2}}{S_{Y}^{2}}\big]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+VR <- var1/var2 
+\end_layout
+
+\begin_layout Plain Layout
+
+CI <- c(qf(0.025, n1-1, n2-1) * VR, qf(0.975, n1-1, n2-1) * VR) 
+\end_layout
+
+\begin_layout Plain Layout
+
+CI
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Confidence Intervals Based on Large Samples
+\end_layout
+
+\begin_layout Subsection
+Confidence Interval for the Population Proportion
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Construct the CI for the Population Proportion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+Let 
+\begin_inset Formula $\sam Xn\sim Bin(1,\pi)$
+\end_inset
+
+ , find the CI for 
+\begin_inset Formula $\pi$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Denote 
+\begin_inset Formula $P=\frac{1}{n}\sum X_{i}$
+\end_inset
+
+ is the sample proportion and 
+\begin_inset Formula $p$
+\end_inset
+
+ is it's observed value.
+ 
+\end_layout
+
+\begin_layout FragileFrame
+From the Central Limit Theorem, the pivotal quantity 
+\begin_inset Formula 
+\[
+Q=\frac{P-\pi}{\sqrt{P(1-P)/n}}\sim N(0,1)\ {\rm as}\ n\rightarrow\infty
+\]
+
+\end_inset
+
+The 
+\begin_inset Formula $(1-\alpha)$
+\end_inset
+
+ CI for 
+\begin_inset Formula $\pi$
+\end_inset
+
+ is 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+CI_{1-\alpha}(\pi)=\big[p-z_{1-\alpha/2}\sqrt{\frac{p(1-p)}{n}},\ p+z_{1-\alpha/2}\sqrt{\frac{p(1-p)}{n}}\big]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+R function: 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+prop.test(x,n)$conf
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+binom.confint(x,n,mathod=
+\begin_inset Quotes srd
+\end_inset
+
+
+\begin_inset Quotes srd
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
++-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: Biogen Idec, Inc
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+Biogen Idec, Inc
+\end_layout
+
+\end_inset
+
+ is a global biotechnology company based in Cambridge, Massachusetts.
+ 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+“Avonex delivers the highest rate of satisfaction: 95% among patients”
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The U.S.
+ Food and Drug Administration (FDA) on October 30th, 2002 informed the biotech
+ company Biogen to stop publishing misleading promotions for its drug Avonex.
+ 
+\end_layout
+
+\begin_layout Itemize
+The FDA found that in a random sample of 75 patients surveyed, only 60%
+ said they were "
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+very satisfied
+\end_layout
+
+\end_inset
+
+" with Avonex.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+Who is right?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+prop.test(45,75)$conf
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Confidence Interval for a Difference in Population Proportions
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
++-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Two Sample Test for Proportions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A 95% confidence interval for a difference in proportions
+\begin_inset Formula 
+\[
+CI_{1-\alpha}(\pi_{1}-\pi_{2})=(p_{1}-p_{2})±z_{1-\alpha/2}\sqrt{\frac{p_{1}(1-p_{1})}{n_{1}}+\frac{p_{2}(1-p_{2})}{n_{2}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Two sample
+\emph on
+ t
+\emph default
+-test for populations: 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+prop.test()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example:Pfizer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+During 1998 of the 6 million Viagra users 77 died from coronary problems
+ such as heart attacks.
+ 
+\end_layout
+
+\begin_layout Itemize
+Pfizer claimed that this rate is no more than the general population.
+ 
+\end_layout
+
+\begin_layout Itemize
+A clinical study found 11 out of 1, 500, 000 men who were not on Viagra
+ died of coronary problems during the same length of time.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+prop.test(x=c(11,77),n=c(1500000,6000000),alternative="greater",
+\end_layout
+
+\begin_layout Plain Layout
+
+conf.level=.95)$conf
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Confidence Interval for the Mean of a Poisson Distribution
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Construct the CI for the Mean of Poisson
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+Let 
+\begin_inset Formula $\sam Xn\sim Pois(\lambda)$
+\end_inset
+
+ , find the CI for 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+The MLE of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is 
+\begin_inset Formula $\hat{\lambda}=\Xbar$
+\end_inset
+
+, with 
+\begin_inset Formula $E(\Xbar)=\lambda$
+\end_inset
+
+ and 
+\begin_inset Formula $Var(\Xbar)=\la/n$
+\end_inset
+
+ .
+ From the Central Limit Theorem, 
+\begin_inset Formula 
+\[
+Q=\frac{\Xbar-\la}{\sqrt{\la/n}}\sim N(0,1)
+\]
+
+\end_inset
+
+The 
+\begin_inset Formula $(1-\alpha)$
+\end_inset
+
+ CI for 
+\begin_inset Formula $\la$
+\end_inset
+
+ is 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+CI_{1-\alpha}(\la)=\big[\bar{x}-z_{1-\alpha/2}\sqrt{\frac{\bar{x}}{n}},\ \bar{x}+z_{1-\alpha/2}\sqrt{\frac{\bar{x}}{n}}\big]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: Average Goals in a Game
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+n <- sum(!is.na(SOCCER$game)) # number of games 
+\end_layout
+
+\begin_layout Plain Layout
+
+xbar <- mean(SOCCER$goals, na.rm = TRUE)
+\end_layout
+
+\begin_layout Plain Layout
+
+z <- qnorm(0.95) # z_{0.95} 
+\end_layout
+
+\begin_layout Plain Layout
+
+CI <- xbar + c(-1, 1) * z * sqrt(xbar/n) 
+\end_layout
+
+\begin_layout Plain Layout
+
+CI
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Recap
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\end_body
+\end_document

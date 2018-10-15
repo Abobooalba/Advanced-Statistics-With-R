@@ -1,0 +1,2805 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+\usetheme{Warsaw}
+%\usetheme{Boadilla}
+\usecolortheme{seahorse}
+\usefonttheme{professionalfonts}
+\setbeamertemplate{navigation symbols}{} 
+%gets rid of bottom navigation bars
+\setbeamertemplate{footline}[page number]{}
+%\usepackage{xeCJK}
+%\setCJKmainfont{SimSun}
+%\usepackage{multirow} %Excel2Latex table needed
+%\usepackage{booktabs} %Excel2Latex table needed
+
+%\usepackage[backend=biber,natbib=true,style=caspervector,citestyle=authoryear,maxnames = 99,utf8]{biblatex}
+%\usepackage[backend=biber,natbib=true,bibstyle=caspervector,citestyle=authoryear,utf8]{biblatex}
+%\addbibresource{F:/BaiduYun/Teaching/ref/Bayesian.bib}
+%\DeclareBibliographyCategory{cited} \AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}} 
+%\newcommand{\myemph}[1]{\emph{\textcolor{red}{#1}}}
+%\tableofcontents[hideallsubsections]
+%\usepackage{multicol}
+%\usepackage[natbib=true,bibstyle=caspervector,citestyle=authoryear,utf8,maxnames = 2]{biblatex}
+%\addbibresource{F:/BaiduYun/AdvStat/advstat.bib}
+% Beamer show contents,upto subsection
+\AtBeginSection[]
+{
+   \begin{frame}
+       \frametitle{Outline}
+       \tableofcontents[sectionstyle=show/shaded,hideallsubsections]
+   \end{frame}
+}
+\AtBeginSubsection[]
+{
+   \begin{frame}
+       \frametitle{Outline}
+       \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded/hide]
+   \end{frame}
+}
+\usepackage{multicol} % Make documents with multiple columns.
+%\usepackage{enumitem}
+\usepackage{amsmath,fancyhdr,listings}
+%\usepackage{tikz}
+%\usepackage{simpsons}
+
+% To enter the multicol environment, use ERT (Ctrl+l) and type \begin{multicols}{2} % for two columns, or ...{3} for three columns, etc. Once finished. re-enter ERT
+% and type \end{multicols}. To add divider lines between cols, add another ERT box
+% with \setlength{\columnseprule}{0.4pt} immediately after \begin{multicols}{...}
+%\usepackage{bm} % Allows use of bold Greek characters
+
+%\renewcommand{\vec}[1]{\bm{#1}} % Redefines vector command to bold the vectorized character.
+%\newcommand{\eps}{\varepsilon}
+% iid sample series: \sample x n
+\newcommand{\sam}[2]{#1_1,#1_2,\dots,#1_{#2}}
+% special symbols
+\newcommand{\me}{\mathrm{e}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\diff}{\mathrm{d}}
+\newcommand{\ybar}{\overline{y}}
+\newcommand{\xbar}{\overline{x}}
+\newcommand{\Xbar}{\overline{X}}
+\newcommand{\Ybar}{\overline{Y}}
+\newcommand{\bx}{\boldmath{x}}
+\newcommand{\by}{\boldmath{y}}
+\newcommand{\bX}{\boldmath{X}}
+\newcommand{\bY}{\boldmath{Y}}
+% GREEK CHARACTERS
+\newcommand{\al}{\alpha}
+\newcommand{\bal}{{\boldsymbol{\al}}}
+\newcommand{\balh}{{\hat{\boldsymbol{\al}}}}
+\newcommand{\alh}{{\hat{\al}}}
+
+\newcommand{\bt}{\beta}
+\newcommand{\btt}{{\tilde{\bt}}}
+\newcommand{\btht}{{\hat{\bt}}}
+
+\newcommand{\ga}{\gamma}
+\newcommand{\Ga}{\Gamma}
+\newcommand{\bGa}{{\boldsymbol{\Gamma}}}
+\newcommand{\gah}{{\hat{\g}}}
+
+\newcommand{\de}{\delta}
+\newcommand{\De}{\Delta}
+\newcommand{\Deh}{{\hat{\Delta}}}
+\newcommand{\bde}{{\boldsymbol{\de}}}
+\newcommand{\bDe}{{\boldsymbol{\De}}}
+
+\newcommand{\e}{\epsilon}
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\etah}{{\hat{\eta}}}
+\newcommand{\bpi}{{\boldsymbol{\pi}}}
+
+\newcommand{\pht}{{\tilde{\phi}}}
+\newcommand{\Pht}{{\tilde{\Phi}}}
+
+\newcommand{\pst}{{\tilde{\psi}}}
+\newcommand{\Pst}{{\tilde{\Psi}}}
+
+\newcommand{\s}{\sigma}
+\newcommand{\sih}{\hat{\sigma}}
+
+\newcommand{\z}{\zeta}
+\newcommand{\ztt}{{\tilde{\z}}}
+\newcommand{\ztb}{{\bar{\z}}}
+
+%\newcommand{\the}{\theta} % symbol name used by other latex package
+\newcommand{\thh}{{\hat{\theta}}}
+\newcommand{\Thh}{{\hat{\Theta}}}
+\newcommand{\Th}{\Theta}
+\newcommand{\bth}{{\boldsymbol{\theta}}}
+\newcommand{\bTh}{{\boldsymbol{\Theta}}}
+\newcommand{\bThh}{{\hat{\bTh}}}
+\newcommand{\Tht}{{\tilde{\Theta}}}
+\newcommand{\tht}{{\tilde{\theta}}}
+
+\newcommand{\la}{\lambda}
+\newcommand{\La}{\Lambda}
+\newcommand{\lam}{\lambda}  % backward compatibility
+\newcommand{\Lam}{\Lambda}  % backward compatibility
+\newcommand{\bLa}{{\boldsymbol{\La}}}
+\newcommand{\lah}{{\hat{\lam}}}
+
+\newcommand{\bmu}{{\boldsymbol{\mu}}}
+
+\newcommand{\bXi}{{\boldsymbol{\Xi}}}
+
+\newcommand{\bPi}{{\boldsymbol{\Pi}}}
+
+\newcommand{\rht}{{\tilde{\rho}}}
+\newcommand{\rhc}{{\check{\rho}}}
+
+\newcommand{\bSi}{{\boldsymbol{\Sigma}}}
+
+\newcommand{\ups}{\upsilon}
+\newcommand{\Ups}{\Upsilon}
+\newcommand{\bUp}{{\boldsymbol{\Ups}}}
+
+\newcommand{\bPs}{{\boldsymbol{\Psi}}}
+
+\newcommand{\w}{\omega}
+\newcommand{\wh}{{\hat{\omega}}}
+\newcommand{\W}{\Omega}
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+logicalmkup
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language swedish
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\listings_params "language=R,backgroundcolor={\color{yellow!10}},showstringspaces=false,basicstyle={\footnotesize\ttfamily},keywordstyle={\bfseries\color{green!40!black}},commentstyle={\itshape\color{purple!40!black}},identifierstyle={\color{blue}},stringstyle={\color{orange}}"
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Chapter 7: Point Estimation
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Advanced Statistics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Wang Shujia 
+\end_layout
+
+\begin_layout Institute
+Department of Statistics, College of Economics
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Shenzhen University
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ Shenzhen University
+\end_layout
+
+\begin_layout TitleGraphic
+\begin_inset Graphics
+	filename figure/szulogo.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<setup,include=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+#options(formatR.arrow=TRUE,tikzDefaultEngine="xetex")
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(
+\end_layout
+
+\begin_layout Plain Layout
+
+dev = 'pdf',
+\end_layout
+
+\begin_layout Plain Layout
+
+#dev='tikz',
+\end_layout
+
+\begin_layout Plain Layout
+
+fig.align='center', 
+\end_layout
+
+\begin_layout Plain Layout
+
+size='footnotesize', 
+\end_layout
+
+\begin_layout Plain Layout
+
+#results='asis',
+\end_layout
+
+\begin_layout Plain Layout
+
+out.width='.85
+\backslash
+
+\backslash
+linewidth',
+\end_layout
+
+\begin_layout Plain Layout
+
+fig.path='figure/', 	
+\end_layout
+
+\begin_layout Plain Layout
+
+fig.keep='high', 	
+\end_layout
+
+\begin_layout Plain Layout
+
+#fig.show='asis', 
+\end_layout
+
+\begin_layout Plain Layout
+
+cache=TRUE,	
+\end_layout
+
+\begin_layout Plain Layout
+
+warning=FALSE,
+\end_layout
+
+\begin_layout Plain Layout
+
+message=FALSE,
+\end_layout
+
+\begin_layout Plain Layout
+
+par=TRUE,
+\end_layout
+
+\begin_layout Plain Layout
+
+prompt=TRUE
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+knit_hooks$set(par=function(before, options, envir){
+\end_layout
+
+\begin_layout Plain Layout
+
+if (before && options$fig.show!='none')
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mar=c(4,4,.8,.1),cex.lab=.95,cex.axis=.9,mgp=c(2,.7,0),tcl=-.3)
+\end_layout
+
+\begin_layout Plain Layout
+
+})
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Overview
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Properties of Point Estimators
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Definitions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Bold
+status open
+
+\begin_layout Plain Layout
+Estimator
+\end_layout
+
+\end_inset
+
+: Let 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+, \SpecialChar ldots
+, 
+\begin_inset Formula $X_{n}$
+\end_inset
+
+ be an iid sample from a population 
+\begin_inset Formula $X\sim f(x|\theta)$
+\end_inset
+
+, then a point 
+\emph on
+estimator
+\emph default
+ is any function 
+\begin_inset Formula $\thh=T($
+\end_inset
+
+
+\begin_inset Formula $X_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+, \SpecialChar ldots
+, 
+\begin_inset Formula $X_{n}$
+\end_inset
+
+) of a sample.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Flex Bold
+status open
+
+\begin_layout Plain Layout
+Estimate
+\end_layout
+
+\end_inset
+
+: An 
+\emph on
+estimate
+\emph default
+ is the specific realization of an estimator, i.e.
+ is a function of the observed values 
+\begin_inset Formula $\sam xn$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+There are many potential estimators to estimate a parameter: e.g.
+ sample mean, sample median, trimmed mean, mode,...
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
++-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Methods of Evaluating Estimators
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The distribution of the estimator should be somehow centred with respect
+ to 
+\begin_inset Formula $\theta$
+\end_inset
+
+ (Accuracy, unbiased)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If it is not, the estimator will tend either to
+\emph on
+ under-estimate 
+\emph default
+or 
+\emph on
+overestimate
+\emph default
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The 
+\emph on
+dispersion
+\emph default
+ of the distribution should be small (Precision)
+\end_layout
+
+\begin_layout Itemize
+These two properties need to be considered together.
+ 
+\end_layout
+
+\begin_layout Itemize
+The difference 
+\begin_inset Formula $\thh-\theta$
+\end_inset
+
+ is referred to as an 
+\emph on
+error
+\emph default
+, and the 
+\emph on
+mean squared error
+\emph default
+ is a commonly used measure of performance of an estimator.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Methods of Evaluating Estimators
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Unbiased Estimator
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Bold
+status open
+
+\begin_layout Plain Layout
+Bias
+\end_layout
+
+\end_inset
+
+: Let 
+\begin_inset Formula $\hat{\theta}=\thh(\sam Xn)$
+\end_inset
+
+ be an estimator of the parameter 
+\begin_inset Formula $θ$
+\end_inset
+
+, the bias in 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ is defined by
+\begin_inset Formula 
+\[
+{\rm Bias}(\theta)=E(\hat{\theta})−θ
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Bold
+status open
+
+\begin_layout Plain Layout
+Unbias estimator
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ is called an 
+\begin_inset Flex Emphasize
+status open
+
+\begin_layout Plain Layout
+unbiased estimator
+\end_layout
+
+\end_inset
+
+ of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ if 
+\begin_inset Formula ${\rm Bias}(\theta)=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The sample mean 
+\begin_inset Formula $\Xbar$
+\end_inset
+
+ is an unbiased estimator of the population mean 
+\begin_inset Formula $\mu$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+The sample variance 
+\begin_inset Formula $S^{2}$
+\end_inset
+
+ is an unbiased estimator of the population variance 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The sample variance 
+\begin_inset Formula $S^{2}$
+\end_inset
+
+ is unbiased of 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Let 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+, \SpecialChar ldots
+, 
+\begin_inset Formula $X_{n}$
+\end_inset
+
+ be iid 
+\begin_inset Formula $N(\mu,\sigma^{2})$
+\end_inset
+
+, shown that the sample variance 
+\begin_inset Formula $S^{2}$
+\end_inset
+
+ is an unbiased estimator of 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Frame
+Proof: 
+\begin_inset Formula 
+\[
+S^{2}=\frac{1}{n-1}\sum_{i=1}^{n}(X_{i}-\Xbar)^{2}
+\]
+
+\end_inset
+
+Note that 
+\begin_inset Formula $\Xbar\sim N(\mu,\frac{\sigma^{2}}{n})$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}=E(X^{2})-\mu^{2}$
+\end_inset
+
+, we have
+\end_layout
+
+\begin_layout Frame
+\begin_inset Formula 
+\begin{eqnarray*}
+E[(n-1)S^{2}] & = & E\big[\sum(X_{i}-\Xbar)^{2}\big]\\
+ & = & E\big[\sum X_{i}^{2}-n\Xbar^{2}\big]\\
+ & = & n(\sigma^{2}-\mu^{2})-n(\frac{\sigma^{2}}{n}-\mu^{2})=(n-1)\sigma^{2}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Hence 
+\begin_inset Formula $E(S^{2})=\sigma^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
++-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Mean Square Error
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+The 
+\emph on
+Mean Squared Error
+\emph default
+ (MSE) of an estimator 
+\begin_inset Formula $\thh$
+\end_inset
+
+ is
+\begin_inset Formula 
+\[
+\mathrm{MSE}=E(\thh-\theta)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+MSE is a trade-off between the precison and accuracy 
+\begin_inset Formula 
+\[
+{\rm MSE}={\rm Var}(\thh)+[{\rm Bias}(\thh)]^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\thh$
+\end_inset
+
+ is unbiased, 
+\begin_inset Formula ${\rm MSE}={\rm Var}(\thh)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We call 
+\begin_inset Formula $\thh$
+\end_inset
+
+ is a 
+\emph on
+consistent estimator
+\emph default
+ of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ if 
+\begin_inset Formula 
+\[
+\lim_{n\to\infty}E(\thh-\theta)^{2}=\lim_{n\to\infty}{\rm MSE}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Standard Error
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Bold
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Standard error
+\end_layout
+
+\end_inset
+
+:The
+\emph on
+ standard error
+\emph default
+ (SE) is defined as the standard deviation of the sampling distribution
+ of the statistic.
+\end_layout
+
+\begin_layout Frame
+If 
+\begin_inset Formula $\thh$
+\end_inset
+
+ is unbiased, 
+\begin_inset Formula ${\rm SE}=\sqrt{{\rm MSE}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Standard error of the sample mean (
+\begin_inset Formula $\Xbar$
+\end_inset
+
+)
+\begin_inset Formula 
+\[
+{\rm SE}(\bar{x})=\frac{\sigma}{\sqrt{n}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+An estimate of 
+\begin_inset Formula ${\rm SE}(\bar{x})$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+\hat{\mathrm{SE}}(\bar{x})=\frac{s}{\sqrt{n}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Visual representations of variance and bias
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figure/MSE.JPG
+	width 60text%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: Compare the MSE of 
+\begin_inset Formula $S^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $S_{u}^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Let 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+, \SpecialChar ldots
+, 
+\begin_inset Formula $X_{n}$
+\end_inset
+
+ be iid 
+\begin_inset Formula $N(\mu,\sigma^{2})$
+\end_inset
+
+, compare the MSE of 
+\begin_inset Formula $S^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $S_{u}^{2}=\frac{1}{n}\sum(X_{i}-\Xbar)^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Frame
+Note that 
+\begin_inset Formula $B=\frac{1}{\sigma^{2}}\sum(X_{i}-\Xbar)^{2}=\frac{(n-1)}{\sigma^{2}}S^{2}\sim\chi^{2}(n-1)$
+\end_inset
+
+ and 
+\begin_inset Formula ${\rm Var}(\chi_{n}^{2})=2(n-1)$
+\end_inset
+
+, we have
+\begin_inset Formula 
+\begin{eqnarray*}
+{\rm E}(S^{2}) & = & \sigma^{2}\\
+{\rm Var}(S^{2}) & = & \frac{2\sigma^{4}}{n-1}\\
+{\rm E}(S_{u}^{2}) & = & \frac{n-1}{n}\sigma^{2}\\
+{\rm Var}(S_{u}^{2}) & = & \frac{2(n-1)\sigma^{4}}{n^{2}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Formula 
+\[
+{\rm MSE}(S^{2})=\frac{2\sigma^{4}}{n-1}>\frac{(2n-1)\sigma^{4}}{n^{2}}={\rm MSE}(S_{u}^{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
++-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Effciency 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Bold
+status open
+
+\begin_layout Plain Layout
+Efficiency
+\end_layout
+
+\end_inset
+
+: The efficiency of an estimator 
+\begin_inset Formula $T$
+\end_inset
+
+ is the inverse of its mean squared error, written as
+\begin_inset Formula 
+\[
+{\rm eff}(T)=\frac{1}{{\rm MSE}(T)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+An estimator 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+ is said to be more 
+\emph on
+precise
+\emph default
+ than the estimator 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+ if 
+\begin_inset Formula ${\rm eff}[T_{1}])\ge{\rm eff}[T_{2}]$
+\end_inset
+
+ or if 
+\begin_inset Formula ${\rm MSE}[T_{1}]\le{\rm MSE}[T_{2}]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $\hat{\theta}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{\theta}_{2}$
+\end_inset
+
+ be two 
+\emph on
+unbiased
+\emph default
+ estimators of 
+\begin_inset Formula $θ$
+\end_inset
+
+, based on the same sample.
+ We said 
+\begin_inset Formula $\hat{\theta}_{1}$
+\end_inset
+
+ is more efficient than 
+\begin_inset Formula $\hat{\theta}_{2}$
+\end_inset
+
+ if 
+\begin_inset Formula ${\rm Var}(\thh_{1})\le{\rm Var}(\thh_{2})$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Relative Efficiency
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Bold
+status open
+
+\begin_layout Plain Layout
+Relative Efficiency
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+{\rm eff}(T_{1},T_{2})=\frac{{\rm eff}(T_{1})}{{\rm eff}(T_{2})}=\frac{{\rm MSE}(T_{2})}{{\rm MSE}(T_{1})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If 
+\begin_inset Formula $\hat{\theta}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{\theta}_{2}$
+\end_inset
+
+ are two 
+\emph on
+unbiased
+\emph default
+ estimators of 
+\begin_inset Formula $θ$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\[
+{\rm eff}(\thh_{1},\thh_{2})=\frac{{\rm eff}(\thh_{1})}{{\rm eff}(\thh_{2})}=\frac{{\rm Var}(\thh_{2})}{{\rm Var}(\thh_{1})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Example
+Let 
+\begin_inset Formula $\sam Xn$
+\end_inset
+
+ denote a sample from 
+\begin_inset Formula $U(0,\theta)$
+\end_inset
+
+, with 
+\begin_inset Formula $\sam Yn$
+\end_inset
+
+ be the corresponding ordered sample.
+ 
+\end_layout
+
+\begin_layout Example
+(i) Show that 
+\begin_inset Formula $T_{1}=2\Xbar$
+\end_inset
+
+ and 
+\begin_inset Formula $T_{2}=\frac{n+1}{n}Y_{n}$
+\end_inset
+
+ are both unbiased of 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+(ii) Find 
+\begin_inset Formula ${\rm eff}(T_{1,}T_{2})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Overprint
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+(i) Now 
+\begin_inset Formula $E(X_{i})=\theta/2,\ Var(X_{i})=\theta^{2}/12$
+\end_inset
+
+, so 
+\begin_inset Formula 
+\[
+E(T_{1})=2E(\Xbar)=2\cdot\theta/2=\theta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To find the mean of 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+, first note that the pdf of 
+\begin_inset Formula $Y_{n}$
+\end_inset
+
+ is
+\begin_inset Formula 
+\[
+f_{Y_{n}}(y)=\begin{cases}
+\frac{n}{\theta^{n}}y^{n-1} & 0<y<\theta\\
+0 & {\rm Otherwise}
+\end{cases}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+E(Y_{n})=\int_{0}^{\theta}y\cdot\frac{n}{\theta^{n}}y^{n-1}dy=\frac{n}{n+1}\theta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Overprint
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Hence
+\begin_inset Formula 
+\[
+E(T_{2})=E(\frac{n+1}{n}Y_{n})=\theta
+\]
+
+\end_inset
+
+So both 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+ are unbiased.
+\end_layout
+
+\end_deeper
+\begin_layout Overprint
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+(ii) Find 
+\begin_inset Formula ${\rm eff}(T_{1,}T_{2})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Var(T_{1})=Var(2\Xbar)=\frac{4}{n}\cdot\frac{\theta^{2}}{12}=\frac{\theta^{2}}{3n}
+\]
+
+\end_inset
+
+To find 
+\begin_inset Formula $Var(T_{2})$
+\end_inset
+
+, first we need to find 
+\begin_inset Formula $E(Y_{n}^{2})$
+\end_inset
+
+ from
+\begin_inset Formula 
+\[
+E(Y_{n}^{2})=\int_{0}^{\theta}y^{2}\cdot\frac{n}{\theta^{n}}y^{n-1}dy=\frac{n}{n+2}\theta^{2}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var(Y_{n})=E(Y_{n}^{2})-[E(Y_{n})]^{2}=\frac{n\theta^{2}}{n+2}-\big(\frac{n\theta}{n+1}\big)^{2}=\frac{n\theta^{2}}{(n+1)^{2}(n+2)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Overprint
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The variance of 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+Var(T_{2})=Var(\frac{n+1}{n}Y_{n})=\frac{\theta^{2}}{n(n+2)}
+\]
+
+\end_inset
+
+The relative efficiency
+\begin_inset Formula 
+\[
+{\rm eff}(T_{1},T_{2})=\frac{Var(T_{2})}{Var(T_{1})}=\frac{3}{n+2}
+\]
+
+\end_inset
+
+This is less than 1 for 
+\begin_inset Formula $n>1$
+\end_inset
+
+ so 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+ is more efficient than 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Cramer-Rao Lower Bound
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Cramer-Rao Lower Bound
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Theorem
+If 
+\begin_inset Formula $T=\thh$
+\end_inset
+
+ is an unbiased estimator of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ and a random sample of size 
+\begin_inset Formula $n$
+\end_inset
+
+, 
+\begin_inset Formula $\sam Xn$
+\end_inset
+
+, has pdf 
+\begin_inset Formula $f(x|\theta)$
+\end_inset
+
+, then the variance of the unbiased estimator, 
+\begin_inset Formula $\thh$
+\end_inset
+
+, must satisfy the inequality
+\begin_inset Formula 
+\[
+{\rm Var}(\thh)\ge\frac{1}{nI_{X}(\theta)}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $I_{X}(\theta)$
+\end_inset
+
+ is the 
+\emph on
+Fisher information
+\emph default
+ of 
+\begin_inset Formula $X$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+I_{X}(\theta)=E\big[\big(\frac{\partial\ln f(X|\theta)}{\partial\theta}\big)^{2}\big]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Computation of Fisher Information
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Formula 
+\[
+I_{X}(\theta)=E\big[\big(\frac{\partial\ln f(X|\theta)}{\partial\theta}\big)^{2}\big]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Formula 
+\[
+I_{X}(\theta)=-E\big[\frac{\partial^{2}\ln f(X|\theta)}{\partial\theta^{2}}\big]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Formula 
+\[
+I_{X}(\theta)=Var\big(\frac{\partial\ln f(X|\theta)}{\partial\theta}\big)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Minimum variance unbiased estimator
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Definition
+If 
+\begin_inset Formula $\thh$
+\end_inset
+
+ is an unbiased estimator of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ and
+\begin_inset Formula 
+\[
+{\rm Var}(\thh)=\frac{1}{nI_{X}(\theta)}
+\]
+
+\end_inset
+
+then 
+\begin_inset Formula $\thh$
+\end_inset
+
+ is called an 
+\series bold
+\emph on
+efficient estimator
+\series default
+\emph default
+ or a 
+\series bold
+\emph on
+minimum variance unbiased estimator
+\emph default
+ 
+\series default
+of 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+In general
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Theorem
+If 
+\begin_inset Formula $T=\thh$
+\end_inset
+
+ is any estimator of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ and a random sample of size 
+\begin_inset Formula $n$
+\end_inset
+
+, 
+\begin_inset Formula $\sam Xn$
+\end_inset
+
+, has pdf 
+\begin_inset Formula $f(x|\theta)$
+\end_inset
+
+, then the following inequality valid
+\begin_inset Formula 
+\[
+{\rm Var}(\thh)\ge\frac{[1+b_{T}^{'}(\theta)]^{2}}{nI_{X}(\theta)}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+{\rm MSE}\ge\frac{[1+b_{T}^{'}(\theta)]^{2}}{nI_{X}(\theta)}+b_{T}^{2}(\theta)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $b_{T}(\theta)$
+\end_inset
+
+ is the bias of 
+\begin_inset Formula $\theta$
+\end_inset
+
+, 
+\begin_inset Formula $b_{T}(\theta)=E(T)-\theta$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Show that 
+\begin_inset Formula $\Xbar$
+\end_inset
+
+ is a minimum variance unbiased estimator of the mean 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ of a Poisson population.
+\end_layout
+
+\begin_layout Frame
+
+\series bold
+Proof: 
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+If 
+\begin_inset Formula $X\sim Pois(\lambda)$
+\end_inset
+
+ then 
+\begin_inset Formula $E(X)={\rm Var}(X)=\lambda$
+\end_inset
+
+.
+ So 
+\begin_inset Formula $E(\Xbar)=\lambda$
+\end_inset
+
+ and 
+\begin_inset Formula ${\rm Var}(\Xbar)=\lambda/n$
+\end_inset
+
+.
+ We need to show the CRLB equals to 
+\begin_inset Formula $\lambda/n$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Frame
+Computing the Fisher information: 
+\begin_inset Formula 
+\[
+f(x|\lambda)=\frac{\la^{x}}{x!}e^{-\la}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\ln f(x|\la)=x\ln\la-\la-\ln(x!)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\partial\ln f(x|\la)}{\partial\la}=\frac{x}{\la}-1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Overprint
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial^{2}\ln f(x|\la)}{\partial^{2}\la}=-\frac{x}{\la^{2}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+I_{X}(\la)=-\big[\frac{\partial^{2}\ln f(x|\la)}{\partial^{2}\la}\big]=\frac{E(X)}{\la^{2}}=\frac{1}{\la}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Overprint
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Or
+\begin_inset Formula 
+\[
+I_{X}(\la)={\rm Var}\big[\frac{\partial\ln f(x|\la)}{\partial\la}\big]=\frac{1}{\la^{2}}{\rm Var}(X)=\frac{1}{\la}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Overprint
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+the CRLB is 
+\begin_inset Formula 
+\[
+\frac{1}{nI_{X}(\la)}=\frac{\la}{n}
+\]
+
+\end_inset
+
+Hence 
+\begin_inset Formula ${\rm Var}(\Xbar)=\lambda/n$
+\end_inset
+
+ attains the CRLB.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section
+Point Estimation Techniques
+\end_layout
+
+\begin_layout Subsection
+Method of Moments Estimators
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Methods of Finding Estimators
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Method of moments
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let sample moments equals to population monemts
+\end_layout
+
+\begin_layout Itemize
+The order of the moments equals to the number of unknown parameters
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Maximum likelihood estimate (MLE)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The maximum point of the likelihood function
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: method of moments estimators 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Given a random sample of size 
+\begin_inset Formula $n$
+\end_inset
+
+ from a 
+\begin_inset Formula $Gamma(\al,\la)$
+\end_inset
+
+ population, find the method of moments estimators of 
+\begin_inset Formula $\al$
+\end_inset
+
+ and 
+\begin_inset Formula $\la$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\series bold
+Solution
+\series default
+: The population moments 
+\begin_inset Formula $E(X)=\al/\la$
+\end_inset
+
+, and 
+\begin_inset Formula $Var(X)=\al/\la^{2}$
+\end_inset
+
+.
+ Let
+\begin_inset Formula 
+\begin{eqnarray*}
+E(X)=\al/\la & = & m_{1}=\Xbar\\
+E(X^{2})=\frac{\al}{\la^{2}}+\big(\frac{\al}{\la}\big)^{2} & = & m_{2}=\frac{1}{n}\sum X_{i}^{2}
+\end{eqnarray*}
+
+\end_inset
+
+It can be solved that 
+\begin_inset Formula 
+\[
+\tilde{\al}=\frac{\Xbar^{2}}{S_{u}^{2}}\ {\rm and\ }\tilde{\la}=\frac{\Xbar}{S_{u}^{2}}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $S_{u}^{2}=\frac{1}{n}\sum(X_{i}-\Xbar)^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Likelihood and Maximum Likelihood Estimators
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Maximum Likelihood Estimate (MLE)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Definition
+Let 
+\begin_inset Formula $\sam Xn$
+\end_inset
+
+ be a random sample from 
+\begin_inset Formula $f(x|\theta)$
+\end_inset
+
+ and 
+\begin_inset Formula $\bx=(\sam xn)^{T}$
+\end_inset
+
+ be the corresponding observed values.
+ The 
+\emph on
+
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+likelihood function
+\end_layout
+
+\end_inset
+
+
+\emph default
+ is 
+\begin_inset Formula 
+\[
+L(\theta|\bx)=\prod_{i=1}^{n}f(x_{i}|\theta)
+\]
+
+\end_inset
+
+The value of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ that maximizes the likelihood function is called the 
+\emph on
+Maximum Likelihood Estimate
+\emph default
+ (MLE), i.e.
+\begin_inset Formula 
+\[
+L(\thh|\bx)=\max_{\theta\in\Theta}L(\theta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: MLE of Poisson
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Let 
+\begin_inset Formula $\sam Xn$
+\end_inset
+
+ be a random sample from a 
+\begin_inset Formula $Pois(\la)$
+\end_inset
+
+ population.
+ Compute the maximum likelihood estimator and the maximum likelihood estimate
+ for the parameter 
+\begin_inset Formula $\l$
+\end_inset
+
+.
+ Verify your answer with simulation by generating 20,000 random values from
+ a 
+\begin_inset Formula $Pois(\la=5)$
+\end_inset
+
+ population.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\series bold
+Solution
+\series default
+: The log-likelihood function is 
+\begin_inset Formula 
+\[
+\ln L(\la|\bx)=\ln\left(\prod\frac{\la^{x_{i}}}{x_{i}!}e^{-\la}\right)=-n\la+\ln\la\sum x_{i}-\sum\ln(x_{i}!)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\partial\ln L(\la|\bx)}{\partial\la}=-n+\frac{\sum x_{i}}{\la}\overset{set}{=}0
+\]
+
+\end_inset
+
+The solution is 
+\begin_inset Formula $\lah=\bar{x}$
+\end_inset
+
+, the second order derivative 
+\begin_inset Formula 
+\[
+\frac{\partial^{2}\ln L(\la|\bx)}{\partial^{2}\la}=-\frac{\sum x_{i}}{\la^{2}}<0
+\]
+
+\end_inset
+
+The maximum likelihood estimate is 
+\begin_inset Formula $\lah(\bx)=\bar{x}$
+\end_inset
+
+ and the maximum likelihood estimator is 
+\begin_inset Formula $\lah(\bX)=\Xbar$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+MLE of Poisson: simulation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(99) 
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- rpois(20000, 5)
+\end_layout
+
+\begin_layout Plain Layout
+
+lam <- c(mean(x),median(x))
+\end_layout
+
+\begin_layout Plain Layout
+
+lam
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: MLE of Uniform
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Let 
+\begin_inset Formula $\sam Xn$
+\end_inset
+
+ be a random sample from a 
+\begin_inset Formula $Unif(0,\theta)$
+\end_inset
+
+ population.
+ Find the maximum likelihood estimator of 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ Find the maximum likelihood estimate for a randomly generated sample of
+ 1000 
+\begin_inset Formula $Unif(0,2)$
+\end_inset
+
+ random variables.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\series bold
+Solution
+\series default
+: The pdf of a random variable 
+\begin_inset Formula $X\sim Unif(0,\theta)$
+\end_inset
+
+ is 
+\begin_inset Formula $f(x|\theta)=1/\theta\ (0\le x\le\theta)$
+\end_inset
+
+.
+ The likelihood function is
+\begin_inset Formula 
+\[
+L(\theta|\bx)=\begin{cases}
+\frac{1}{\theta^{n}} & 0\le x_{1},x_{2},\dots,x_{n}\le\theta\\
+0 & {\rm otherwise.}
+\end{cases}
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula $L(\theta|\bx)=1/\theta^{n}$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $\theta\ge x_{(n)}=max(x_{i})$
+\end_inset
+
+, hence it follows that the maximum likelihood estimator is 
+\begin_inset Formula $\thh(\bX)=X_{(n)}$
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
++-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Properties of Maximum Likelihood Estimators
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+MLEs are not necessarily unbiased.
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $T$
+\end_inset
+
+ is a MLE of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ and 
+\begin_inset Formula $g$
+\end_inset
+
+ is any function, then 
+\begin_inset Formula $g(T)$
+\end_inset
+
+ is the MLE of 
+\begin_inset Formula $g(\theta)$
+\end_inset
+
+.
+ This is known as the 
+\emph on
+invariance property
+\emph default
+ of MLEs.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Under certain regularity conditions on 
+\begin_inset Formula $f(x|\theta)$
+\end_inset
+
+, as 
+\begin_inset Formula $n\rightarrow\infty$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\thh(\bX)\sim N(\theta,[I_{X}(\theta)]^{-1})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+An efficient estimator (if exists) must be MLE, but MLE may not be efficient.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: MLE of Gamma
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Given a random sample of size 
+\begin_inset Formula $n$
+\end_inset
+
+ from a population with pdf
+\begin_inset Formula 
+\[
+f(x|\theta)=\frac{x}{\theta^{2}}e^{-x/\theta},x\ge0,\theta>0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Find an estimator of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ using the method of moments.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Find an estimator of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ using the method of maximum likelihood.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Are the method of moments and maximum likelihood estimators of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ unbiased? 
+\end_layout
+
+\begin_layout Enumerate
+Compute the variance of the MLE of 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Is the MLE of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ efficient?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Recap
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
