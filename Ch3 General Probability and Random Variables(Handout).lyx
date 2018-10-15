@@ -1,0 +1,4268 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article-beamer
+\begin_preamble
+%\usetheme{Warsaw}
+\usetheme{Boadilla}
+\usecolortheme{seahorse}
+\usefonttheme{professionalfonts}
+%\setbeamertemplate{navigation symbols}{} 
+%gets rid of bottom navigation bars
+\setbeamertemplate{footline}[page number]{}
+\usepackage{xeCJK}
+%\setCJKmainfont{SimSun}
+%\usepackage{multirow} %Excel2Latex table needed
+%\usepackage{booktabs} %Excel2Latex table needed
+%\setCJKmainfont{宋体}  %设置中文的默认字体 
+%\setCJKfamilyfont{yh}{Microsoft YaHei}  %微软雅黑 yh 
+%\setCJKmainfont[ItalicFont={楷体}, BoldFont={黑体}]{宋体}
+%\setCJKmainfont[BoldFont={Adobe Heiti Std},ItalicFont={Adobe Kaiti Std}]{Adobe Song Std} 
+
+%\usepackage[backend=biber,natbib=true,style=caspervector,citestyle=authoryear,maxnames = 99,utf8]{biblatex}
+%\usepackage[backend=biber,natbib=true,bibstyle=caspervector,citestyle=authoryear,utf8]{biblatex}
+%\addbibresource{F:/BaiduYun/Teaching/ref/Bayesian.bib}
+%\DeclareBibliographyCategory{cited} \AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}} 
+%\newcommand{\myemph}[1]{\emph{\textcolor{red}{#1}}}
+%\tableofcontents[hideallsubsections]
+%\usepackage{multicol}
+%\usepackage[natbib=true,bibstyle=caspervector,citestyle=authoryear,utf8,maxnames = 2]{biblatex}
+%\addbibresource{F:/BaiduYun/AdvStat/advstat.bib}
+% Beamer show contents,upto subsection
+\AtBeginSection[]
+{
+   \begin{frame}
+       \frametitle{Outline}
+       \tableofcontents[sectionstyle=show/shaded,hideallsubsections]
+   \end{frame}
+}
+\AtBeginSubsection[]
+{
+   \begin{frame}
+       \frametitle{Outline}
+       \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded/hide]
+   \end{frame}
+}
+\usepackage{multicol} % Make documents with multiple columns.
+%\usepackage{enumitem}
+\usepackage{amsmath,fancyhdr,listings}
+%\usepackage{tikz}
+\usepackage{simpsons}
+
+% To enter the multicol environment, use ERT (Ctrl+l) and type \begin{multicols}{2} % for two columns, or ...{3} for three columns, etc. Once finished. re-enter ERT
+% and type \end{multicols}. To add divider lines between cols, add another ERT box
+% with \setlength{\columnseprule}{0.4pt} immediately after \begin{multicols}{...}
+%\usepackage{bm} % Allows use of bold Greek characters
+
+%\renewcommand{\vec}[1]{\bm{#1}} % Redefines vector command to bold the vectorized character.
+\newcommand{\eps}{\varepsilon}
+% iid sample series: \sample x n
+\newcommand{\sample}[2]{#1_1,#1_2,\dots,#1_{#2}}
+\end_preamble
+\options utf8
+\use_default_options true
+\begin_modules
+knitr
+logicalmkup
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format pdf4
+\output_sync 0
+\bibtex_command biber
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\listings_params "language=R,backgroundcolor={\color{yellow!10}},showstringspaces=false,basicstyle={\footnotesize\ttfamily},keywordstyle={\bfseries\color{green!40!black}},commentstyle={\itshape\color{purple!40!black}},identifierstyle={\color{blue}},stringstyle={\color{orange}}"
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Chapter 3: General Probability and Random Variables
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Advanced Statistics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+
+\lang chinese-simplified
+Wang Shujia 
+\end_layout
+
+\begin_layout Institute
+
+\lang chinese-simplified
+Department of Statistics, College of Economics
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang chinese-simplified
+Shenzhen University
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ Shenzhen University
+\end_layout
+
+\begin_layout TitleGraphic
+
+\lang chinese-simplified
+\begin_inset Graphics
+	filename figure/szulogo.bmp
+	lyxscale 30
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<setup,include=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+options(formatR.arrow=TRUE,tikzDefaultEngine="xetex")
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(
+\end_layout
+
+\begin_layout Plain Layout
+
+dev = 'pdf',
+\end_layout
+
+\begin_layout Plain Layout
+
+#dev='tikz',
+\end_layout
+
+\begin_layout Plain Layout
+
+fig.align='center', 
+\end_layout
+
+\begin_layout Plain Layout
+
+size='footnotesize', 
+\end_layout
+
+\begin_layout Plain Layout
+
+#results='asis',
+\end_layout
+
+\begin_layout Plain Layout
+
+out.width='.8
+\backslash
+
+\backslash
+linewidth',
+\end_layout
+
+\begin_layout Plain Layout
+
+fig.path='figure/', 	
+\end_layout
+
+\begin_layout Plain Layout
+
+fig.keep='high', 	
+\end_layout
+
+\begin_layout Plain Layout
+
+#fig.show='asis', 
+\end_layout
+
+\begin_layout Plain Layout
+
+cache=TRUE,	
+\end_layout
+
+\begin_layout Plain Layout
+
+warning=FALSE,
+\end_layout
+
+\begin_layout Plain Layout
+
+message=FALSE,
+\end_layout
+
+\begin_layout Plain Layout
+
+par=TRUE,
+\end_layout
+
+\begin_layout Plain Layout
+
+prompt=TRUE
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+knit_hooks$set(par=function(before, options, envir){
+\end_layout
+
+\begin_layout Plain Layout
+
+if (before && options$fig.show!='none')
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mar=c(4,4,.01,.01),cex.lab=.95,cex.axis=.9,mgp=c(2,.7,0),tcl=-.3)
+\end_layout
+
+\begin_layout Plain Layout
+
+})
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Random Events 
+\end_layout
+
+\begin_layout Subsection
+Counting 
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Basic principle of counting
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Suppose 
+\begin_inset Formula $k$
+\end_inset
+
+ experiments are to be performed such that the first can result in any one
+ of 
+\begin_inset Formula $n_{1}$
+\end_inset
+
+ outcomes; 
+\end_layout
+
+\begin_layout Itemize
+and if for each of these 
+\begin_inset Formula $n_{1}$
+\end_inset
+
+ outcomes, there are 
+\begin_inset Formula $n_{2}$
+\end_inset
+
+ possible outcomes of the second experiment; 
+\end_layout
+
+\begin_layout Itemize
+and if for each of the possible outcomes of the first two experiments, there
+ are 
+\begin_inset Formula $n_{3}$
+\end_inset
+
+ possible outcomes of the third experiment; 
+\end_layout
+
+\begin_layout Itemize
+and if .
+ .
+ .
+ , 
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+then there are 
+\begin_inset Formula 
+\[
+n=n_{1}\times n_{2}\times\cdots\times n_{k}
+\]
+
+\end_inset
+
+ possible outcomes for the 
+\begin_inset Formula $k$
+\end_inset
+
+ experiments.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Permutation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Any ordered sequence of 
+\begin_inset Formula $k$
+\end_inset
+
+ objects taken from 
+\begin_inset Formula $n$
+\end_inset
+
+ distinct objects is called a 
+\series bold
+permutation
+\series default
+ and is denoted 
+\begin_inset Formula $P_{k,n}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P_{k,n}=n(n-1)\cdots(n-k+1)=\frac{n!}{(n-k)!}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+
+\series bold
+Example
+\series default
+: How many different ways can the first 3 places be decided in a race with
+ 5 runners?
+\end_layout
+
+\begin_layout FragileFrame
+
+\series bold
+Solution
+\series default
+: in R, 
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+prod(5:(5-3+1))
+\end_layout
+
+\begin_layout Plain Layout
+
+factorial(5)/factorial(5-3)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Combinations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+An arrangement of 
+\begin_inset Formula $k$
+\end_inset
+
+ objects taken from 
+\begin_inset Formula $n$
+\end_inset
+
+ objects without regard to order is called a 
+\series bold
+combination 
+\series default
+and is denoted 
+\begin_inset Formula $C_{k,n}$
+\end_inset
+
+ or 
+\begin_inset Formula ${n \choose k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Formula 
+\[
+C_{k,n}={n \choose k}=\frac{n!}{k!(n-k)!}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+
+\series bold
+Example
+\series default
+: A committee of three people is to be formed from a group of eight people.
+ How many different committees are possible?
+\end_layout
+
+\begin_layout FragileFrame
+
+\series bold
+Solution
+\series default
+: in R, 
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+choose(n=8,k=3)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Set Theory
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Events
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A 
+\series bold
+random experiment
+\series default
+ is any action or process that generates an outcome whose value cannot be
+ known with certainty.
+ 
+\end_layout
+
+\begin_layout Itemize
+The 
+\series bold
+sample space
+\series default
+ of an experiment, denoted by 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ or 
+\begin_inset Formula $S$
+\end_inset
+
+, is the set of all of the possible outcomes of an experiment.
+\end_layout
+
+\begin_layout Itemize
+An 
+\series bold
+event
+\series default
+ is any subset of the sample space, which is often denoted with the letter
+ 
+\begin_inset Formula $E$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Elementary Event
+\series default
+: Event that cannot be divided into subsets.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
++-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Basic Set Theory
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Set is collection of elements.
+ Let 
+\begin_inset Formula 
+\[
+A=\{a_{1},a_{2},\dots,a_{n}\},\ B=\{b\in\mathbb{R}:b>1\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\emptyset$
+\end_inset
+
+: Empty set, has no elements
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Omega$
+\end_inset
+
+ or 
+\begin_inset Formula $S$
+\end_inset
+
+: Universal set (sample space), all elements we consider
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A\subset B$
+\end_inset
+
+: 
+\begin_inset Formula $A$
+\end_inset
+
+ is subset of 
+\begin_inset Formula $B$
+\end_inset
+
+ if every element of 
+\begin_inset Formula $A$
+\end_inset
+
+ is element of 
+\begin_inset Formula $B$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Transitivity: 
+\begin_inset Formula $A\subset B$
+\end_inset
+
+ and 
+\begin_inset Formula $B\subset C$
+\end_inset
+
+ implies 
+\begin_inset Formula $A\subset C$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Equality: 
+\begin_inset Formula $A=B$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $A\subset B$
+\end_inset
+
+ and 
+\begin_inset Formula $B\subset A$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Union:
+\begin_inset Formula $A\cup B$
+\end_inset
+
+ or 
+\begin_inset Formula $A+B$
+\end_inset
+
+, set with elements belonging to 
+\begin_inset Formula $A$
+\end_inset
+
+ or 
+\begin_inset Formula $B$
+\end_inset
+
+ or both 
+\end_layout
+
+\begin_layout Itemize
+Intersection:
+\begin_inset Formula $A\cap B$
+\end_inset
+
+ or 
+\begin_inset Formula $AB$
+\end_inset
+
+, set with elements belonging to 
+\begin_inset Formula $A$
+\end_inset
+
+ and to 
+\begin_inset Formula $B$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ disjoint if :
+\begin_inset Formula $A\cap B=\emptyset$
+\end_inset
+
+, have no common elements 
+\end_layout
+
+\begin_layout Itemize
+Complement 
+\begin_inset Formula $A^{c}\ {\rm or}\ \bar{A}$
+\end_inset
+
+: all elements in 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ not in 
+\begin_inset Formula $A$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Basic Set Laws
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Commutative laws
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+for the union: 
+\begin_inset Formula $A\cup B=B\cup A$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+for the intersection: 
+\begin_inset Formula $A\cap B=B\cap A$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Associative laws
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+for the union: 
+\begin_inset Formula $(A\cup B)\cup C=A\cup(B\cup C)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+for the intersection: 
+\begin_inset Formula $(A\cap B)\cap C=A\cap(B\cap C)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Distributive laws:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $(A\cap B)\cup C=(A\cup C)\cap(B\cup C)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $(A\cup B)\cap C=(A\cap C)\cup(B\cap C)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+DeMorgan
+\begin_inset Quotes ers
+\end_inset
+
+s laws
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+(\bigcap_{i=1}^{\infty}A_{i})^{c}=\bigcup_{i=1}^{\infty}A_{i}^{c}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+(\bigcup_{i=1}^{\infty}A_{i})^{c}=\bigcap_{i=1}^{\infty}A_{i}^{c}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Illustration with R
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+S<-c(1,2,3,4,5,6); A<-c(1,2); B<-c(1,2,3); C<-c(2,4,6) 
+\end_layout
+
+\begin_layout Plain Layout
+
+intersect(A,B) 
+\end_layout
+
+\begin_layout Plain Layout
+
+intersect(intersect(A,B),C) #works pairwise 
+\end_layout
+
+\begin_layout Plain Layout
+
+union(A,B) 
+\end_layout
+
+\begin_layout Plain Layout
+
+union(union(A,B),C) #works pairwise 
+\end_layout
+
+\begin_layout Plain Layout
+
+(complementofA<-setdiff(S,A)) #complement of A 
+\end_layout
+
+\begin_layout Plain Layout
+
+intersect(A,complementofA)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Probability 
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ellsberg Paradox
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Two urns 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+100 balls with 50 red and 50 blue.
+ 
+\end_layout
+
+\begin_layout Enumerate
+A mix of red and blue but you don't know the proportion.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Which urn would you like to bet on? 
+\end_layout
+
+\begin_layout Itemize
+People don't like the "
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+uncertainty
+\end_layout
+
+\end_inset
+
+" about the distribution of red/blue balls in the second urn.
+\end_layout
+
+\begin_layout Itemize
+Probability is counter-intuitive!
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Three Axioms of Probability
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Definition of probability
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\series bold
+Probability
+\series default
+ is any function 
+\begin_inset Formula $P(\cdot)$
+\end_inset
+
+ of event 
+\begin_inset Formula $E\subset\Omega$
+\end_inset
+
+ such that
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $0\le P(E)\le1$
+\end_inset
+
+ for any 
+\begin_inset Formula $E\subset\Omega$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P(\Omega)=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+For any sequence of mutually exclusive events 
+\begin_inset Formula $E_{1},E_{2},\dots$
+\end_inset
+
+ (that is 
+\begin_inset Formula $E_{i}\cap E_{j}=\emptyset$
+\end_inset
+
+ for all 
+\begin_inset Formula $i\ne j$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+P(\bigcup_{i=1}^{\infty}E_{i})=\sum_{i=1}^{\infty}P(E_{i})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Properties
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $P(E^{c})=1-P(E)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P(\emptyset)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P(A\cup B)=P(A)+P(B)-P(A\cap B)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $A\subset B$
+\end_inset
+
+, then 
+\begin_inset Formula $P(A)\le P(B)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Birthday Problem
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+Suppose that a room contains m students.
+ What is the probability that at least two of them have the same birthday?
+ 
+\end_layout
+
+\begin_layout FragileFrame
+
+\series bold
+Solution
+\series default
+: Let the event 
+\begin_inset Formula $E$
+\end_inset
+
+ denote two or more students with the same birthday,
+\begin_inset Formula 
+\[
+P(E)=1-P(E^{c})=1-\frac{365\times364\times\cdots\times(365-m+1)}{365^{m}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+m<-seq(10,50,5)
+\end_layout
+
+\begin_layout Plain Layout
+
+P.E<-function(m){
+\end_layout
+
+\begin_layout Plain Layout
+
+     c(Students=m,ProbAtL2SB=1-prod((365:(365-m+1)/365)))}
+\end_layout
+
+\begin_layout Plain Layout
+
+round(sapply(m,P.E),2)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Conditional Probability and Independent Events
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Definition of Conditional Probability
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+If 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $E$
+\end_inset
+
+ are any two events in a sample space 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ and 
+\begin_inset Formula $P(E)>0$
+\end_inset
+
+, the 
+\series bold
+conditional probability 
+\series default
+of 
+\begin_inset Formula $A$
+\end_inset
+
+ given 
+\begin_inset Formula $E$
+\end_inset
+
+ is defined as
+\begin_inset Formula 
+\[
+P(A|E)=\frac{P(A\cap E)}{P(E)}
+\]
+
+\end_inset
+
+Interpretation:
+\end_layout
+
+\begin_layout Frame
+\begin_inset Formula 
+\[
+P(A|E)=P(A{\rm \ holds\ \boldsymbol{given}\ that}\ B{\rm \ holds)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Multiplication Rule: for 
+\begin_inset Formula $P(A)>0,P(B)>0$
+\end_inset
+
+,
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(A\cap B)=P(A)P(B|A)=P(B)P(A|B)
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Independent Events
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Two events 
+\begin_inset Formula $E$
+\end_inset
+
+ and 
+\begin_inset Formula $F$
+\end_inset
+
+ are 
+\series bold
+independent
+\series default
+ if and only if 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $P(E|F)=P(E)$
+\end_inset
+
+ and 
+\begin_inset Formula $P(F|E)=P(F)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Equivalently, two events 
+\begin_inset Formula $E$
+\end_inset
+
+ and 
+\begin_inset Formula $F$
+\end_inset
+
+ are 
+\series bold
+independent
+\series default
+ if and only if 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $P(E\cap F)=P(E)P(F)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Events 
+\begin_inset Formula $E_{1},E_{2},\dots,E_{n}$
+\end_inset
+
+ are
+\series bold
+ independent
+\series default
+ if, for 
+\emph on
+every
+\emph default
+ 
+\begin_inset Formula $k$
+\end_inset
+
+ where 
+\begin_inset Formula $k=2,\dots,n$
+\end_inset
+
+ and every subset of indices 
+\begin_inset Formula $i_{1},i_{2},\dots,i_{k}$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+P(E_{i_{1}}\cap E_{i_{2}}\cap\dots\cap E_{ik})=P(E_{i_{1}})P(E_{i_{2}})\cdots P(E_{i_{k}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+How many equations there exist?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Realistic Example
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Formula $D$
+\end_inset
+
+ disease, 
+\begin_inset Formula $\bar{D}$
+\end_inset
+
+ not have disease; 
+\begin_inset Formula $T_{+}$
+\end_inset
+
+ test positive, 
+\begin_inset Formula $T_{-}$
+\end_inset
+
+ test negative
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Test Positive
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Test Negative
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Total
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T_{+}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T_{-}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+disease
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $D$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.008
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.002
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.01
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ healthy
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bar{D}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.0063
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.985
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.99
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Total
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.0143
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.9857
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.00
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Formula 
+\[
+P(D\cap T_{+})=.008
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Formula 
+\[
+P(D|T_{+})=\frac{P(D\cap T_{+})}{P(T_{+})}=\frac{.008}{.0143}=.559
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+The Law of Total Probability and Bayes' Rule
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Law of Total Probability
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\series bold
+Theorem
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+Let 
+\begin_inset Formula $\sample Fn$
+\end_inset
+
+ be such that 
+\begin_inset Formula $\bigcup_{i=1}^{n}F_{i}=\Omega$
+\end_inset
+
+ and 
+\begin_inset Formula $F_{i}\cap F_{j}=\emptyset$
+\end_inset
+
+ for all 
+\begin_inset Formula $i\ne j$
+\end_inset
+
+, with 
+\begin_inset Formula $P(F_{i})>0$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Then, for any event 
+\begin_inset Formula $A$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+P(A)=\sum_{i=1}^{n}P(F_{i}\cap A)=\sum_{i=1}^{n}P(F_{i})P(A|F_{i})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $P(A)=P(E)P(A|E)+P(\bar{E})P(A|\bar{E})$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bayes's Rule
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\series bold
+Theorem
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+Let 
+\begin_inset Formula $\sample Fn$
+\end_inset
+
+ be such that 
+\begin_inset Formula $\bigcup_{i=1}^{n}F_{i}=\Omega$
+\end_inset
+
+ and 
+\begin_inset Formula $F_{i}\cap F_{j}=\emptyset$
+\end_inset
+
+ for all 
+\begin_inset Formula $i\ne j$
+\end_inset
+
+, with 
+\begin_inset Formula $P(F_{i})>0$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Then, for any event 
+\begin_inset Formula $A$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+P(F_{j}|A)=\frac{P(A\cap F_{j})}{P(A)}=\frac{P(F_{j})P(A|F_{j})}{\sum_{i=1}^{n}P(F_{i})P(A|F_{i})}\ {\rm for}\ j=1,2,\dots,n
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Famous example: Monty Hall problem
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Problem is named after the host of the long-running TV show, 
+\emph on
+Let's make a Deal
+\emph default
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Marilyn vos Savant
+\emph default
+ had a column with the correct answer that many Mathematicians thought was
+ wrong! 
+\end_layout
+
+\begin_layout Itemize
+A 
+\emph on
+contestant 
+\emph default
+is given the choice of 3 doors.
+ 
+\end_layout
+
+\begin_layout Itemize
+There is a 
+\emph on
+prize (a new car, say)
+\emph default
+ behind one of the doors and something worthless behind the other two doors:
+ two goats.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+You pick a door.
+ What is your probability of winning?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Let
+\begin_inset Formula $A=$
+\end_inset
+
+"door you picked has the car behind it", then 
+\begin_inset Formula $P(A)=1/3$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Puzzle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Now the twist.
+\end_layout
+
+\begin_layout Frame
+The host - who knows what's behind the doors - opens one of the other two
+ doors to reveal a goat.
+ 
+\end_layout
+
+\begin_layout Frame
+\begin_inset VSpace bigskip
+\end_inset
+
+He asks "would you like to switch doors?"
+\end_layout
+
+\begin_layout Frame
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+Which strategy do you chose?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Solution 1: Simulation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+actual
+\series default
+: Generated random vector of size 10,000 containing the numbers 1, 2, and
+ 3 to represent the door behind which the car is contained.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+guess
+\series default
+: Generated random vector of size 10,000 containing the numbers 1, 2, and
+ 3 to represent the contestant's initial guess.
+\end_layout
+
+\end_deeper
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(2) # done for reproducibility 
+\end_layout
+
+\begin_layout Plain Layout
+
+actual <- sample(x = 1:3, size = 10000, replace = TRUE) 
+\end_layout
+
+\begin_layout Plain Layout
+
+aguess <- sample(x = 1:3, size = 10000, replace = TRUE)
+\end_layout
+
+\begin_layout Plain Layout
+
+equals <- (actual == aguess) 
+\end_layout
+
+\begin_layout Plain Layout
+
+PNoSwitch <- sum(equals)/10000 
+\end_layout
+
+\begin_layout Plain Layout
+
+not.eq <- (actual != aguess) 
+\end_layout
+
+\begin_layout Plain Layout
+
+PSwitch <- sum(not.eq)/10000 
+\end_layout
+
+\begin_layout Plain Layout
+
+Probs <- c(PNoSwitch, PSwitch)
+\end_layout
+
+\begin_layout Plain Layout
+
+names(Probs) <- c("P(Win no Switch)", "P(Win Switch)") 
+\end_layout
+
+\begin_layout Plain Layout
+
+Probs
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Solution 2: Total Probability
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Let 
+\begin_inset Formula $B=$
+\end_inset
+
+"Win the car if switch", 
+\end_layout
+
+\begin_layout Frame
+then from the Law of Total Probability
+\begin_inset Formula 
+\begin{align*}
+P(B) & =P(A)P(B|A)+P(\bar{A})P(B|\bar{A})\\
+ & =\frac{1}{3}\times0+\frac{2}{3}\times1=\frac{2}{3}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Solution 3: Bayes Theorem
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Assume you initially guesses Door 1 and that Monty opens Door 3.
+\end_layout
+
+\begin_layout Frame
+Let the event 
+\begin_inset Formula $D_{i}=$
+\end_inset
+
+Door 
+\begin_inset Formula $i$
+\end_inset
+
+ conceals the prize (
+\begin_inset Formula $i=1,2,3$
+\end_inset
+
+) and
+\end_layout
+
+\begin_layout Frame
+\begin_inset Formula $O_{j}=$
+\end_inset
+
+Monty opens door 
+\begin_inset Formula $j$
+\end_inset
+
+ after the contestant selects Door 1 (
+\begin_inset Formula $j=3$
+\end_inset
+
+ here).
+ 
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+Compare 
+\begin_inset Formula $P(D_{1}|O_{3})$
+\end_inset
+
+ and 
+\begin_inset Formula $P(D_{2}|O_{3})$
+\end_inset
+
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+P(D_{1}|O_{3}) & =\frac{P(D_{1})P(O_{3}|D_{1})}{\sum_{j=1}^{3}P(D_{j})P(O_{3}|D_{j})}\\
+ & =\frac{1/2\times1/3}{1/2\times1/3+1\times1/3+0\times1/3}=\frac{1}{3}\\
+P(D_{2}|O_{3}) & =\frac{P(D_{2})P(O_{3}|D_{2})}{\sum_{j=1}^{3}P(D_{j})P(O_{3}|D_{j})}\\
+ & =\frac{1\times1/3}{1/2\times1/3+1\times1/3+0\times1/3}=\frac{2}{3}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Random Variables
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Definition of Random Variables
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+A 
+\series bold
+random variable
+\series default
+ is a function from a sample space 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ into the real numbers.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Variable
+\series default
+ has a numerical value is determined by the outcome of a random experiment.
+ 
+\emph on
+A number that hasn't happened yet
+\emph default
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Data
+\series default
+: Once random variables "happen" they then become data.
+ Then you can learn about future random variables.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Probability Distribution
+\series default
+: This is a function that tells you how likely it is that each value will
+ occur 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Expected value
+\series default
+ and 
+\series bold
+Variance
+\series default
+ summarize probability distributions just like sample means and variances
+ do for data.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Discrete Random Variables
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Probability Density Functions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Discrete random variables are characterized by their 
+\emph on
+supports
+\emph default
+ which take the form 
+\begin_inset Formula $S=\{x_{1},x_{2},x_{3},\dots,\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\series bold
+Definition
+\series default
+: The function that assigns probability to the values of the random variable
+ is called the 
+\emph on
+probability density function
+\series bold
+\emph default
+ 
+\series default
+(pdf) or 
+\emph on
+probability mass function
+\emph default
+ (pmf)
+\end_layout
+
+\begin_layout Frame
+\begin_inset Formula 
+\[
+f(x)=P(X=x),\quad x\in S
+\]
+
+\end_inset
+
+All pdfs must satisfy:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $f(x)\ge0$
+\end_inset
+
+ for all 
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sum f(x)=1$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Toss a coin 3 times.
+ 
+\end_layout
+
+\begin_layout Frame
+The sample space would be 
+\begin_inset Formula 
+\[
+\Omega=\{HHH,HTH,THH,TTH,HHT,HTT,THT,TTT\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Now let 
+\begin_inset Formula $X$
+\end_inset
+
+ be the number of Heads observed.
+ 
+\end_layout
+
+\begin_layout Frame
+Then 
+\begin_inset Formula $X$
+\end_inset
+
+ has support 
+\begin_inset Formula $S=\{0,1,2,3\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Frame
+We can represent the pmf with a table:
+\end_layout
+
+\begin_layout Frame
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Total
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1/8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3/8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3/8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1/8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Cumulative Distribution Function
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+The 
+\series bold
+cumulative distribution function
+\series default
+ (cdf) is defined as
+\begin_inset Formula 
+\[
+F(x)=P(X\le x)=\sum_{k\le x}P(X=k),\ -\infty<x<\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Properties:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $0\le F(x)\le1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $a<b$
+\end_inset
+
+, then 
+\begin_inset Formula $F(a)\le F(b)$
+\end_inset
+
+ for any real numbers 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+.
+ In other words, 
+\begin_inset Formula $F(x)$
+\end_inset
+
+ is a non-decreasing function of 
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\lim_{x\rightarrow-\infty}F(x)=0$
+\end_inset
+
+, 
+\begin_inset Formula $\lim_{x\rightarrow+\infty}F(x)=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $F(x)$
+\end_inset
+
+ is a step function, and the height of the step at 
+\begin_inset Formula $x$
+\end_inset
+
+ is equal to 
+\begin_inset Formula $f(x)=P(X=x)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Mean, Variance, and Standard Deviation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Mean
+\begin_inset space \thinspace{}
+\end_inset
+
+(Expectation) 
+\begin_inset Formula $\mu={\rm E}(X)=\sum_{x\in S}xf_{X}(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Variance 
+\begin_inset Formula $\sigma^{2}={\rm E}(X-\mu)^{2}=\sum_{x\in S}(x-\mu)^{2}f_{X}(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Standard
+\begin_inset space \thinspace{}
+\end_inset
+
+Deviation 
+\begin_inset Formula $\sigma=\sqrt{\sigma^{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Usefull
+\begin_inset space \thinspace{}
+\end_inset
+
+Formula 
+\begin_inset Formula $\sigma^{2}={\rm E}(X^{2})-[{\rm E}(X)]^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x<-c(0,1,2,3) 
+\end_layout
+
+\begin_layout Plain Layout
+
+f<-c(1/8,3/8,3/8,1/8)
+\end_layout
+
+\begin_layout Plain Layout
+
+mu<-sum(x*f)
+\end_layout
+
+\begin_layout Plain Layout
+
+sigma2<-sum((x-mu)^2*f)
+\end_layout
+
+\begin_layout Plain Layout
+
+sigma<-sqrt(sigma2)
+\end_layout
+
+\begin_layout Plain Layout
+
+mu;sigma2;sigma
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The mean 
+\begin_inset Formula $\mu=$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{mu}
+\end_layout
+
+\end_inset
+
+; variance 
+\begin_inset Formula $\sigma^{2}=$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sigma2}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Continuous Distributions
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Probability Density Functions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Every continuous random variable 
+\begin_inset Formula $X$
+\end_inset
+
+ has a 
+\series bold
+probability density function
+\series default
+ (pdf) that satisfies three basic properties:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $f(x)\ge0,\ -\infty<x<\infty$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\int_{-\infty}^{\infty}f(x){\rm d}x=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P(X\in A)=\int_{x\in A}f(x){\rm d}x,\ \text{for an event }A\subset\Omega$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\series bold
+support 
+\series default
+of 
+\begin_inset Formula $f(x)$
+\end_inset
+
+: 
+\begin_inset Formula $S=\{x|f(x)>0\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We say that 
+\begin_inset Formula $X\sim f(x)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Cumulative Distribution Function
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+The 
+\series bold
+cumulative distribution function
+\series default
+ (cdf) is defined by
+\begin_inset Formula 
+\[
+F(x)=P(X\le x)=\int_{-\infty}^{x}f(t){\rm d}t
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Properties:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $F(x)$
+\end_inset
+
+ is nondecreasing
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $F(x)$
+\end_inset
+
+ is continuous, and 
+\begin_inset Formula $F^{'}(x)=f(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\lim_{x\rightarrow-\infty}F(x)=0$
+\end_inset
+
+, 
+\begin_inset Formula $\lim_{x\rightarrow\infty}F(x)=1$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Expectation and Variance
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+For a continuous random variable 
+\begin_inset Formula $X$
+\end_inset
+
+ the 
+\series bold
+expected value
+\series default
+ of 
+\begin_inset Formula $g(X)$
+\end_inset
+
+ is
+\begin_inset Formula 
+\[
+{\rm E}[g(X)]=\int g(x)f(x){\rm d}x
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+The expectation of random variable 
+\begin_inset Formula $X$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\mu={\rm E}(X)=\int xf(x){\rm d}x
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+The variance of 
+\begin_inset Formula $X$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\sigma^{2}={\rm E}(X-\mu)^{2}=\int(x-\mu)^{2}f(x){\rm d}x
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Numerical Integration with R
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+The R function 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+integrate()
+\end_layout
+
+\end_inset
+
+ approximates the
+\emph on
+ integral of functions
+\emph default
+ of one variable over a finite or infinite interval and estimates the absolute
+ error in the approximation.
+\end_layout
+
+\begin_layout FragileFrame
+
+\end_layout
+
+\begin_layout FragileFrame
+
+\series bold
+Example
+\series default
+: compute 
+\begin_inset Formula 
+\[
+P(-0.5\le X\le1)=\int_{-0.5}^{1}\frac{3}{4}(1-x^{2}){\rm d}x=0.84375
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+fx <- function(x) {
+\end_layout
+
+\begin_layout Plain Layout
+
+      3/4 - 3/4 * x^2 } # define function fx 
+\end_layout
+
+\begin_layout Plain Layout
+
+integrate(fx,lower=-0.5,upper=1) # gives value and tolerance
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Moment Generating Functions
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Moment Generating Functions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+ The 
+\series bold
+moment generating function
+\series default
+ (mgf) of a r.v.
+\begin_inset Formula $X$
+\end_inset
+
+ is defined by 
+\begin_inset Formula 
+\[
+M_{X}(t)={\rm E}(e^{tX})=\int_{-\infty}^{\infty}e^{tx}f(x){\rm d}x
+\]
+
+\end_inset
+
+for any 
+\begin_inset Formula $t$
+\end_inset
+
+ such that the integral exists.
+ 
+\end_layout
+
+\begin_layout Frame
+If 
+\begin_inset Formula $X$
+\end_inset
+
+ is discrete, then 
+\begin_inset Formula 
+\[
+M_{X}(t)=\sum_{x}e^{tx}p(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: mgf of Binomial
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Find the MGF for 
+\begin_inset Formula $X∼$
+\end_inset
+
+ Bin(
+\begin_inset Formula $n$
+\end_inset
+
+,
+\begin_inset Formula $p$
+\end_inset
+
+).
+\begin_inset Formula 
+\begin{align*}
+M(t) & ={\rm \sum_{i=0}^{n}}e^{tx}{n \choose x}p^{x}(1-p)^{n-x}\\
+ & ={\rm \sum_{i=0}^{n}}{n \choose x}(pe^{t})^{x}(1-p)^{n-x}\\
+ & =(pe^{t}+q)^{n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: mgf of Normal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+If 
+\begin_inset Formula $X\sim{\rm N}(\mu,\sigma^{2})$
+\end_inset
+
+, then the mgf is
+\begin_inset Formula 
+\begin{align*}
+M(t) & ={\rm E}(e^{tX})\\
+ & =\int_{-\infty}^{\infty}e^{tx}\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}{\rm d}x\\
+ & =e^{\mu t+\frac{\sigma^{2}}{2}t^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Application 1: Determine the distribution of a r.v.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Theorem
+The moment generating function, if it exists in a neighborhood of zero,
+ determines a probability distribution uniquely.
+\end_layout
+
+\begin_layout Itemize
+The proof is beyond the scope of our class.
+\end_layout
+
+\begin_layout Itemize
+An MGF is also known as a “Laplace Transform” and is manipulated in that
+ context in many branches of science and engineering.
+\end_layout
+
+\begin_layout Itemize
+This is the key tool to proof the well known theorem of central limit.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Application 2: Compute High Order Moments
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Why is it called a Moment Generating Function? 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+M^{'}(t) & =\frac{{\rm d}}{{\rm d}t}\sum_{x\in S}e^{tx}f(x)=\sum_{x\in S}e^{tx}xf(x)\\
+M^{'}(0) & =\sum_{x\in S}e^{0}xf(x)={\rm E}(X)\\
+M^{''}(0) & ={\rm E}(X^{2})\\
+ & \dots\\
+M^{(k)}(0) & ={\rm E}(X^{k})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: Mean and Variance of Binomial
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Find the mean and variance of 
+\family typewriter
+binom(
+\begin_inset Formula $n$
+\end_inset
+
+,
+\begin_inset Formula $p$
+\end_inset
+
+)
+\family default
+.
+\begin_inset Formula 
+\begin{align*}
+M(t) & =(pe^{t}+q)^{n}\\
+M^{'}(0) & =n(pe^{t}+q)^{n-1}pe^{t}|_{t=0}=np\\
+M^{''}(0) & =[n(n-1)(pe^{t}+q)^{n-2}(pe^{t})^{2}+n(pe^{t}+q)^{n-1}pe^{t}]|_{t=0}\\
+ & =n(n-1)p^{2}+np
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+ The expectation 
+\begin_inset Formula ${\rm E}(X)=np$
+\end_inset
+
+ and the variance
+\begin_inset Formula 
+\[
+{\rm D}(X)={\rm E}(X^{2})-({\rm E}X)^{2}=n(n-1)p^{2}+np-(np)^{2}=np(1-p)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Expansion of a MGF
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Taylor series expansion:
+\begin_inset Formula 
+\[
+f(x)=\sum_{k=0}^{\infty}\frac{f^{(k)}(a)}{k!}(x-a)^{k},\ \text{for all }|x-a|<R
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $R$
+\end_inset
+
+ is called the 
+\emph on
+radius of convergence
+\emph default
+ of the series.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Theorem
+If an MGF exists for all 
+\begin_inset Formula $t$
+\end_inset
+
+ in the interval 
+\begin_inset Formula $(-\epsilon,\epsilon)$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\[
+M(t)=\sum_{k=0}^{\infty}\frac{{\rm E}(X^{k})}{k!}t{}^{k},\ \text{for all }|t|<\epsilon
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Transformations of Random Variables
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Functions of Continuous Random Variables
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+The 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+goal
+\end_layout
+
+\end_inset
+
+ here is to determine the distribution of 
+\begin_inset Formula $U=g(X)$
+\end_inset
+
+ based on the distribution of 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Frame
+General approaches:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+pdf transformation
+\end_layout
+
+\begin_layout Enumerate
+calculate the cdf 
+\end_layout
+
+\begin_layout Enumerate
+by mgf
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The pdf transformation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Theorem
+Let 
+\begin_inset Formula $X$
+\end_inset
+
+ have pdf 
+\begin_inset Formula $f_{X}(x)$
+\end_inset
+
+ and let 
+\begin_inset Formula $U=g(X)$
+\end_inset
+
+ be a function of 
+\begin_inset Formula $X$
+\end_inset
+
+which is one-to-one with a differentiable inverse 
+\begin_inset Formula $g^{-1}$
+\end_inset
+
+.
+ Then the pdf of 
+\begin_inset Formula $U=g(X)$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\[
+f_{U}(u)=f_{X}(x)\left|\frac{{\rm d}x}{{\rm d}u}\right|
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $x=g^{-1}(u)$
+\end_inset
+
+ is the inverse function of 
+\begin_inset Formula $g$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: pdf of Logmormal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Let 
+\begin_inset Formula $X∼N(\mu,\sigma^{2})$
+\end_inset
+
+, and let 
+\begin_inset Formula $Y=e^{X}$
+\end_inset
+
+.
+ What is the pdf of 
+\begin_inset Formula $Y$
+\end_inset
+
+?
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\series bold
+\begin_inset VSpace bigskip
+\end_inset
+
+Solution
+\series default
+: Notice first that 
+\begin_inset Formula $e^{x}>0$
+\end_inset
+
+ for any 
+\begin_inset Formula $x$
+\end_inset
+
+, so the support of 
+\begin_inset Formula $Y$
+\end_inset
+
+ is 
+\begin_inset Formula $(0,\infty)$
+\end_inset
+
+.
+ Since the transformation is monotone, we can solve 
+\begin_inset Formula $y=e^{x}$
+\end_inset
+
+ for 
+\begin_inset Formula $x$
+\end_inset
+
+ to get 
+\begin_inset Formula $x=\ln y$
+\end_inset
+
+, giving 
+\begin_inset Formula $dx/dy=1/y$
+\end_inset
+
+.
+ Therefore, for any 
+\begin_inset Formula $y>0$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+f_{Y}(y) & =f_{X}(x)\left|\frac{1}{y}\right|\\
+ & =\frac{1}{y\sigma\sqrt{2\pi}}\exp\left\{ \frac{(\ln y-\mu)^{2}}{2\sigma^{2}}\right\} 
+\end{align*}
+
+\end_inset
+
+The pdf implies 
+\begin_inset Formula $Y\sim{\rm lnorm}(\mu,\sigma^{2})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The cdf method
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Example
+Suppose 
+\begin_inset Formula $X\sim U(0,1)$
+\end_inset
+
+ and suppose that we let 
+\begin_inset Formula $Y=−\ln X$
+\end_inset
+
+.
+ What is the PDF of 
+\begin_inset Formula $Y$
+\end_inset
+
+ ? 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+
+\series bold
+Solution
+\series default
+: The support set of 
+\begin_inset Formula $X$
+\end_inset
+
+ is 
+\begin_inset Formula $(0,1)$
+\end_inset
+
+, and 
+\begin_inset Formula $y$
+\end_inset
+
+ traverses 
+\begin_inset Formula $(0,\infty)$
+\end_inset
+
+ as 
+\begin_inset Formula $x$
+\end_inset
+
+ ranges from 0 to 1, so the support set of 
+\begin_inset Formula $Y$
+\end_inset
+
+ is 
+\begin_inset Formula $S_{Y}=(0,\infty)$
+\end_inset
+
+.
+ For any 
+\begin_inset Formula $y>0$
+\end_inset
+
+, we consider
+\begin_inset Formula 
+\begin{align*}
+F_{Y}(y) & =P(Y\le y)=P(-\ln X\le y)=P(X\ge e^{-y})\\
+ & =1-F_{X}(e^{-y})\ (0<e^{-y}<1\ {\rm for}\ y>0)\\
+ & =1-e^{-y}
+\end{align*}
+
+\end_inset
+
+The pdf of 
+\begin_inset Formula $Y$
+\end_inset
+
+ is 
+\begin_inset Formula $f_{Y}(y)=F_{Y}^{'}(y)=e^{-y}$
+\end_inset
+
+, for 
+\begin_inset Formula $y>0$
+\end_inset
+
+.
+ This implies 
+\begin_inset Formula $Y\sim\exp(1)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The mgf method
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Example
+Suppose 
+\begin_inset Formula $X\sim N(0,1),\ Y\sim N(0,1)$
+\end_inset
+
+, what is the distribution of 
+\begin_inset Formula $X+Y$
+\end_inset
+
+ if 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are independent?
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+
+\series bold
+Solution
+\series default
+: The mgf of 
+\begin_inset Formula $N(\mu,\sigma^{2})$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+m(t)=e^{\mu t+\frac{\sigma^{2}}{2}t^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+The mgf of 
+\begin_inset Formula $Z=X+Y$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align*}
+m_{Z}(t) & ={\rm E}(e^{t(X+Y)})=m_{X}(t)m_{Y}(t)\\
+ & =e^{\frac{t^{2}}{2}}\cdot e^{\frac{t^{2}}{2}}=e^{\frac{2t^{2}}{2}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+This mgf implies 
+\begin_inset Formula $Z\sim N(0,2)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_body
+\end_document
