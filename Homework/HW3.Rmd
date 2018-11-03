@@ -1,0 +1,72 @@
+---
+title: "Advanced Statistics HW3"
+author:  "Due date: October 23, 2018"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = 'center', out.width = '70%', fig.asp = .70)
+library(tidyverse)
+```
+
+# Exercises 1
+
+How can you tell if an object is a tibble? (Hint: try printing `mtcars`, which is a regular data frame).
+
+# Exercises 2
+
+What function would you use to read a file where fields were separated with “|”?
+    
+# Exercises 3
+
+Identify what is wrong with each of the following inline CSV files.
+What happens when you run the code?
+
+~~~
+read_csv("a,b\n1,2,3\n4,5,6")
+read_csv("a,b,c\n1,2\n1,2,3,4")
+read_csv("a,b\n\"1")
+read_csv("a,b\n1,2\na,b")
+read_csv("a;b\n1;3")
+~~~
+
+# Exercises 4
+
+Generate the correct format string to parse each of the following dates and times:
+
+```
+d1 <- "January 1, 2010"
+d2 <- "2015-Mar-07"
+d3 <- "06-Jun-2017"
+d4 <- c("August 19 (2015)", "July 1 (2015)")
+d5 <- "12/30/14" # Dec 30, 2014
+t1 <- "1705"
+t2 <- "11:15:10.12 PM"
+```
+
+# Exercises 5
+
+Why does spreading this tibble fail? How could you add a new column to fix the problem?
+
+```
+people <- tribble(
+  ~name,             ~key,    ~value,
+  #-----------------|--------|------
+  "Phillip Woods",   "age",       45,
+  "Phillip Woods",   "height",   186,
+  "Phillip Woods",   "age",       50,
+  "Jessica Cordero", "age",       37,
+  "Jessica Cordero", "height",   156
+)
+```
+# Exercises 6
+
+Tidy the simple tibble below. Do you need to spread or gather it? What are the variables?
+
+```
+preg <- tribble(
+  ~pregnant, ~male, ~female,
+  "yes",     NA,    10,
+  "no",      20,    12
+)
+```

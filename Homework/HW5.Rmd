@@ -1,0 +1,77 @@
+---
+title: "Advanced Statistics HW5"
+author:  "Due date: November 8, 2018"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = 'center', out.width = '75%', fig.asp = .75)
+#library(tidyverse)
+```
+
+# Exercises 1
+
+In the New York State lottery game, six of the numbers 1 through 54 are chosen by a customer. Then, in a televised drawing, six of these numbers are selected. If all six of a customer’s numbers are selected, then that customer wins a share of the first prize. If five or four of the numbers are selected, the customer wins a share of the second or the third prize. What is the probability that any customer will win a share of the first prize, the second prize, and the third prize, respectively?
+
+# Exercises 2
+
+An urn contains 14 balls; 6 of them are white, and the others are black. Another urn contains 9 balls; 3 are white, and 6 are black. A ball is drawn at random from the first urn and is placed in the second urn. Then, a ball is drawn at random from the second urn. If this ball is white, find the probability that the ball drawn from the first urn was black.
+
+# Exercises 3
+
+Two independently wealthy philatelists, Alvin and Bob, are interested in buying rare stamps at a private auction. For each stamp up for auction, given that the previous bid did not win, Alvin or Bob wins on their ith bid with probability $p$. Assume that Alvin always makes the first bid.
+
+(a) Find the probability that Alvin wins the first auction.
+
+(b) If two stamps are actually auctioned, find the probability that they are purchased by the same bidder.
+
+(Hint: $\sum_{i=0}^{\infty} x^i =\frac{1}{1-x}$ if $|x| < 1$.)
+
+# Excercise 4
+
+Consider an experiment where two dice are rolled. Let the random variable $X$ equal the sum of the two dice and the random variable $Y$ be the difference of the two dice.
+
+(a) Find the mean, variance and skewness of $X$ respectively.
+
+(b)  Find the mean, variance and skewness of $Y$ respectively.
+
+# Excercise 5
+
+The time, in hours, a child practices his musical instrument on Saturdays has pdf
+$$f(x)=
+\begin{cases}
+k(1-x) & 0\le x \le 1 \\
+0      & \text{otherwise}
+\end{cases}$$
+
+(a) Find $k$ to make $f(x)$ a valid pdf.
+
+(b) Write the cdf and find the probability the child practices more than 48 minutes on a
+Saturday.
+
+(c) Find the mean and variance of $X$.
+
+# Excercise 6
+
+(a) Construct a plot for the probability mass function and the cumulative probability distribution of a binomial random variable $Bin(8,0.3)$.
+
+(b) Find the smallest value of $k$ such that $P(X \le k) \ge 0.44$ when $X \sim Bin(8, 0.7)$.
+
+(c) Calculate $P(Y \ge 3)$ if $Y \sim Bin(20, 0.2)$.
+
+# Excercise 7
+
+$X$ is a random variable with finite $E(X-a)^2$, where $a$ is a scalar. Find $a$ such that $E(X-a)^2$ is minimized.
+
+# Excercise 8
+
+Given independent random variables $Y_1,Y_2, X, W, Z_1, Z_2$, and $Z_3$,
+
+(a) Compute $P((Y_2 \ge 3) \cap (Y_1 < 9))$ if $Y_1 \sim Bin(10, 0.3)$ and $Y_2 \sim Bin(5, 0.1)$.
+
+(b) Compute $P(X \ge 2|X < 6)$ if $X \sim Pois(\lambda = 4)$.
+
+(c) If $W \sim N(\mu,\sigma^2)$, find the value of $k$ that satisfies the equation 
+$P(\mu < W < \mu + 2k\sigma )= 0.45.$
+
+(d) If $Z_i \sim N(0, 1)$ for $i = 1, 2, 3$, compute $P(\sqrt{Z_1^2 + Z_2^2 + Z_3^2} > 1.5)$.
