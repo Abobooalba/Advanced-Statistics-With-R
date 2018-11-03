@@ -12,8 +12,8 @@ knitr::opts_chunk$set(
   message = FALSE,       # don't show messages (less serious warnings)
   cache = FALSE,         # set to TRUE to save results from last compilation
   fig.align = 'center',  # center figures
-  out.width = '70%',     # Set figure size to 70% of textline
-  fig.asp = .70          # width-height ratio 
+  out.width = '75%',     # Set figure size to 70% of textline
+  fig.asp = .75          # width-height ratio 
 )
   library(tidyverse)     # Load libraries you always use here
   set.seed(2018)         # make random results reproducible
