@@ -1,6 +1,6 @@
 ---
 title: "Advanced Statistics HW10"
-author:  "Due date: December 11, 2018"
+author:  "Due date: December 10, 2018"
 output: pdf_document
 #header-includes:
 #  - \usepackage{diagbox}

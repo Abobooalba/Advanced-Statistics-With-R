@@ -1,0 +1,49 @@
+---
+title: "Advanced Statistics HW11"
+author:  "Due date: December 16, 2018"
+output: pdf_document
+#header-includes:
+#  - \usepackage{diagbox}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = 'center', out.width = '75%', fig.asp = .75)
+#library(tidyverse)
+```
+
+# Exercises 1
+
+The manager of a URL commercial address is interested in predicting the number of
+megabytes downloaded, `megasd`, by clients according to the number of minutes they are connected, `mconnected`. The manager randomly selects (megabyte, minute) pairs, records the data, and stores the pairs (`megasd`, `mconnected`) in the file `URLADDRESS`.
+
+(a) Create a scatterplot of the data. Characterize the relationship between `megasd` and `mconnected`.
+
+(b) Fit a regression line to the data. Superimpose the resulting line in the plot created in part (a).
+
+(c) Compute the covariance matrix of the $\hat{\beta}$s.
+
+(d) What is the standard error of $\hat{\beta_1}$?
+
+(e) What is the covariance between $\hat{\beta_0}$ and $\hat{\beta_1}$?
+
+(f) Construct a 95% confidence interval for the slope of the regression line.
+
+(g) Compute $R^2$, $R^2_a$, and the residual variance for the fitted regression.
+
+# Exercises 2
+
+A story by James R. Hagerty entitled *With Buyers Sidelined, Home Prices Slide* published in the Thursday October 25, 2007 edition of the *Wall Street Journal* contained data on so-called fundamental housing indicators in major real estate markets across the US. The author argues that "*... prices are generally falling and overdue loan payments are piling up*". Thus, we shall consider data presented in the article on 
+
+$Y$ = Percentage change in average price from July 2006 to July 2007 (based on the S&P/Case-Shiller national housing index); and 
+
+$x$ = Percentage of mortgage loans 30 days or more overdue in latest quarter (based on data from Equifax and Moody’s). 
+
+The data are available in the file *indicators.txt*. 
+
+Fit the following model to the data:
+$$Y=\beta_{0}+\beta_{1}x+\varepsilon.$$ 
+Complete the following tasks: 
+
+(a) Find a 95% confidence interval for the slope of the regression model. On the basis of this confidence interval decide whether there is evidence of a significant negative linear association.
+
+(b) Use the fitted regression model to estimate ${\rm E}(Y|x=4)$. Find a 95% confidence interval for ${\rm E}(Y|x=4)$. Is 0% a feasible value for ${\rm E}(Y|x=4)$? Give a reason to support your answer.
