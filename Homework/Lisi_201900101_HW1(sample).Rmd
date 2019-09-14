@@ -1,6 +1,6 @@
 ---
 title: "Advanced Statistics HW1"
-author: "Zhansan(201800101)"
+author: "Lisi(201900101)"
 date:  "`r Sys.Date()`"
 output: pdf_document
 ---
@@ -20,27 +20,32 @@ knitr::opts_chunk$set(
 ```
 
 ## Exercises 1
+Let $Y$ be a normal distributed random variable,  $\mu$ is the mean, and $\sigma$ is the standard deviation. What is the probability density function of $Y$?
 
-1. Write out a linear model with dependent variable $y$ and predictor $x$.
+**Answer:**
 
-2. Display the dataset `mpg` with `kable`.
+Denote $Y \sim N(\mu,\sigma^2)$, then the pdf of $Y$ is 
 
-### Answer:
+$$f(y|\mu, \sigma) = \frac{1}{\sqrt{2 \pi \sigma^2}} \text{exp} \Bigg (- \frac{(y - \mu)^2}{2 \sigma^2} \Bigg)$$
 
-1. The linear model is
-$$y=\alpha+\beta x +\varepsilon.$$
-2. The table of dataset `mpg` with `kable` is shown below
+## Exercises 2.
+Display the dataset `mpg` with `kable`.
+
+**Answer:**
+
+The table of dataset `mpg` with `kable` can be given as below: 
 
 ```{r}
 knitr::kable(head(mpg),
    caption = 'Table of the first several data', booktabs = TRUE)
 ```
 
-## Exercises 2
-Plot the `hwy` against `displ`.
+## Exercises 3
+Plot the `hwy` against `displ` in dateset `mpg`.
 
-### Answer:
-The code and figure are given below
+**Answer:**
+ 
+The code and figure are given as follows
 ```{r plotmpg, fig.cap="ggplot of hwy vs displ"}
 ggplot(data = mpg) + 
     geom_point(mapping = aes(x = displ, y = hwy))
