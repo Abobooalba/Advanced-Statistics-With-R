@@ -1,6 +1,5 @@
 ---
-title: "Advanced Statistics HW10"
-author:  "Due date: December 10, 2018"
+title: "Assignment 10"
 output: pdf_document
 #header-includes:
 #  - \usepackage{diagbox}
@@ -11,25 +10,25 @@ knitr::opts_chunk$set(echo = TRUE, fig.align = 'center', out.width = '75%', fig.
 #library(tidyverse)
 ```
 
-# Exercises 1
+# Question 1
 
 Define $\alpha$ and $\beta$ for a test of hypothesis. What is the quantity $1-\beta$ called?
 
-# Exercises 2
+# Question 2
 
 Using a 5% significance level, what is the power of the test 
 $H_0: \mu = 100$ versus $H_1: \mu \ne 100$ if a sample of size 36 is taken from a $N(120, 50)$?
 
-# Exercises 3
+# Question 3
 
 The research and development department of an appliance company suspects the energy consumption required of their 18-cubic-foot refrigerator can be reduced by a slight modification to the current motor. Sixty 18-cubic-foot refrigerators were randomly selected from
 the company's warehouse. The first 30 had their motors modified while the last 30 were left intact. The energy consumption (kilowatts) for a 24-hour period for each refrigerator was recorded and stored in the data frame `REFRIGERATOR`. Is there evidence that the design modification reduces the refrigerators' average energy consumption?
 
-# Excercise 4
+# Question 4
 
 According to the Pamplona, Spain, registration, 0.4% of immigrants in 2002 were from Bolivia. In June of 2005, a sample of 3740 registered foreigners was randomly selected. Of these, 87 were Bolivians. Is there evidence to suggest immigration from Bolivia has increased? (Use $\alpha = 0.05$.)
 
-# Excercise 5
+# Question 5
 
 A cell phone provider has estimated that it needs revenues of \pounds 2 million per day in order to make a profit and remain in the market. If revenues are less than \pounds 2 million per day, the company will go bankrupt. Likewise, revenues greater than \pounds 2 million per day cannot be handled without increasing staff. Assume that revenues follow a normal distribution with $\sigma=\pounds 0.5$ million and a mean of $\mu$.
 

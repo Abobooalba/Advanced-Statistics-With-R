@@ -1,6 +1,5 @@
 ---
-title: "Advanced Statistics HW7"
-author:  "Due date: November 20, 2018"
+title: "Assignment 7"
 output: pdf_document
 #header-includes:
 #  - \usepackage{diagbox}
@@ -11,13 +10,12 @@ knitr::opts_chunk$set(echo = TRUE, fig.align = 'center', out.width = '75%', fig.
 #library(tidyverse)
 ```
 
-# Exercises 1
+# Question 1
 
-If $X \sim \chi^2(10)$, find the constants $a$ and $b$ so that 
-$P(a < X < b) = 0.90$ and $P(X < a) = 0.05$.
+If $X \sim \chi^2(10)$, find the constants $a$ and $b$ such that $P(a<X<b)=0.90$ and $P(X<a)=0.05$.
 
 
-# Exercises 2
+# Question 2
 
 The pill weight for a particular type of vitamin follows a normal distribution with a mean of 0.6 grams and a standard deviation of 0.015 grams. It is known that a particular therapy consisting of a box of vitamins with 125 pills is not effective if more than 20% of the pills are under 0.58 grams.
 
@@ -25,20 +23,19 @@ The pill weight for a particular type of vitamin follows a normal distribution w
 
 (b) A supplement manufacturer sells vitamin bottles containing 125 vitamins per bottle with 50 bottles per box with a guarantee that at least 47 bottles per box weigh more than 74.7 grams. Find the probability that a randomly chosen box does not meet the guaranteed weight.
 
-# Exercises 3
+# Question 3
 
 Simulate 20,000 random samples of sizes 30, 100, 300, and 500 from an exponential distribution with a mean of 1/5.  Estimate the density of the sampling distribution of the sample mean with the function `density()`. Superimpose a theoretical normal density with appropriate mean and standard deviation. What sample size is needed to get an estimated density close to a normal density?
 
-# Excercise 4
+# Question 4
 
 Consider a random sample of size $n$ from an exponential distribution with parameter $\lambda$. 
 
 (a) Use moment generating functions to show that the sample mean follows a $\Gamma(n, n\lambda)$.
 
-(b) Graph the theoretical sampling distribution of $X$ when sampling from an $Exp(\lambda = 1)$ for $n$ = 30, 100, 300, and 500. Superimpose an appropriate normal density for each $\Gamma(n, n\lambda)$.
-At what sample size do the sampling distribution and superimposed density virtually coincide?
+(b) Graph the theoretical sampling distribution of $X$ when sampling from an $Exp(\lambda = 1)$ for $n$ = 30, 100, 300, and 500. Superimpose an appropriate normal density for each $\Gamma(n, n\lambda)$. At what sample size do the sampling distribution and superimposed density virtually coincide?
 
-# Excercise 5
+# Question 5
 
 A farmer is interested in knowing the mean weight of his chickens when they leave the farm. Suppose that the standard deviation of the chickens’ weight is 500 grams.
 

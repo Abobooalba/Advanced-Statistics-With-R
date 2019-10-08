@@ -1,6 +1,5 @@
 ---
-title: "Advanced Statistics HW8"
-author:  "Due date: November 29, 2018"
+title: "Assignment 8"
 output: pdf_document
 #header-includes:
 #  - \usepackage{diagbox}
@@ -11,13 +10,13 @@ knitr::opts_chunk$set(echo = TRUE, fig.align = 'center', out.width = '75%', fig.
 #library(tidyverse)
 ```
 
-# Exercises 1
+# Question 1
 
 Given the estimators of the mean $T_1 = (X_1 + 2X_2 + X_3)/4$ and $T_2 = (X_1 + X_2 + X_3)/3$, where $X_1$, $X_2$, $X_3$ is a random sample from a $N(\mu,\sigma^2)$ distribution, prove that $T_2$ is more
 efficient than $T_1$.
 
 
-# Exercises 2
+# Question 2
 
 Let $X$ be a $Bin(n,p)$ random variable.
 
@@ -27,7 +26,7 @@ Let $X$ be a $Bin(n,p)$ random variable.
 
 (c) Plot the efficiency of $T_2$ relative to $T_1$ versus $p$ values in $(0, 1)$ for $n$ values from 1 to 10.
 
-# Exercises 3
+# Question 3
 
 Consider a random sample of size $n$ from a geometric distribution.
 
@@ -37,7 +36,7 @@ Consider a random sample of size $n$ from a geometric distribution.
 
 (c) Use the results from (a) and (b) to compute the method of moments and maximum likelihood estimates from the sample {8, 1, 2, 0, 0, 0, 2, 1, 3, 3}, which represents the number of Bernoulli trials that resulted in failure before the first success in 10 experiments.
 
-# Excercise 4
+# Question 4
 
 Consider the density function
 
@@ -50,7 +49,7 @@ $$f(x)=(\theta+1)(1-x)^\theta,0 \le x \le 1, \theta>0.$$
 
 (c) How close is the maximum likelihood estimate in (b) to $\theta = 5$?
 
-# Excercise 5
+# Question 5
 
 Consider an exponential distribution with mean $\theta$ and the following estimators of $\theta$:
 
@@ -64,7 +63,7 @@ $$\hat{\theta_1}=X_1, \hat{\theta_2}=\frac{1}{2}(X_1+X_2), \hat{\theta_3}=\min{(
 
 (d) Let $X$ be an exponential random variable with mean $\theta + 2$. Which estimator is an unbiased estimator of $\theta$?
 
-# Excercise 6
+# Question 6
 
 Consider the density function
 

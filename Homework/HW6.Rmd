@@ -1,6 +1,5 @@
 ---
-title: "Advanced Statistics HW6"
-author:  "Due date: November 13, 2018"
+title: "Assignment 6"
 output: pdf_document
 header-includes:
   - \usepackage{diagbox}
@@ -11,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE, fig.align = 'center', out.width = '75%', fig.
 #library(tidyverse)
 ```
 
-# Exercises 1
+# Question 1
 
 Let $X$ and $Y$ have the following joint distribution:
 
@@ -28,20 +27,19 @@ $$\begin{tabular}{c|ccc}
 (c) Show that $X$ and $Y$ are dependent.
 
 
-# Exercises 2
+# Question 2
 
-Emily and Albert are getting married and are looking at combining their finances. Both work in sales, so they have salaries that vary from month to month. They want to know if they can afford to buy a house with payments of \$1350 per month. They only want to spend 30\% of their total income on house payments. If Emily’s average sales are \$3000 per month with a standard deviation of \$500 and Albert's average sales are \$2000 with a standard deviation of \$1000, and both sales are normally distributed with a covariance between Emily's sales and Albert's sales of 10000 dollars^2^, what percent of the time will
-they be able to spend less than 30\% of their total income on their house payment?
+Emily and Albert are getting married and are looking at combining their finances. Both work in sales, so they have salaries that vary from month to month. They want to know if they can afford to buy a house with payments of \$1350 per month. They only want to spend 30\% of their total income on house payments. If Emily’s average sales are \$3000 per month with a standard deviation of \$500 and Albert's average sales are \$2000 with a standard deviation of \$1000, and both sales are normally distributed with a covariance between Emily's sales and Albert's sales of 10000 dollars^2^, what percent of the time will they be able to spend less than 30\% of their total income on their house payment?
 
-# Exercises 3
+# Question 3
 
 If $f(x, y) = e^{-(x+y)}$, $x > 0$, and $y > 0$, find $P(X+3>Y|X >1/3)$.
 
-# Excercise 4
+# Question 4
 
 If $f(x,y)=k(y-2x)$ is a joint density function over $0<x<1$, $0<y<1$, and $y>x^2$, then what is the value of the constant $k$?
 
-# Excercise 5
+# Question 5
 
 Let $X$ and $Y$ denote the heart rate (in beats per minute) and average power output (in watts) for a 10-minute cycling time trial performed by a professional cyclist. Assume that $X$ and $Y$ have a bivariate normal distribution with parameters $\mu_X=180$, $\sigma_X=10$, $\mu_Y=400$, $\sigma_Y=50$, and $\rho=0.9$. Find
 
@@ -57,7 +55,7 @@ Let $X$ and $Y$ denote the heart rate (in beats per minute) and average power ou
 
 (f) $P (Y \ge 450 | X = 200)$.
 
-# Excercise 6
+# Question 6
 
 The wait time in minutes a shopper spends in a local supermarket's checkout line has distribution
 
@@ -73,10 +71,9 @@ Assume that the day a person shops is uniformly distributed across the week, fin
 
 (c) The probability that the customer waits less than 2 minutes.
 
-# Excercise 7
+# Question 7
 
-Assume the distribution of grades for a particular group of students has a bivariate normal distribution with parameters
-$\mu_X=3.2$, $\sigma_X=0.4$, $\mu_Y=2.4$, $\sigma_Y=0.6$, and $\rho=0.6$, where $X$ and $Y$ represent the grade point averages in high school and the first year of college, respectively.
+Assume the distribution of grades for a particular group of students has a bivariate normal distribution with parameters $\mu_X=3.2$, $\sigma_X=0.4$, $\mu_Y=2.4$, $\sigma_Y=0.6$, and $\rho=0.6$, where $X$ and $Y$ represent the grade point averages in high school and the first year of college, respectively.
 
 (a) Set the seed equal to 194 (`set.seed(194)`), and use the function `mvrnorm()` from the `MASS` package to simulate the population, assuming the population of interest consists of 200 students. (Hint: Use `empirical = TRUE`.)
 
@@ -86,6 +83,6 @@ $\mu_X=3.2$, $\sigma_X=0.4$, $\mu_Y=2.4$, $\sigma_Y=0.6$, and $\rho=0.6$, where 
 
 (d) Create a scatterplot of $Y$ versus $X$. If a different seed value is used, how do the simulated numbers differ?
 
-# Excercise 8
+# Question 8
 
 Show that if $X_1,X_2,...,X_n$ are independent random variables with means $\mu_1,\mu_2,...,\mu_n$ and variances $\sigma^2_1,\sigma^2_2,...,\sigma^2_n$, respectively, then the mean and variance of $Y=\sum_{i=1}^n c_i X_i$, where the $c_i$s are real-valued constants, are $\mu_Y= \sum_{i=1}^n c_i\mu_i$ and $\sigma^2_Y= \sum_{i=1}^n c^2_i \sigma^2_i$.

@@ -1,6 +1,5 @@
 ---
-title: "Advanced Statistics HW9"
-author:  "Due date: December 3, 2018"
+title: "Assignment 9"
 output: pdf_document
 #header-includes:
 #  - \usepackage{diagbox}
@@ -11,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE, fig.align = 'center', out.width = '75%', fig.
 #library(tidyverse)
 ```
 
-# Exercises 1
+# Question 1
 
 Given a random sample $X_1, X_2, ... , X_n$ from a normal population $N(\mu, \sigma^2)$, where $\sigma^2$ is known:
 
@@ -21,7 +20,7 @@ $\bar{x} \pm 2.053749\sigma/\sqrt{n}$ ?
 (b) What is the value of the percentile $z_{\alpha/2}$ for a 99% confidence interval?
 
 
-# Exercises 2
+# Question 2
 
 A historic data set studied by R.A. Fisher is the measurements in centimeters of four flower parts (sepal length, sepal width, petal length, and petal width) on 50 specimens for each of three species of irises (Setosa, Versicolor, and Virginica). The data are stored in
 the data frame `iris` (Fisher, 1936).
@@ -30,11 +29,11 @@ the data frame `iris` (Fisher, 1936).
 
 (b) Based on the analysis from part (a), construct an appropriate 99% confidence interval for the mean sepal length of Setosa irises.
 
-# Exercises 3
+# Question 3
 
 Let $X_1, ..., X_{19}$ and $Y_1, ..., Y_{15}$ be two random samples from a $N(\mu_X, \sigma^2_X)$ and a $N(\mu_Y, \sigma^2_Y)$, respectively. Suppose that $\bar{x} = 57.3, s^2_X = 8.3, \bar{y} = 65.6$, and $s^2_Y = 9.7$. Find a 96% confidence interval for $\mu_X, \mu_Y$, and $\mu_X-\mu_Y$.
 
-# Excercise 4
+# Question 4
 
 Given the following data {25.3 23.8 27.5 23.2 24.5 25.3 24.6 26.8 25.9 29.2},
 
@@ -44,7 +43,7 @@ Given the following data {25.3 23.8 27.5 23.2 24.5 25.3 24.6 26.8 25.9 29.2},
 
 (c) Assuming that $\mu = 25$, construct a 95% confidence interval for $\sigma^2$.
 
-# Excercise 5
+# Question 5
 
 A large company wants to estimate the proportion of its accounts that are paid on time.
 

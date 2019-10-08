@@ -1,6 +1,5 @@
 ---
-title: "Advanced Statistics HW12"
-author:  "Due date: December 24, 2018"
+title: "Assignment 12"
 output: pdf_document
 #header-includes:
 #  - \usepackage{diagbox}
@@ -11,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE, fig.align = 'center', out.width = '75%', fig.
 #library(tidyverse)
 ```
 
-# Exercises 1
+# Question 1
 
 The manager of a URL commercial address is interested in predicting the number of
 megabytes downloaded, `megasd`, by clients according to the number of minutes they are connected, `mconnected`. The manager randomly selects (megabyte, minute) pairs, records the data, and stores the pairs (`megasd`, `mconnected`) in the file `URLADDRESS`. The goal here is to explore the relationship between `megasd` and `mconnected`.
@@ -26,7 +25,7 @@ megabytes downloaded, `megasd`, by clients according to the number of minutes th
 
 (e) Predict the megabytes downloaded by a client spending 30 minutes on line. Construct the corresponding 90% prediction interval.
 
-# Exercises 2
+# Question 2
 
 The data frame `KINDER` contains the height in inches and weight in pounds of 20 children from a kindergarten class. Use all 20 observations and construct a regression model where the results are stored in the object `mod` by regressing weight on height.
 

@@ -1,6 +1,5 @@
 ---
-title: "Advanced Statistics HW4"
-author:  "Due date: October 30, 2018"
+title: "Assignment 4"
 output: pdf_document
 ---
 
@@ -9,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE, fig.align = 'center', out.width = '70%', fig.
 library(tidyverse)
 ```
 
-# Exercises 1
+# Question 1
 
 Load the `WHEATUSA2004` data frame from the `PASWR2` package.
 
@@ -27,13 +26,13 @@ plotting regions of the values in ACRES.
 (d) Add vertical lines to the density histogram from (c) to indicate the location of the mean
 and the median.
 
-(e) Create a boxplot of the acres and locate the outliers’ communities and their values.
+(e) Create a boxplot of the acres and locate the outliers.
 
 (f) Determine the state with the largest harvested wheat surface in acres. Remove this
 state from the data frame and compute the mean, median, and standard deviation of
 acres. How do these values compare to the values for these statistics computed in (a)?
 
-# Exercises 2
+# Question 2
 
 Access the data from url
 <http://www.stat.berkeley.edu/users/statlabs/data/babies.data>

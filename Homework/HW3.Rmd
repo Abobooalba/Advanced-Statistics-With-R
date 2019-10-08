@@ -1,6 +1,5 @@
 ---
-title: "Advanced Statistics HW3"
-author:  "Due date: October 23, 2018"
+title: "Assignment 3"
 output: pdf_document
 ---
 
@@ -9,18 +8,17 @@ knitr::opts_chunk$set(echo = TRUE, fig.align = 'center', out.width = '70%', fig.
 library(tidyverse)
 ```
 
-# Exercises 1
+# Question 1
 
 How can you tell if an object is a tibble? (Hint: try printing `mtcars`, which is a regular data frame).
 
-# Exercises 2
+# Question 2
 
 What function would you use to read a file where fields were separated with “|”?
     
-# Exercises 3
+# Question 3
 
-Identify what is wrong with each of the following inline CSV files.
-What happens when you run the code?
+Identify what is wrong with each of the following inline CSV files. What happens when you run the code?
 
 ~~~
 read_csv("a,b\n1,2,3\n4,5,6")
@@ -30,7 +28,7 @@ read_csv("a,b\n1,2\na,b")
 read_csv("a;b\n1;3")
 ~~~
 
-# Exercises 4
+# Question 4
 
 Generate the correct format string to parse each of the following dates and times:
 
@@ -44,7 +42,7 @@ t1 <- "1705"
 t2 <- "11:15:10.12 PM"
 ```
 
-# Exercises 5
+# Question 5
 
 Why does spreading this tibble fail? How could you add a new column to fix the problem?
 
@@ -59,7 +57,7 @@ people <- tribble(
   "Jessica Cordero", "height",   156
 )
 ```
-# Exercises 6
+# Question 6
 
 Tidy the simple tibble below. Do you need to spread or gather it? What are the variables?
 

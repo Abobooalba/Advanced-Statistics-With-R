@@ -1,5 +1,5 @@
 ---
-title: "Advanced Statistics HW1"
+title: "Assignment 1"
 author: "Lisi(201900101)"
 date:  "`r Sys.Date()`"
 output: pdf_document
@@ -16,22 +16,22 @@ knitr::opts_chunk$set(
   fig.asp = .75          # width-height ratio 
 )
   library(tidyverse)     # Load libraries you always use here
-  set.seed(2018)         # make random results reproducible
+  set.seed(2019)         # make random results reproducible
 ```
 
-## Exercises 1
+# Question 1
 Let $Y$ be a normal distributed random variable,  $\mu$ is the mean, and $\sigma$ is the standard deviation. What is the probability density function of $Y$?
 
-**Answer:**
+## Answer:
 
 Denote $Y \sim N(\mu,\sigma^2)$, then the pdf of $Y$ is 
 
 $$f(y|\mu, \sigma) = \frac{1}{\sqrt{2 \pi \sigma^2}} \text{exp} \Bigg (- \frac{(y - \mu)^2}{2 \sigma^2} \Bigg)$$
 
-## Exercises 2.
+# Question 2.
 Display the dataset `mpg` with `kable`.
 
-**Answer:**
+## Answer:
 
 The table of dataset `mpg` with `kable` can be given as below: 
 
@@ -40,10 +40,10 @@ knitr::kable(head(mpg),
    caption = 'Table of the first several data', booktabs = TRUE)
 ```
 
-## Exercises 3
+# Question 3
 Plot the `hwy` against `displ` in dateset `mpg`.
 
-**Answer:**
+## Answer:
  
 The code and figure are given as follows
 ```{r plotmpg, fig.cap="ggplot of hwy vs displ"}
